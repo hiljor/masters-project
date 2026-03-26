@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from horse_algos.tools.graph import Graph
+from horse_algos.graph import Graph
 
-class algorithm:
+class Algorithm:
   @property
   @abstractmethod
   def name(self):

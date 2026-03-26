@@ -1,11 +1,11 @@
 import itertools as it
 
 
-from horse_algos.tools.graph import Graph
+from horse_algos.graph import Graph
 from horse_algos.tools.helper import allKCombinations
-from horse_algos.algorithms.algorithm import algorithm
+from horse_algos.algorithms.algorithm import Algorithm
 
-class Naive(algorithm):
+class Naive(Algorithm):
   
   @property
   def name(self):
@@ -18,14 +18,16 @@ def naive(graph: Graph, s: int, t: int, k: int) -> int:
   """ Naive brute force approach
   """
   
+  optimal = float("-inf")
+  
   for comb in allKCombinations(len(graph.adjList), k):
     if s in comb or t in comb:
       continue
     elif graph.path(s, t, set(comb)):
       continue
     else:
-      return graph.includedValue(s, t, set(comb))
-  
-  # if no cutset of size k disconnects s and t, return 0
-  return 0
+      value = graph.includedValue(s, t, set(comb))
+      optimal = max(optimal, value)
+         
+  return optimal
       
