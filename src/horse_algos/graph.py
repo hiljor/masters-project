@@ -1,5 +1,4 @@
 
-
 class Graph:
   def __init__(self, adjMatrix: list[list[int]], nodeValues: list[int]):
     self.adjMatrix = adjMatrix
@@ -42,6 +41,60 @@ class Graph:
       for neighbor in self.adjList[vertex]:
           stack.append(neighbor)
     return totalValue
+  
+
+class ContractionGraph(Graph):
+    def __init__(self, adjMatrix: list[list[int]], nodeValues: list[int]):
+        super().__init__(adjMatrix, nodeValues)
+        n = len(adjMatrix)
+        # parent[i] = i means it's the root of its own set
+        self.parent = list(range(n))
+        # rank helps keep the tree balanced
+        self.rank = [0] * n
+        self.is_active = [True] * n
+        # history stores (parent_node, child_node, rank_was_increased)
+        self.history = []
+
+    def find(self, x):
+        """Finds the root of the set containing x without path compression."""
+        while x != self.parent[x]:
+            x = self.parent[x]
+        return x
+
+    def unite(self, a, b):
+        """Unites sets containing a and b using Union by Rank."""
+        root_a = self.find(a)
+        root_b = self.find(b)
+        
+        if root_a != root_b:
+            # We want root_a to be the one with the higher rank
+            if self.rank[root_a] < self.rank[root_b]:
+                root_a, root_b = root_b, root_a
+            
+            rank_increased = False
+            if self.rank[root_a] == self.rank[root_b]:
+                self.rank[root_a] += 1
+                rank_increased = True
+            
+            # Make root_a the parent of root_b
+            self.parent[root_b] = root_a
+            self.history.append({
+                'u': root_a, 
+                'v': root_b, 
+                'rank_increased': rank_increased
+            })
+            return True
+        return False
+
+    def undo(self, target_size):
+        """Rolls back the DSU state to a specific history size."""
+        while len(self.history) > target_size:
+            m = self.history.pop()
+            # Reset the child's parent to itself
+            self.parent[m['v']] = m['v']
+            # If the parent's rank was increased during 'unite', revert it
+            if m['rank_increased']:
+                self.rank[m['u']] -= 1
 
 
 def path(adjList: list[list[int]], a: int, b: int, cutset: set[int]) -> bool:
