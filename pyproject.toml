@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "enclose.horse algorithms"
+name = "horse_algos"
 version = "0.1.0"
 dependencies = [] # Add your requirements here (e.g., "requests")
 
