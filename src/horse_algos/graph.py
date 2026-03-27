@@ -92,7 +92,7 @@ class Graph:
                 self.rank[m["u"]] -= 1
 
 
-def path(adjList: list[list[int]], a: int, b: int, cutset: set[int]) -> bool:
+def path(graph: Graph, a: int, b: int, cutset: set[int]) -> bool:
     """Returns true if there exists a path in the graph between a and b
     that does not include any of the vertices in cutset. False otherwise.
 
@@ -103,6 +103,8 @@ def path(adjList: list[list[int]], a: int, b: int, cutset: set[int]) -> bool:
         cutset: A set of vertices that cannot be included in the path.
     """
 
+    adjList = graph.adjList
+    isActive = graph.is_active
     visited = set()
     stack = [a]
 
@@ -110,7 +112,7 @@ def path(adjList: list[list[int]], a: int, b: int, cutset: set[int]) -> bool:
         vertex = stack.pop()
         if vertex == b:
             return True
-        if vertex in visited or vertex in cutset:
+        if vertex in visited or vertex in cutset or not isActive[vertex]:
             continue
         visited.add(vertex)
         for neighbor in adjList[vertex]:
