@@ -24,7 +24,7 @@ class Graph:
         return adjList
 
     def path(self, a: int, b: int, cutset: set[int]) -> bool:
-        return path(self.adjList, a, b, cutset)
+        return path(self, a, b, cutset)
 
     def value(self, vertex: int) -> int:
         """Returns the value of the given vertex."""
