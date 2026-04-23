@@ -1,6 +1,6 @@
 import pytest
 from collections import namedtuple
-from horse_algos.graph import Graph
+from horse_algos.graph import Graph, path, minSeparator
 
 TestData = namedtuple("TestData", ["graph", "s", "t", "k", "expected"])
 
