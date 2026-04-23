@@ -19,10 +19,6 @@ def important_separators(graph: Graph, s: int, t: int, k: int) -> int | float:
     def branch(current_k, Z):
 
         nonlocal best_separator, max_source_size
-
-        # Should find the smallest important separator S between s and t in 
-        # the current graph state, but may not be correct
-        # TODO: ASK PÅL, CORRECT
         
         X = minSeparator(graph, s, t)
         print(f"Current separator: {X}, size: {len(X)}, k left: {current_k}")
