@@ -1,0 +1,2 @@
+Always write docstrings on functions. Don't change the docstring to explain to me that you have implemented something new. The docstring should reflect the purpose and function of the function as a whole.
+If you are unsure, ask for instruction.
