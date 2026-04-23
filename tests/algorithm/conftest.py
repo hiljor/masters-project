@@ -21,38 +21,28 @@ def case_impossible():
     return TestData(graph=Graph(adjMatrix, [1, 5, 0], infSet=set()), s=0, t=2, k=0, expected=float("-inf"))
   
 
+# A graph where deleting the left column of 3 nodes gives 1 value, and deleting the right column of 4 nodes gives 5 value.
+adjList = [
+  [1,2,3],
+  [0,4,5,6],
+  [0,6,7],
+  [0,8,9],
+  [1,6,7],
+  [1,6,7],
+  [4,5,1,2,10],
+  [4,5,2,10],
+  [3,10],
+  [3,10],
+  [6,7,8,9]
+]
 @pytest.fixture
 def case_pal():
-    adjList = [
-      [1,2,3],
-      [0,4,5,6],
-      [0,6,7],
-      [0,8,9],
-      [1,6,7],
-      [1,6,7],
-      [4,5,1,2,10],
-      [4,5,2,10],
-      [3,10],
-      [3,10],
-      [6,7,8,9]
-    ]
+    # Test k=4
     return TestData(graph=Graph(adjList=adjList, nodeValues=[1]*11, infSet=set()), s=0, t=2, k=4, expected=5)
   
 @pytest.fixture
 def case_pal2():
-    adjList = [
-      [1,2,3],
-      [0,4,5,6],
-      [0,6,7],
-      [0,8,9],
-      [1,6,7],
-      [1,6,7],
-      [4,5,1,2,10],
-      [4,5,2,10],
-      [3,10],
-      [3,10],
-      [6,7,8,9]
-    ]
+    # Test k=3
     return TestData(graph=Graph(adjList=adjList, nodeValues=[1]*11, infSet=set()), s=0, t=2, k=3, expected=1)
 
 
