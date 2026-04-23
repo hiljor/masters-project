@@ -4,11 +4,42 @@ from copy import deepcopy
 class Graph:
     """Graph class with DSU and node-cut functionality"""
 
-    def __init__(self, adjMatrix: list[list[int]], nodeValues: list[int]):
-        self.adjMatrix = adjMatrix
-        self.adjList = self._adjMatrixToAdjList(adjMatrix)
+    def __init__(
+        self,
+        adjMatrix: list[list[int]] = None, # type: ignore
+        nodeValues: list[int] = None, # type: ignore
+        adjList: list[list[int]] = None, # type: ignore
+        infSet: set[int] = None, # type: ignore
+    ):
+        """Initializes the Graph class with either an adjacency matrix or an adjacency list.
+
+        Args:
+            adjMatrix: The adjacency matrix of the graph.
+            nodeValues: The values associated with each node.
+            adjList: The adjacency list of the graph.
+            infSet: The set of nodes that cannot be removed from the graph.
+
+        Raises:
+            ValueError: If nodeValues is not provided, or if neither adjMatrix nor adjList is provided.
+        """
+        if nodeValues is None:
+            raise ValueError("nodeValues must be provided.")
+
         self.nodeValues = nodeValues
-        n = len(adjMatrix)
+        self.infSet = infSet if infSet is not None else set()
+
+        if adjMatrix is not None:
+            self.adjMatrix = adjMatrix
+            self.adjList = (
+                adjList if adjList is not None else self._adjMatrixToAdjList(adjMatrix)
+            )
+        elif adjList is not None:
+            self.adjList = adjList
+            self.adjMatrix = self._adjListToAdjMatrix(adjList)
+        else:
+            raise ValueError("Either adjMatrix or adjList must be provided.")
+
+        n = len(self.nodeValues)
 
         # parent[i] = i means it's the root of its own set
         self.parent = list(range(n))
@@ -19,12 +50,36 @@ class Graph:
         self.history = []
 
     def _adjMatrixToAdjList(self, adjMatrix: list[list[int]]) -> list[list[int]]:
+        """Converts an adjacency matrix to an adjacency list.
+
+        Args:
+            adjMatrix: The adjacency matrix to convert.
+
+        Returns:
+            The corresponding adjacency list.
+        """
         adjList = [[] for _ in range(len(adjMatrix))]
         for i in range(len(adjMatrix)):
             for j in range(len(adjMatrix[i])):
                 if adjMatrix[i][j] == 1:
                     adjList[i].append(j)
         return adjList
+
+    def _adjListToAdjMatrix(self, adjList: list[list[int]]) -> list[list[int]]:
+        """Converts an adjacency list to an adjacency matrix.
+
+        Args:
+            adjList: The adjacency list to convert.
+
+        Returns:
+            The corresponding adjacency matrix.
+        """
+        n = len(adjList)
+        adjMatrix = [[0] * n for _ in range(n)]
+        for i in range(n):
+            for neighbor in adjList[i]:
+                adjMatrix[i][neighbor] = 1
+        return adjMatrix
 
     def value(self, vertex: int) -> int:
         """Returns the value of the given vertex."""
@@ -113,16 +168,43 @@ class Graph:
                 if m["rank_increased"]:
                     self.rank[m["u"]] -= 1
 
-    def generateFlowMatrix(self):
+    def generateFlowMatrix(self, s: int, t: int):
+        """Generates a flow matrix for the graph where each node has a capacity of 1,
+        unless it is in the same DSU component as s, t, or a node in infSet,
+        in which case it has infinite capacity.
+        Edges between nodes have infinite capacity.
+        DSU unions are respected by adding infinite capacity edges between united nodes.
+
+        Args:
+            s: The source node.
+            t: The sink node.
+
+        Returns:
+            A 2D list representing the flow matrix.
+        """
         n = len(self.adjMatrix)
         flowMatrix: list[list[int | float]] = [[0] * (2 * n) for _ in range(2 * n)]
         
+        root_s = self.find(s)
+        root_t = self.find(t)
+        inf_roots = {self.find(node) for node in self.infSet}
+        inf_roots.add(root_s)
+        inf_roots.add(root_t)
+
         for i in range(n):
             if not self.is_active[i]:
                 continue
             
-            flowMatrix[2 * i][2 * i + 1] = 1
+            # Nodes in components of s, t, or infSet have infinite capacity (cannot be cut)
+            flowMatrix[2 * i][2 * i + 1] = float("inf") if self.find(i) in inf_roots else 1
             
+            # Respect DSU unions by connecting nodes to their root with infinite capacity
+            root_i = self.find(i)
+            if root_i != i:
+                if self.is_active[root_i]:
+                    flowMatrix[2 * i + 1][2 * root_i] = float("inf")
+                    flowMatrix[2 * root_i + 1][2 * i] = float("inf")
+
             for j in range(n):
                 # Only add edges between active nodes
                 if self.adjMatrix[i][j] == 1 and self.is_active[j]:
@@ -163,7 +245,7 @@ def path(graph: Graph, a: int, b: int, cutset: set[int]) -> bool:
 
 def minSeparator(graph: Graph, s: int, t: int) -> set[int]:
     """Returns a minimum separator between s and t in the graph."""  
-    flowMatrix = graph.generateFlowMatrix()
+    flowMatrix = graph.generateFlowMatrix(s, t)
     num_nodes = len(flowMatrix)
 
     def bfs(source, sink, parent):
