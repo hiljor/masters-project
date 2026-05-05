@@ -1,2 +1,3 @@
+The project is about an algorithm problem. The problem involves taking in a graph input, s, t, values for nodes and a set of irremovable nodes. The goal is to find an s-t cut which maximises the total combined value of the s-component after the cut. The nodes removed from the graph to create the cut must not include any of the irremovable nodes. The output should be the maximum total combined value of the s-component after the cut.
 Always write docstrings on functions. Don't change the docstring to explain to me that you have implemented something new. The docstring should reflect the purpose and function of the function as a whole.
 If you are unsure, ask for instruction.
