@@ -75,12 +75,12 @@ def case_inf_set():
 
 @pytest.fixture
 def case_horse_cherry():
-    graph, s, t = load_graph_from_map("horse_126.txt")
+    graph, s, t = load_graph_from_map("horse_diamonds.txt")
     return TestData(graph=graph, s=s, t=t, k=2, expected=1)
 
 @pytest.fixture
 def case_horse_cherry2():
-    graph, s, t = load_graph_from_map("horse_126.txt")
+    graph, s, t = load_graph_from_map("horse_diamonds.txt")
     return TestData(graph=graph, s=s, t=t, k=8, expected=58)
 
 @pytest.fixture
