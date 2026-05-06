@@ -142,7 +142,11 @@ class Graph:
         stack = [s]
         while stack:
             vertex = stack.pop()
-            if vertex in visited or vertex in separator:
+            if (
+                vertex in visited
+                or vertex in separator
+                or not self.is_active[vertex]
+            ):
                 continue
             visited.add(vertex)
             self.unite(s, vertex)
@@ -276,11 +280,17 @@ def minSeparator(graph: Graph, s: int, t: int) -> set[int]:
             path_flow = min(path_flow, flowMatrix[parent[curr]][curr])
             curr = parent[curr]
 
+        if path_flow == float("inf"):
+            # If we found an infinite flow path, they can't be separated by any finite cut
+            break
+
         v = sink_node
         while v != source_node:
             u = parent[v]
-            flowMatrix[u][v] -= path_flow
-            flowMatrix[v][u] += path_flow
+            if flowMatrix[u][v] != float("inf"):
+                flowMatrix[u][v] -= path_flow
+            if flowMatrix[v][u] != float("inf"):
+                flowMatrix[v][u] += path_flow
             v = parent[v]
         parent = [-1] * num_nodes
 
