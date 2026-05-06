@@ -21,7 +21,9 @@ def naive(graph: Graph, s: int, t: int, k: int) -> int | float:
   optimal = float("-inf")
   
   # Only consider nodes that are NOT s, NOT t, and NOT in the graph's infSet
-  removable_nodes = [i for i in range(len(graph.adjList)) if i not in graph.infSet and i != s and i != t]
+  removable_nodes = [i for i in range(len(graph.adjList)) 
+                     if i not in graph.infSet 
+                     and i not in  [s,t]]
   
   for comb in allKCombinations(len(removable_nodes), k):
     # Map indices back to actual node indices

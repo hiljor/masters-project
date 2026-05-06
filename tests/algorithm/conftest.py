@@ -38,12 +38,12 @@ adjList = [
 @pytest.fixture
 def case_pal():
     # Test k=4
-    return TestData(graph=Graph(adjList=adjList, nodeValues=[1]*11, infSet=set()), s=0, t=2, k=4, expected=5)
+    return TestData(graph=Graph(adjList=adjList, nodeValues=[1]*11, infSet=set()), s=0, t=10, k=4, expected=5)
   
 @pytest.fixture
 def case_pal2():
     # Test k=3
-    return TestData(graph=Graph(adjList=adjList, nodeValues=[1]*11, infSet=set()), s=0, t=2, k=3, expected=1)
+    return TestData(graph=Graph(adjList=adjList, nodeValues=[1]*11, infSet=set()), s=0, t=10, k=3, expected=1)
 
 
 @pytest.fixture
