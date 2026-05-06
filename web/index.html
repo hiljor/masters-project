@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horse Algos Solver</title>
+    <title>Horse Algos Visualization</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .grid-container { display: inline-grid; gap: 1px; background-color: #e5e7eb; border: 1px solid #d1d5db; }
+        .grid-cell { width: 32px; height: 32px; display: flex; items-center; justify-center; font-size: 10px; position: relative; }
+        .cutset-mark::after { content: '×'; position: absolute; color: red; font-size: 24px; font-weight: bold; line-height: 1; }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
-    <div id="root" class="w-full max-w-lg"></div>
+<body class="bg-gray-100 h-screen overflow-hidden">
+    <div id="root" class="h-full"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState, useEffect, useMemo } = React;
+
+        const COLOR_MAP = {
+            '#': 'bg-slate-800 text-white', // Wall
+            'H': 'bg-white shadow-inner',    // Horse
+            'c': 'bg-purple-500 text-white', // Inf node
+            ' ': 'bg-emerald-600',          // Grass
+        };
+
+        function getCellColor(char) {
+            if (char >= '0' && char <= '9') return 'bg-teal-500 text-white'; // Portal
+            return COLOR_MAP[char] || 'bg-gray-200';
+        }
 
         function App() {
             const [config, setConfig] = useState({ algorithms: [], maps: [] });
             const [selectedAlgo, setSelectedAlgo] = useState("");
             const [selectedMap, setSelectedMap] = useState("");
             const [k, setK] = useState(1);
+            const [mapLines, setMapLines] = useState([]);
             const [loading, setLoading] = useState(false);
-            const [result, setResult] = useState(null);
+            const [solveResult, setSolveResult] = useState(null);
             const [error, setError] = useState(null);
 
             useEffect(() => {
@@ -39,9 +55,19 @@
                     .catch(err => setError("Failed to load configuration"));
             }, []);
 
+            useEffect(() => {
+                if (selectedMap) {
+                    setSolveResult(null);
+                    fetch(`/api/map/${selectedMap}`)
+                        .then(res => res.json())
+                        .then(data => setMapLines(data.lines))
+                        .catch(err => setError("Failed to load map data"));
+                }
+            }, [selectedMap]);
+
             const handleSolve = async () => {
                 setLoading(true);
-                setResult(null);
+                setSolveResult(null);
                 setError(null);
                 try {
                     const res = await fetch('/api/solve', {
@@ -51,92 +77,135 @@
                     });
                     const data = await res.json();
                     if (res.ok) {
-                        setResult(data.result);
+                        setSolveResult(data);
                     } else {
                         setError(data.detail || "An error occurred");
                     }
                 } catch (err) {
-                    setError("Failed to communicate with server");
+                    setError("Communication error");
                 } finally {
                     setLoading(false);
                 }
             };
 
+            const isCutset = (x, y) => {
+                if (!solveResult || !solveResult.cutset) return false;
+                return solveResult.cutset.some(c => c[0] === x && c[1] === y);
+            };
+
+            const gridWidth = useMemo(() => mapLines.length > 0 ? Math.max(...mapLines.map(l => l.length)) : 0, [mapLines]);
+
             return (
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-                    <div class="bg-indigo-600 p-6">
-                        <h1 class="text-2xl font-bold text-white">Horse Algos Solver</h1>
-                        <p class="text-indigo-100 mt-1">Select parameters to solve the graph problem</p>
-                    </div>
-                    
-                    <div class="p-8 space-y-6">
-                        <div class="space-y-4">
+                <div class="flex h-full">
+                    {/* Sidebar */}
+                    <div class="w-80 bg-white border-r border-gray-200 p-6 flex flex-col space-y-8 shadow-sm z-10">
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900 flex items-center">
+                                <span class="text-indigo-600 mr-2">🐎</span>
+                                Horse Solver
+                            </h1>
+                        </div>
+
+                        <div class="space-y-6">
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Algorithm</label>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Algorithm</label>
                                 <select 
                                     value={selectedAlgo}
                                     onChange={(e) => setSelectedAlgo(e.target.value)}
-                                    class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                                    class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none appearance-none"
                                 >
                                     {config.algorithms.map(a => <option key={a} value={a}>{a}</option>)}
                                 </select>
                             </div>
 
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Map File</label>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Map File</label>
                                 <select 
                                     value={selectedMap}
                                     onChange={(e) => setSelectedMap(e.target.value)}
-                                    class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                                    class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none appearance-none"
                                 >
                                     {config.maps.map(m => <option key={m} value={m}>{m}</option>)}
                                 </select>
                             </div>
 
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">K Value (Max Cut Size)</label>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Cut Size (K)</label>
                                 <input 
                                     type="number"
                                     min="0"
                                     value={k}
                                     onChange={(e) => setK(e.target.value)}
-                                    class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                                    class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
                                 />
                             </div>
                         </div>
 
-                        <button 
-                            onClick={handleSolve}
-                            disabled={loading}
-                            class={`w-full py-4 rounded-xl font-bold text-white transition-all transform active:scale-95 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg'}`}
-                        >
-                            {loading ? (
-                                <span class="flex items-center justify-center">
-                                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                    Processing...
-                                </span>
-                            ) : "Run Algorithm"}
-                        </button>
-
-                        {result !== null && (
-                            <div class="mt-6 p-4 bg-green-50 border border-green-100 rounded-xl text-center">
-                                <p class="text-green-800 font-semibold">Solution Result</p>
-                                <p class="text-3xl font-bold text-green-600 mt-2">{result}</p>
-                            </div>
-                        )}
-
                         {error && (
-                            <div class="mt-6 p-4 bg-red-50 border border-red-100 rounded-xl text-center">
-                                <p class="text-red-800 font-semibold italic">{error}</p>
+                            <div class="p-4 bg-red-50 text-red-600 text-sm rounded-xl border border-red-100 italic">
+                                {error}
                             </div>
                         )}
+
+                        <div class="mt-auto pt-6 border-t border-gray-100">
+                            <p class="text-[10px] text-gray-400 font-mono text-center uppercase tracking-tighter">Algorithm Engine v2.0-Alpha</p>
+                        </div>
                     </div>
-                    
-                    <div class="bg-gray-50 p-4 border-t border-gray-100 text-center">
-                        <p class="text-xs text-gray-400 font-medium tracking-wider uppercase">Algorithm Visualizer Engine v1.0</p>
+
+                    {/* Content Area */}
+                    <div class="flex-1 flex flex-col overflow-hidden bg-gray-50 relative">
+                        {/* Header Area */}
+                        <div class="p-6 flex justify-between items-center bg-white border-b border-gray-200">
+                            <div>
+                                <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Visualization View</h2>
+                                <p class="text-lg font-bold text-gray-900">{selectedMap || "No map selected"}</p>
+                            </div>
+                            <div class="flex items-center space-x-6 text-right">
+                                {solveResult && (
+                                    <div class="animate-in fade-in duration-500 flex items-center space-x-6 mr-6">
+                                        <div class="text-right">
+                                            <p class="text-[10px] font-bold text-gray-400 uppercase">Time</p>
+                                            <p class="text-indigo-600 font-mono font-bold text-lg">{solveResult.time_ms}ms</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] font-bold text-gray-400 uppercase">Result</p>
+                                            <p class="text-emerald-600 font-bold text-lg">{solveResult.result}</p>
+                                        </div>
+                                    </div>
+                                )}
+                                <button 
+                                    onClick={handleSolve}
+                                    disabled={loading || !selectedMap}
+                                    class={`px-8 py-3 rounded-xl font-bold text-white transition-all transform active:scale-95 flex items-center ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-indigo-200'}`}
+                                >
+                                    {loading && <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>}
+                                    {loading ? "Running..." : "Solve Graph"}
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Map Grid Area */}
+                        <div class="flex-1 overflow-auto p-12 flex items-center justify-center">
+                            <div 
+                                class="grid-container" 
+                                style={{ gridTemplateColumns: `repeat(${gridWidth}, 32px)` }}
+                            >
+                                {mapLines.map((line, y) => (
+                                    Array.from({ length: gridWidth }).map((_, x) => {
+                                        const char = line[x] || ' ';
+                                        return (
+                                            <div 
+                                                key={`${x}-${y}`} 
+                                                class={`grid-cell ${getCellColor(char)} ${isCutset(x, y) ? 'cutset-mark' : ''}`}
+                                                title={`(${x}, ${y}): ${char}`}
+                                            >
+                                                {char !== ' ' ? char : ''}
+                                            </div>
+                                        );
+                                    })
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             );

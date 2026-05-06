@@ -9,8 +9,9 @@ class Algorithm:
     pass
   
   @abstractmethod
-  def run(self, graph: Graph, s: int, t: int, k: int) -> int:
-    """ Runs the algorithm on the given graph with the given parameters. Returns the included value of the component of s after removing the cutset of size k that disconnects s and t, or 0 if no such cutset exists.
+  def run(self, graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
+    """ Runs the algorithm on the given graph with the given parameters. 
+    Returns a tuple of (max_value, cutset).
 
     Args:
         graph: The graph to run the algorithm on (should have infSet configured).

@@ -10,12 +10,12 @@ LARGE_CASES = ["case_horse_cherry2", "case_horse_dots"]
 @pytest.mark.parametrize("case_name", SMALL_CASES)
 def test_small_matrix(request, algorithm, case_name):
     data = request.getfixturevalue(case_name)
-    result = algorithm.run(deepcopy(data.graph), data.s, data.t, data.k)
-    assert result == data.expected, f"{algorithm.name} failed on {case_name}, returned"
+    result_val, _ = algorithm.run(deepcopy(data.graph), data.s, data.t, data.k)
+    assert result_val == data.expected, f"{algorithm.name} failed on {case_name}, returned {result_val}"
 
 @pytest.mark.parametrize("algorithm", [ImportantSeparators()])
 @pytest.mark.parametrize("case_name", LARGE_CASES)
 def test_large_matrix(request, algorithm, case_name):
     data = request.getfixturevalue(case_name)
-    result = algorithm.run(deepcopy(data.graph), data.s, data.t, data.k)
-    assert result == data.expected, f"{algorithm.name} failed on {case_name}, returned"
+    result_val, _ = algorithm.run(deepcopy(data.graph), data.s, data.t, data.k)
+    assert result_val == data.expected, f"{algorithm.name} failed on {case_name}, returned {result_val}"

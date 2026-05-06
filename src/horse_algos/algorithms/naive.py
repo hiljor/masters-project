@@ -11,14 +11,15 @@ class Naive(Algorithm):
   def name(self):
     return "Brute Force"
   
-  def run(self, graph: Graph, s: int, t: int, k: int) -> int | float:
+  def run(self, graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
     return naive(graph, s, t, k)
 
-def naive(graph: Graph, s: int, t: int, k: int) -> int | float:
+def naive(graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
   """ Naive brute force approach that respects the graph's infSet.
   """
   
   optimal = float("-inf")
+  best_cut = set()
   
   # Only consider nodes that are NOT s, NOT t, and NOT in the graph's infSet
   removable_nodes = [i for i in range(len(graph.adjList)) 
@@ -33,7 +34,9 @@ def naive(graph: Graph, s: int, t: int, k: int) -> int | float:
       continue
     else:
       value = graph.includedValue(s, t, comb_set)
-      optimal = max(optimal, value)
+      if value > optimal:
+        optimal = value
+        best_cut = comb_set
          
-  return optimal
+  return optimal, best_cut
       

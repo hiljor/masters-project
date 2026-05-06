@@ -7,13 +7,13 @@ class ImportantSeparators:
     def name(self):
         return "Important Separators"
 
-    def run(self, graph: Graph, s: int, t: int, k: int) -> int | float:
+    def run(self, graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
         return important_separators(graph, s, t, k)
 
 
-def important_separators(graph: Graph, s: int, t: int, k: int) -> int | float:
+def important_separators(graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
     """Approach using important separators that respects the graph's infSet."""
-    best_separator = None
+    best_separator = set()
     max_source_size = float("-inf")
 
     def branch(current_k, Z):
@@ -21,7 +21,6 @@ def important_separators(graph: Graph, s: int, t: int, k: int) -> int | float:
         nonlocal best_separator, max_source_size
         
         X = minSeparator(graph, s, t)
-        print(f"Current separator: {X}, size: {len(X)}, k left: {current_k}")
         
         # Base case evaluation
         if len(X) > current_k or len(X) == 0:
@@ -57,4 +56,4 @@ def important_separators(graph: Graph, s: int, t: int, k: int) -> int | float:
         graph.undo(marker)
 
     branch(k, set())
-    return max_source_size
+    return max_source_size, best_separator
