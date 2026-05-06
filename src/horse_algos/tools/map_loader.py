@@ -12,6 +12,18 @@ def load_graph_from_map(filename: str) -> tuple[Graph, int, int]:
     Returns:
         A tuple of (graph, start_node, t_node).
     """
+    graph, start_node, t_node, _ = load_map_with_metadata(filename)
+    return graph, start_node, t_node
+
+
+def load_map_with_metadata(
+    filename: str,
+) -> tuple[Graph, int, int, dict[tuple[int, int], int]]:
+    """Load a map and return the graph, special nodes, and coordinate-to-ID mapping.
+
+    Returns:
+        A tuple of (graph, start_node, t_node, coords_to_id).
+    """
     repo_root = Path(__file__).resolve().parents[3]
     data_dir = repo_root / "data"
     if not data_dir.is_dir():
@@ -36,14 +48,14 @@ def load_graph_from_map(filename: str) -> tuple[Graph, int, int]:
     )
 
 
-def _load_graph_from_file(path: Path) -> tuple[Graph, int, int]:
+def _load_graph_from_file(path: Path) -> tuple[Graph, int, int, dict[tuple[int, int], int]]:
     lines = path.read_text(encoding="utf-8").splitlines()
     if not lines:
         raise ValueError(f"Map file '{path}' is empty.")
     return _build_graph_from_lines(lines)
 
 
-def _build_graph_from_lines(lines: list[str]) -> tuple[Graph, int, int]:
+def _build_graph_from_lines(lines: list[str]) -> tuple[Graph, int, int, dict[tuple[int, int], int]]:
     height = len(lines)
     width = max(len(line) for line in lines)
 
@@ -108,4 +120,4 @@ def _build_graph_from_lines(lines: list[str]) -> tuple[Graph, int, int]:
     adjacency_list[t_node].extend(border_blank_nodes)
     node_values.append(0)
 
-    return Graph(adjList=adjacency_list, nodeValues=node_values, infSet=inf_set), start_node, t_node
+    return Graph(adjList=adjacency_list, nodeValues=node_values, infSet=inf_set), start_node, t_node, coords_to_id
