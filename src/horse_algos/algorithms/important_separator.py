@@ -1,7 +1,8 @@
 from horse_algos.graph import Graph, minSeparator, path
+from horse_algos.algorithms.algorithm import Algorithm
 
 
-class ImportantSeparators:
+class ImportantSeparators(Algorithm):
 
     @property
     def name(self):
