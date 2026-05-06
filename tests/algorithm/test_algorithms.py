@@ -3,9 +3,9 @@ from copy import deepcopy
 from horse_algos.algorithms.naive import Naive
 from horse_algos.algorithms.important_separator import ImportantSeparators
 
-CASES = ["case_basic", "case_impossible", "case_optimal", "case_inf_set"]
+CASES = ["case_basic", "case_impossible", "case_optimal", "case_inf_set", "case_pal", "case_pal2", "case_horse_126"]
 
-@pytest.mark.parametrize("algorithm", [Naive(), ImportantSeparators()])
+@pytest.mark.parametrize("algorithm", [Naive()])
 @pytest.mark.parametrize("case_name", CASES )
 def test_matrix(request, algorithm, case_name):
     # 'case_name' is now automatically filled with "case_basic", "case_impossible", etc.

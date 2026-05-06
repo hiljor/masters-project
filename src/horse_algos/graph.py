@@ -232,10 +232,10 @@ def path(graph: Graph, a: int, b: int, cutset: set[int]) -> bool:
 
     while stack:
         vertex = stack.pop()
-        if vertex == b:
-            return True
         if vertex in visited or vertex in cutset or not isActive[vertex]:
             continue
+        if vertex == b:
+            return True
         visited.add(vertex)
         for neighbor in adjList[vertex]:
             stack.append(neighbor)

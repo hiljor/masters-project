@@ -20,14 +20,14 @@ def naive(graph: Graph, s: int, t: int, k: int) -> int | float:
   
   optimal = float("-inf")
   
-  # Only consider nodes that are NOT in the graph's infSet
-  removable_nodes = [i for i in range(len(graph.adjList)) if i not in graph.infSet]
+  # Only consider nodes that are NOT s, NOT t, and NOT in the graph's infSet
+  removable_nodes = [i for i in range(len(graph.adjList)) if i not in graph.infSet and i != s and i != t]
   
-  for comb in it.combinations(removable_nodes, k):
-    comb_set = set(comb)
-    if s in comb_set or t in comb_set:
-      continue
-    elif path(graph, s, t, comb_set):
+  for comb in allKCombinations(len(removable_nodes), k):
+    # Map indices back to actual node indices
+    comb_set = {removable_nodes[i] for i in comb}
+    
+    if path(graph, s, t, comb_set):
       continue
     else:
       value = graph.includedValue(s, t, comb_set)
