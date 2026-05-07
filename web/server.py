@@ -27,21 +27,34 @@ class SolveRequest(BaseModel):
     algorithm: str
     map_file: str
     k: int
+    language: str = "python"
 
-def discover_algorithms() -> Dict[str, Algorithm]:
-    algorithms = {}
+def discover_algorithms() -> Dict[str, Dict[str, Any]]:
+    algorithms = {"python": {}, "cpp": {}}
+    
+    # Discover Python algorithms
     algo_dir = repo_root / "src" / "horse_algos" / "algorithms"
     for file in os.listdir(algo_dir):
-        if file.endswith(".py") and file != "__init__.py" and file != "algorithm.py":
+        if file.endswith(".py") and file not in ["__init__.py", "algorithm.py", "cpp_algorithms.py"]:
             module_name = f"horse_algos.algorithms.{file[:-3]}"
             try:
                 module = importlib.import_module(module_name)
                 for name, obj in inspect.getmembers(module):
                     if inspect.isclass(obj) and issubclass(obj, Algorithm) and obj != Algorithm:
                         instance = obj()
-                        algorithms[instance.name] = instance
+                        algorithms["python"][instance.name] = instance
             except Exception:
                 continue
+    
+    # Discover C++ algorithms if available
+    try:
+        from horse_algos.algorithms.cpp_algorithms import CppNaive, CppImportantSeparators, CPP_AVAILABLE
+        if CPP_AVAILABLE:
+            algorithms["cpp"]["Brute Force"] = CppNaive()
+            algorithms["cpp"]["Important Separators"] = CppImportantSeparators()
+    except ImportError:
+        pass
+        
     return algorithms
 
 def discover_maps() -> List[str]:
@@ -52,8 +65,9 @@ async def get_config():
     algos = discover_algorithms()
     maps = discover_maps()
     return {
-        "algorithms": list(algos.keys()),
-        "maps": maps
+        "algorithms": list(algos["python"].keys()), # Names are the same for both
+        "maps": maps,
+        "languages": ["python", "cpp"] if algos["cpp"] else ["python"]
     }
 
 @app.get("/api/map/{filename}")
@@ -68,8 +82,15 @@ async def get_map(filename: str):
 @app.post("/api/solve")
 async def solve(request: SolveRequest):
     algos = discover_algorithms()
-    if request.algorithm not in algos:
-        raise HTTPException(status_code=400, detail="Algorithm not found")
+    lang = request.language.lower()
+    
+    if lang not in algos:
+        raise HTTPException(status_code=400, detail=f"Language '{lang}' not supported")
+    
+    if request.algorithm not in algos[lang]:
+        # Fallback to python if not in cpp, or vice versa? 
+        # Better to be explicit.
+        raise HTTPException(status_code=400, detail=f"Algorithm '{request.algorithm}' not found for {lang}")
     
     map_path = DATA_DIR / request.map_file
     if not map_path.exists():
@@ -80,7 +101,7 @@ async def solve(request: SolveRequest):
         graph, s, t, coords_to_id = load_map_with_metadata(str(map_path))
         id_to_coords = {v: k for k, v in coords_to_id.items()}
         
-        algo = algos[request.algorithm]
+        algo = algos[lang][request.algorithm]
         
         # Track time
         start_time = time.time()

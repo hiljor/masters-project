@@ -1,11 +1,12 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["scikit-build-core", "pybind11"]
+build-backend = "scikit_build_core.build"
 
 [project]
 name = "horse_algos"
 version = "0.1.0"
-dependencies = [] # Add your requirements here (e.g., "requests")
+dependencies = []
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.scikit-build]
+wheel.expand-macos-universal-tags = true
+cmake.version = ">=3.10"

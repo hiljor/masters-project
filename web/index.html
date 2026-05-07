@@ -35,9 +35,10 @@
         }
 
         function App() {
-            const [config, setConfig] = useState({ algorithms: [], maps: [] });
+            const [config, setConfig] = useState({ algorithms: [], maps: [], languages: [] });
             const [selectedAlgo, setSelectedAlgo] = useState("");
             const [selectedMap, setSelectedMap] = useState("");
+            const [selectedLang, setSelectedLang] = useState("python");
             const [k, setK] = useState(1);
             const [mapLines, setMapLines] = useState([]);
             const [loading, setLoading] = useState(false);
@@ -51,6 +52,7 @@
                         setConfig(data);
                         if (data.algorithms.length > 0) setSelectedAlgo(data.algorithms[0]);
                         if (data.maps.length > 0) setSelectedMap(data.maps[0]);
+                        if (data.languages && data.languages.length > 0) setSelectedLang(data.languages[0]);
                     })
                     .catch(err => setError("Failed to load configuration"));
             }, []);
@@ -73,7 +75,12 @@
                     const res = await fetch('/api/solve', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ algorithm: selectedAlgo, map_file: selectedMap, k: parseInt(k) })
+                        body: JSON.stringify({ 
+                            algorithm: selectedAlgo, 
+                            map_file: selectedMap, 
+                            k: parseInt(k),
+                            language: selectedLang 
+                        })
                     });
                     const data = await res.json();
                     if (res.ok) {
@@ -107,6 +114,17 @@
                         </div>
 
                         <div class="space-y-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Language Implementation</label>
+                                <select 
+                                    value={selectedLang}
+                                    onChange={(e) => setSelectedLang(e.target.value)}
+                                    class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none appearance-none font-semibold text-indigo-700"
+                                >
+                                    {config.languages.map(l => <option key={l} value={l}>{l.toUpperCase()}</option>)}
+                                </select>
+                            </div>
+
                             <div>
                                 <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Algorithm</label>
                                 <select 
