@@ -12,9 +12,10 @@ execute_process(
 )
 
 find_package(pybind11 REQUIRED)
+find_package(ortools CONFIG REQUIRED)
 
-pybind11_add_module(horse_algos_cpp cpp/bindings.cpp cpp/graph.cpp cpp/algorithms.cpp)
+pybind11_add_module(horse_algos_cpp cpp/bindings.cpp cpp/graph.cpp cpp/algorithms.cpp cpp/milp_solver.cpp)
 
 install(TARGETS horse_algos_cpp DESTINATION horse_algos)
 
-target_link_libraries(horse_algos_cpp PRIVATE pybind11::module)
+target_link_libraries(horse_algos_cpp PRIVATE pybind11::module ortools::ortools)
