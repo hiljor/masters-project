@@ -1,13 +1,25 @@
 from abc import ABC, abstractmethod
+import threading
 from horse_algos.graph import Graph
 
-class Algorithm:
+# Thread-local storage for cancellation state
+_local = threading.local()
+
+def set_cancelled(val: bool):
+    """ Sets the cancellation state for the current thread. """
+    _local.cancelled = val
+
+def is_cancelled() -> bool:
+    """ Returns True if the current thread's task has been cancelled. """
+    return getattr(_local, "cancelled", False)
+
+class Algorithm(ABC):
   @property
   @abstractmethod
   def name(self):
     """ The display name of the algorithm """
     pass
-  
+
   @abstractmethod
   def run(self, graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
     """ Runs the algorithm on the given graph with the given parameters. 

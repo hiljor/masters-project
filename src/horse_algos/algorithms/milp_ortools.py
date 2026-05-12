@@ -1,6 +1,6 @@
 from ortools.linear_solver import pywraplp
 from horse_algos.graph import Graph
-from horse_algos.algorithms.algorithm import Algorithm
+from horse_algos.algorithms.algorithm import Algorithm, is_cancelled
 
 class MILP_OR(Algorithm):
     """ MILP implementation using Google OR-Tools. """
@@ -16,6 +16,10 @@ class MILP_OR(Algorithm):
         solver = pywraplp.Solver.CreateSolver('SCIP')
         if not solver:
             raise RuntimeError("SCIP solver not available.")
+
+        # Check for cancellation before starting the solve.
+        if is_cancelled():
+            return float("-inf"), set()
 
         n = len(graph.adjList)
         inf = solver.infinity()

@@ -1,5 +1,5 @@
 from horse_algos.graph import Graph, minSeparator, path
-from horse_algos.algorithms.algorithm import Algorithm
+from horse_algos.algorithms.algorithm import Algorithm, is_cancelled
 
 
 class ImportantSeparators(Algorithm):
@@ -21,6 +21,9 @@ def important_separators(graph: Graph, s: int, t: int, k: int) -> tuple[int | fl
 
         nonlocal best_separator, max_source_size
         
+        if is_cancelled():
+            return
+
         X = minSeparator(graph, s, t)
         
         # Base case evaluation

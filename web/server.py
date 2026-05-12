@@ -14,7 +14,7 @@ from typing import List, Dict, Any
 repo_root = Path(__file__).resolve().parents[1]
 sys.path.append(str(repo_root / "src"))
 
-from horse_algos.algorithms.algorithm import Algorithm
+from horse_algos.algorithms.algorithm import Algorithm, set_cancelled
 from horse_algos.tools.map_loader import load_map_with_metadata
 
 app = FastAPI()
@@ -23,13 +23,19 @@ app = FastAPI()
 DATA_DIR = repo_root / "data"
 WEB_DIR = repo_root / "web"
 
+# Global state to track cancelled task IDs
+CANCELLED_TASKS = set()
+TASK_THREADS = {} # task_id -> thread_id mapping if needed, but set is enough for cooperative check
+
 class SolveRequest(BaseModel):
     algorithm: str
     map_file: str
     k: int
     language: str = "python"
+    task_id: str = None
 
 def discover_algorithms() -> Dict[str, Dict[str, Any]]:
+# ... (rest of discover_algorithms remains the same)
     algorithms = {"python": {}, "cpp": {}}
     
     # Discover Python algorithms
@@ -48,10 +54,16 @@ def discover_algorithms() -> Dict[str, Dict[str, Any]]:
     
     # Discover C++ algorithms if available
     try:
-        from horse_algos.algorithms.cpp_algorithms import CppNaive, CppImportantSeparators, CPP_AVAILABLE
+        from horse_algos.algorithms.cpp_algorithms import (
+            CppNaive, 
+            CppImportantSeparators, 
+            CppMILP, 
+            CPP_AVAILABLE
+        )
         if CPP_AVAILABLE:
             algorithms["cpp"]["Brute Force"] = CppNaive()
             algorithms["cpp"]["Important Separators"] = CppImportantSeparators()
+            algorithms["cpp"]["MILP (OR-Tools)"] = CppMILP()
     except ImportError:
         pass
         
@@ -79,22 +91,29 @@ async def get_map(filename: str):
     lines = map_path.read_text(encoding="utf-8").splitlines()
     return {"lines": lines}
 
+@app.post("/api/cancel/{task_id}")
+async def cancel_task(task_id: str):
+    CANCELLED_TASKS.add(task_id)
+    return {"status": "cancelled"}
+
 @app.post("/api/solve")
 async def solve(request: SolveRequest):
     algos = discover_algorithms()
     lang = request.language.lower()
+    task_id = request.task_id
     
     if lang not in algos:
         raise HTTPException(status_code=400, detail=f"Language '{lang}' not supported")
     
     if request.algorithm not in algos[lang]:
-        # Fallback to python if not in cpp, or vice versa? 
-        # Better to be explicit.
         raise HTTPException(status_code=400, detail=f"Algorithm '{request.algorithm}' not found for {lang}")
     
     map_path = DATA_DIR / request.map_file
     if not map_path.exists():
         raise HTTPException(status_code=400, detail="Map file not found")
+    
+    # Initialize cancellation state for this thread
+    set_cancelled(False)
     
     try:
         # We need the graph and the ID-to-coords mapping
@@ -105,7 +124,32 @@ async def solve(request: SolveRequest):
         
         # Track time
         start_time = time.time()
-        result_value, cutset_ids = algo.run(graph, s, t, request.k)
+        
+        # We need to periodically check if this task_id is in CANCELLED_TASKS
+        # Since the algorithms are CPU bound, we'll use a wrapper that checks CANCELLED_TASKS
+        def check_cancel():
+            if task_id and task_id in CANCELLED_TASKS:
+                return True
+            return False
+
+        # Set the cancellation check for the current thread
+        import threading
+        from horse_algos.algorithms.algorithm import _local
+        _local.cancelled_func = check_cancel
+        
+        # Override is_cancelled for this request
+        import horse_algos.algorithms.algorithm as algo_mod
+        original_is_cancelled = algo_mod.is_cancelled
+        algo_mod.is_cancelled = lambda: (getattr(_local, "cancelled_func", lambda: False)())
+        
+        try:
+            result_value, cutset_ids = algo.run(graph, s, t, request.k)
+        finally:
+            # Restore original is_cancelled
+            algo_mod.is_cancelled = original_is_cancelled
+            if task_id and task_id in CANCELLED_TASKS:
+                CANCELLED_TASKS.remove(task_id)
+
         elapsed = time.time() - start_time
         
         # Map cutset node IDs back to coordinates

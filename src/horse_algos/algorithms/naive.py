@@ -3,7 +3,7 @@ import itertools as it
 
 from horse_algos.graph import Graph, path
 from horse_algos.tools.helper import allKCombinations
-from horse_algos.algorithms.algorithm import Algorithm
+from horse_algos.algorithms.algorithm import Algorithm, is_cancelled
 
 class Naive(Algorithm):
   
@@ -27,6 +27,9 @@ def naive(graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
                      and i not in  [s,t]]
   
   for comb in allKCombinations(len(removable_nodes), k):
+    if is_cancelled():
+      return float("-inf"), set()
+
     # Map indices back to actual node indices
     comb_set = {removable_nodes[i] for i in comb}
     

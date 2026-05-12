@@ -1,10 +1,16 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include "algorithms.hpp"
+
+#ifdef HAVE_ORTOOLS
 #include "milp_solver.hpp"
+#endif
 
 namespace py = pybind11;
+
+#ifdef HAVE_ORTOOLS
 using namespace horse_algos;
+#endif
 
 PYBIND11_MODULE(horse_algos_cpp, m) {
     m.doc() = "C++ extension for horse algorithm project";
@@ -15,6 +21,7 @@ PYBIND11_MODULE(horse_algos_cpp, m) {
     m.def("solve_important_separators", &solve_important_separators, "Important separators solver",
           py::arg("adj_list"), py::arg("node_values"), py::arg("inf_set"), py::arg("s"), py::arg("t"), py::arg("k"));
 
+#ifdef HAVE_ORTOOLS
     py::class_<MILPResult>(m, "MILPResult")
         .def_readonly("max_value", &MILPResult::max_value)
         .def_readonly("cutset", &MILPResult::cutset);
@@ -23,4 +30,5 @@ PYBIND11_MODULE(horse_algos_cpp, m) {
         .def(py::init<>())
         .def("solve", &MILPSolver::solve, "Solves the maximum weight s-component s-t cut problem using MILP",
              py::arg("adj_list"), py::arg("node_values"), py::arg("inf_set"), py::arg("is_active"), py::arg("s"), py::arg("t"), py::arg("k"));
+#endif
 }

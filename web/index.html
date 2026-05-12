@@ -44,6 +44,8 @@
             const [loading, setLoading] = useState(false);
             const [solveResult, setSolveResult] = useState(null);
             const [error, setError] = useState(null);
+            const [currentTaskId, setCurrentTaskId] = useState(null);
+            const [abortController, setAbortController] = useState(null);
 
             useEffect(() => {
                 fetch('/api/config')
@@ -71,6 +73,11 @@
                 setLoading(true);
                 setSolveResult(null);
                 setError(null);
+                const taskId = Math.random().toString(36).substring(7);
+                setCurrentTaskId(taskId);
+                const controller = new AbortController();
+                setAbortController(controller);
+
                 try {
                     const res = await fetch('/api/solve', {
                         method: 'POST',
@@ -79,19 +86,38 @@
                             algorithm: selectedAlgo, 
                             map_file: selectedMap, 
                             k: parseInt(k),
-                            language: selectedLang 
-                        })
+                            language: selectedLang,
+                            task_id: taskId
+                        }),
+                        signal: controller.signal
                     });
                     const data = await res.json();
                     if (res.ok) {
                         setSolveResult(data);
-                    } else {
-                        setError(data.detail || "An error occurred");
+                    } else if (res.status !== 499) { // 499 is often used for client closed request
+                         setError(data.detail || "An error occurred");
                     }
                 } catch (err) {
-                    setError("Communication error");
+                    if (err.name === 'AbortError') {
+                        console.log('Fetch aborted');
+                    } else {
+                        setError("Communication error");
+                    }
                 } finally {
                     setLoading(false);
+                    setCurrentTaskId(null);
+                    setAbortController(null);
+                }
+            };
+
+            const handleCancel = async () => {
+                if (currentTaskId) {
+                    fetch(`/api/cancel/${currentTaskId}`, { method: 'POST' });
+                    if (abortController) abortController.abort();
+                    setLoading(false);
+                    setCurrentTaskId(null);
+                    setAbortController(null);
+                    setError("Operation cancelled by user");
                 }
             };
 
@@ -199,6 +225,14 @@
                                     {loading && <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>}
                                     {loading ? "Running..." : "Solve Graph"}
                                 </button>
+                                {loading && (
+                                    <button 
+                                        onClick={handleCancel}
+                                        class="px-6 py-3 rounded-xl font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 transition-all transform active:scale-95 shadow-sm"
+                                    >
+                                        Cancel
+                                    </button>
+                                )}
                             </div>
                         </div>
 
