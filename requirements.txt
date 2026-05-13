@@ -6,4 +6,4 @@ pluggy==1.6.0
 Pygments==2.19.2
 pytest==9.0.2
 tqdm==4.67.3
-ortools==9.8.3296
+ortools==9.15.6755
