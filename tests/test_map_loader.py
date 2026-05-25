@@ -6,7 +6,7 @@ from horse_algos.tools.map_loader import load_graph_from_map
 
 
 def test_load_graph_from_map_returns_graph_and_special_nodes():
-    graph, start_node, t_node = load_graph_from_map("horse_126.txt")
+    graph, start_node, t_node = load_graph_from_map("horse_diamonds.txt")
 
     assert isinstance(graph, Graph)
     assert isinstance(start_node, int)
