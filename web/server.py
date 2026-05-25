@@ -53,13 +53,11 @@ def discover_algorithms() -> Dict[str, Dict[str, Any]]:
         from horse_algos.algorithms.cpp_algorithms import (
             CppNaive, 
             CppImportantSeparators, 
-            CppMILP, 
             CPP_AVAILABLE
         )
         if CPP_AVAILABLE:
             algorithms["cpp"]["Brute Force"] = CppNaive()
             algorithms["cpp"]["Important Separators"] = CppImportantSeparators()
-            algorithms["cpp"]["MILP (OR-Tools)"] = CppMILP()
     except ImportError:
         pass
         

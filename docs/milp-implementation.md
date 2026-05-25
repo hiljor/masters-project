@@ -1,5 +1,7 @@
 # MILP Implementation Plan (Google OR-Tools)
 
+> **Note:** The C++ implementation of the MILP solver has been removed. Only the Python implementation remains available.
+
 This document outlines the plan for implementing a Mixed Integer Linear Program (MILP) to solve the maximum weight $s$-component $s-t$ cut problem with a budget $k$ using Google OR-Tools.
 
 ## 1. Mathematical Model

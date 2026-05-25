@@ -58,25 +58,3 @@ class CppImportantSeparators(Algorithm):
             result_val = float("-inf")
         return result_val, set(cutset)
 
-class CppMILP(Algorithm):
-    """C++ implementation of the MILP algorithm (OR-Tools)."""
-    @property
-    def name(self):
-        return "MILP (C++)"
-
-    def run(self, graph, s: int, t: int, k: int):
-        """Runs the C++ MILP solver on the given graph."""
-        if not CPP_AVAILABLE:
-            raise ImportError("C++ extension not available")
-        
-        adj_list = graph.adjList
-        node_values = graph.nodeValues
-        inf_set = graph.infSet
-        is_active = graph.is_active
-        
-        solver = horse_algos_cpp.MILPSolver()
-        result = solver.solve(adj_list, node_values, inf_set, is_active, s, t, k)
-        
-        if result.max_value < 0:
-            return float("-inf"), set()
-        return result.max_value, set(result.cutset)
