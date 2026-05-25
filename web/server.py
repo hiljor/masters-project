@@ -14,7 +14,7 @@ from typing import List, Dict, Any
 repo_root = Path(__file__).resolve().parents[1]
 sys.path.append(str(repo_root / "src"))
 
-from horse_algos.algorithms.algorithm import Algorithm, set_cancelled
+from horse_algos.algorithms.algorithm import Algorithm
 from horse_algos.tools.map_loader import load_map_with_metadata
 
 app = FastAPI()
@@ -22,10 +22,6 @@ app = FastAPI()
 # Data and Web paths
 DATA_DIR = repo_root / "data"
 WEB_DIR = repo_root / "web"
-
-# Global state to track cancelled task IDs
-CANCELLED_TASKS = set()
-TASK_THREADS = {} # task_id -> thread_id mapping if needed, but set is enough for cooperative check
 
 class SolveRequest(BaseModel):
     algorithm: str
@@ -91,11 +87,6 @@ async def get_map(filename: str):
     lines = map_path.read_text(encoding="utf-8").splitlines()
     return {"lines": lines}
 
-@app.post("/api/cancel/{task_id}")
-async def cancel_task(task_id: str):
-    CANCELLED_TASKS.add(task_id)
-    return {"status": "cancelled"}
-
 @app.post("/api/solve")
 async def solve(request: SolveRequest):
     algos = discover_algorithms()
@@ -112,9 +103,6 @@ async def solve(request: SolveRequest):
     if not map_path.exists():
         raise HTTPException(status_code=400, detail="Map file not found")
     
-    # Initialize cancellation state for this thread
-    set_cancelled(False)
-    
     try:
         # We need the graph and the ID-to-coords mapping
         graph, s, t, coords_to_id = load_map_with_metadata(str(map_path))
@@ -124,32 +112,7 @@ async def solve(request: SolveRequest):
         
         # Track time
         start_time = time.time()
-        
-        # We need to periodically check if this task_id is in CANCELLED_TASKS
-        # Since the algorithms are CPU bound, we'll use a wrapper that checks CANCELLED_TASKS
-        def check_cancel():
-            if task_id and task_id in CANCELLED_TASKS:
-                return True
-            return False
-
-        # Set the cancellation check for the current thread
-        import threading
-        from horse_algos.algorithms.algorithm import _local
-        _local.cancelled_func = check_cancel
-        
-        # Override is_cancelled for this request
-        import horse_algos.algorithms.algorithm as algo_mod
-        original_is_cancelled = algo_mod.is_cancelled
-        algo_mod.is_cancelled = lambda: (getattr(_local, "cancelled_func", lambda: False)())
-        
-        try:
-            result_value, cutset_ids = algo.run(graph, s, t, request.k)
-        finally:
-            # Restore original is_cancelled
-            algo_mod.is_cancelled = original_is_cancelled
-            if task_id and task_id in CANCELLED_TASKS:
-                CANCELLED_TASKS.remove(task_id)
-
+        result_value, cutset_ids = algo.run(graph, s, t, request.k)
         elapsed = time.time() - start_time
         
         # Map cutset node IDs back to coordinates
