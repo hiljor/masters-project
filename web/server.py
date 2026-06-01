@@ -10,9 +10,9 @@ import importlib
 import inspect
 from typing import List, Dict, Any
 
-# Add src to path so we can import horse_algos
+# Add src to path so we can import horse_algos from the workspace first
 repo_root = Path(__file__).resolve().parents[1]
-sys.path.append(str(repo_root / "src"))
+sys.path.insert(0, str(repo_root / "src"))
 
 from horse_algos.algorithms.algorithm import Algorithm
 from horse_algos.tools.map_loader import load_map_with_metadata
@@ -31,24 +31,19 @@ class SolveRequest(BaseModel):
     task_id: str = None
 
 def discover_algorithms() -> Dict[str, Dict[str, Any]]:
-# ... (rest of discover_algorithms remains the same)
+    """Discover available algorithms for both Python and C++."""
     algorithms = {"python": {}, "cpp": {}}
     
-    # Discover Python algorithms
-    algo_dir = repo_root / "src" / "horse_algos" / "algorithms"
-    for file in os.listdir(algo_dir):
-        if file.endswith(".py") and file not in ["__init__.py", "algorithm.py", "cpp_algorithms.py"]:
-            module_name = f"horse_algos.algorithms.{file[:-3]}"
-            try:
-                module = importlib.import_module(module_name)
-                for name, obj in inspect.getmembers(module):
-                    if inspect.isclass(obj) and issubclass(obj, Algorithm) and obj != Algorithm:
-                        instance = obj()
-                        algorithms["python"][instance.name] = instance
-            except Exception:
-                continue
+    # 1. Manually add Python algorithms to ensure they are always present
+    from horse_algos.algorithms.naive import Naive
+    from horse_algos.algorithms.important_separator import ImportantSeparators
+    from horse_algos.algorithms.milp_ortools import MILP_OR
     
-    # Discover C++ algorithms if available
+    py_algos = [Naive(), ImportantSeparators(), MILP_OR()]
+    for algo in py_algos:
+        algorithms["python"][algo.name] = algo
+    
+    # 2. Discover C++ algorithms if the extension is built
     try:
         from horse_algos.algorithms.cpp_algorithms import (
             CppNaive, 
@@ -56,10 +51,10 @@ def discover_algorithms() -> Dict[str, Dict[str, Any]]:
             CPP_AVAILABLE
         )
         if CPP_AVAILABLE:
-            algorithms["cpp"]["Brute Force"] = CppNaive()
-            algorithms["cpp"]["Important Separators"] = CppImportantSeparators()
-    except ImportError:
-        pass
+            algorithms["cpp"]["Brute Force (C++)"] = CppNaive()
+            algorithms["cpp"]["Important Separators (C++)"] = CppImportantSeparators()
+    except ImportError as e:
+        print(f"C++ algorithms not available: {e}")
         
     return algorithms
 
@@ -70,10 +65,12 @@ def discover_maps() -> List[str]:
 async def get_config():
     algos = discover_algorithms()
     maps = discover_maps()
+    # Return available algorithms for each language
+    available_algos = {lang: list(instances.keys()) for lang, instances in algos.items()}
     return {
-        "algorithms": list(algos["python"].keys()), # Names are the same for both
+        "algorithms": available_algos,
         "maps": maps,
-        "languages": ["python", "cpp"] if algos["cpp"] else ["python"]
+        "languages": list(available_algos.keys())
     }
 
 @app.get("/api/map/{filename}")
