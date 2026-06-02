@@ -10,11 +10,11 @@ import importlib
 import inspect
 from typing import List, Dict, Any
 
-# Add src to path so we can import horse_algos
+# Add src to path so we can import horse_algos from the workspace first
 repo_root = Path(__file__).resolve().parents[1]
-sys.path.append(str(repo_root / "src"))
+sys.path.insert(0, str(repo_root / "src"))
 
-from horse_algos.algorithms.algorithm import Algorithm, set_cancelled
+from horse_algos.algorithms.algorithm import Algorithm
 from horse_algos.tools.map_loader import load_map_with_metadata
 
 app = FastAPI()
@@ -22,10 +22,6 @@ app = FastAPI()
 # Data and Web paths
 DATA_DIR = repo_root / "data"
 WEB_DIR = repo_root / "web"
-
-# Global state to track cancelled task IDs
-CANCELLED_TASKS = set()
-TASK_THREADS = {} # task_id -> thread_id mapping if needed, but set is enough for cooperative check
 
 class SolveRequest(BaseModel):
     algorithm: str
@@ -35,37 +31,30 @@ class SolveRequest(BaseModel):
     task_id: str = None
 
 def discover_algorithms() -> Dict[str, Dict[str, Any]]:
-# ... (rest of discover_algorithms remains the same)
+    """Discover available algorithms for both Python and C++."""
     algorithms = {"python": {}, "cpp": {}}
     
-    # Discover Python algorithms
-    algo_dir = repo_root / "src" / "horse_algos" / "algorithms"
-    for file in os.listdir(algo_dir):
-        if file.endswith(".py") and file not in ["__init__.py", "algorithm.py", "cpp_algorithms.py"]:
-            module_name = f"horse_algos.algorithms.{file[:-3]}"
-            try:
-                module = importlib.import_module(module_name)
-                for name, obj in inspect.getmembers(module):
-                    if inspect.isclass(obj) and issubclass(obj, Algorithm) and obj != Algorithm:
-                        instance = obj()
-                        algorithms["python"][instance.name] = instance
-            except Exception:
-                continue
+    # 1. Manually add Python algorithms to ensure they are always present
+    from horse_algos.algorithms.naive import Naive
+    from horse_algos.algorithms.important_separator import ImportantSeparators
+    from horse_algos.algorithms.milp_ortools import MILP_OR
     
-    # Discover C++ algorithms if available
+    py_algos = [Naive(), ImportantSeparators(), MILP_OR()]
+    for algo in py_algos:
+        algorithms["python"][algo.name] = algo
+    
+    # 2. Discover C++ algorithms if the extension is built
     try:
         from horse_algos.algorithms.cpp_algorithms import (
             CppNaive, 
             CppImportantSeparators, 
-            CppMILP, 
             CPP_AVAILABLE
         )
         if CPP_AVAILABLE:
-            algorithms["cpp"]["Brute Force"] = CppNaive()
-            algorithms["cpp"]["Important Separators"] = CppImportantSeparators()
-            algorithms["cpp"]["MILP (OR-Tools)"] = CppMILP()
-    except ImportError:
-        pass
+            algorithms["cpp"]["Brute Force (C++)"] = CppNaive()
+            algorithms["cpp"]["Important Separators (C++)"] = CppImportantSeparators()
+    except ImportError as e:
+        print(f"C++ algorithms not available: {e}")
         
     return algorithms
 
@@ -76,10 +65,12 @@ def discover_maps() -> List[str]:
 async def get_config():
     algos = discover_algorithms()
     maps = discover_maps()
+    # Return available algorithms for each language
+    available_algos = {lang: list(instances.keys()) for lang, instances in algos.items()}
     return {
-        "algorithms": list(algos["python"].keys()), # Names are the same for both
+        "algorithms": available_algos,
         "maps": maps,
-        "languages": ["python", "cpp"] if algos["cpp"] else ["python"]
+        "languages": list(available_algos.keys())
     }
 
 @app.get("/api/map/{filename}")
@@ -90,11 +81,6 @@ async def get_map(filename: str):
     
     lines = map_path.read_text(encoding="utf-8").splitlines()
     return {"lines": lines}
-
-@app.post("/api/cancel/{task_id}")
-async def cancel_task(task_id: str):
-    CANCELLED_TASKS.add(task_id)
-    return {"status": "cancelled"}
 
 @app.post("/api/solve")
 async def solve(request: SolveRequest):
@@ -112,9 +98,6 @@ async def solve(request: SolveRequest):
     if not map_path.exists():
         raise HTTPException(status_code=400, detail="Map file not found")
     
-    # Initialize cancellation state for this thread
-    set_cancelled(False)
-    
     try:
         # We need the graph and the ID-to-coords mapping
         graph, s, t, coords_to_id = load_map_with_metadata(str(map_path))
@@ -124,32 +107,7 @@ async def solve(request: SolveRequest):
         
         # Track time
         start_time = time.time()
-        
-        # We need to periodically check if this task_id is in CANCELLED_TASKS
-        # Since the algorithms are CPU bound, we'll use a wrapper that checks CANCELLED_TASKS
-        def check_cancel():
-            if task_id and task_id in CANCELLED_TASKS:
-                return True
-            return False
-
-        # Set the cancellation check for the current thread
-        import threading
-        from horse_algos.algorithms.algorithm import _local
-        _local.cancelled_func = check_cancel
-        
-        # Override is_cancelled for this request
-        import horse_algos.algorithms.algorithm as algo_mod
-        original_is_cancelled = algo_mod.is_cancelled
-        algo_mod.is_cancelled = lambda: (getattr(_local, "cancelled_func", lambda: False)())
-        
-        try:
-            result_value, cutset_ids = algo.run(graph, s, t, request.k)
-        finally:
-            # Restore original is_cancelled
-            algo_mod.is_cancelled = original_is_cancelled
-            if task_id and task_id in CANCELLED_TASKS:
-                CANCELLED_TASKS.remove(task_id)
-
+        result_value, cutset_ids = algo.run(graph, s, t, request.k)
         elapsed = time.time() - start_time
         
         # Map cutset node IDs back to coordinates

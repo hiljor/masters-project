@@ -35,7 +35,7 @@
         }
 
         function App() {
-            const [config, setConfig] = useState({ algorithms: [], maps: [], languages: [] });
+            const [config, setConfig] = useState({ algorithms: {}, maps: [], languages: [] });
             const [selectedAlgo, setSelectedAlgo] = useState("");
             const [selectedMap, setSelectedMap] = useState("");
             const [selectedLang, setSelectedLang] = useState("python");
@@ -52,12 +52,26 @@
                     .then(res => res.json())
                     .then(data => {
                         setConfig(data);
-                        if (data.algorithms.length > 0) setSelectedAlgo(data.algorithms[0]);
+                        if (data.languages && data.languages.length > 0) {
+                            const initialLang = data.languages[0];
+                            setSelectedLang(initialLang);
+                            if (data.algorithms[initialLang] && data.algorithms[initialLang].length > 0) {
+                                setSelectedAlgo(data.algorithms[initialLang][0]);
+                            }
+                        }
                         if (data.maps.length > 0) setSelectedMap(data.maps[0]);
-                        if (data.languages && data.languages.length > 0) setSelectedLang(data.languages[0]);
                     })
                     .catch(err => setError("Failed to load configuration"));
             }, []);
+
+            // Update algorithm when language changes
+            useEffect(() => {
+                if (config.algorithms[selectedLang] && config.algorithms[selectedLang].length > 0) {
+                    if (!config.algorithms[selectedLang].includes(selectedAlgo)) {
+                        setSelectedAlgo(config.algorithms[selectedLang][0]);
+                    }
+                }
+            }, [selectedLang, config.algorithms]);
 
             useEffect(() => {
                 if (selectedMap) {
@@ -68,6 +82,10 @@
                         .catch(err => setError("Failed to load map data"));
                 }
             }, [selectedMap]);
+
+            const currentAlgos = useMemo(() => {
+                return config.algorithms[selectedLang] || [];
+            }, [selectedLang, config.algorithms]);
 
             const handleSolve = async () => {
                 setLoading(true);
@@ -158,7 +176,7 @@
                                     onChange={(e) => setSelectedAlgo(e.target.value)}
                                     class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none appearance-none"
                                 >
-                                    {config.algorithms.map(a => <option key={a} value={a}>{a}</option>)}
+                                    {currentAlgos.map(a => <option key={a} value={a}>{a}</option>)}
                                 </select>
                             </div>
 
