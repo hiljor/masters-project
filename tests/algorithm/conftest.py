@@ -74,16 +74,21 @@ def case_inf_set():
     return TestData(graph=Graph(adjMatrix, [1, 5, 10, 0], infSet={2}), s=0, t=3, k=1, expected=1)
 
 @pytest.fixture
-def case_horse_cherry():
-    graph, s, t = load_graph_from_map("horse_diamonds.txt")
+def case_diamonds_small():
+    graph, s, t = load_graph_from_map("horse_diamonds_126.txt")
     return TestData(graph=graph, s=s, t=t, k=2, expected=1)
 
 @pytest.fixture
-def case_horse_cherry2():
-    graph, s, t = load_graph_from_map("horse_diamonds.txt")
+def case_diamonds():
+    graph, s, t = load_graph_from_map("horse_diamonds_126.txt")
     return TestData(graph=graph, s=s, t=t, k=7, expected=39)
 
 @pytest.fixture
-def case_horse_dots():
+def case_dots():
     graph, s, t = load_graph_from_map("horse_dots.txt")
     return TestData(graph=graph, s=s, t=t, k=8, expected=11)
+  
+@pytest.fixture
+def case_portals_cherries():
+    graph, s, t = load_graph_from_map("horse_portals_cherries.txt")
+    return TestData(graph=graph, s=s, t=t, k=8, expected=32)

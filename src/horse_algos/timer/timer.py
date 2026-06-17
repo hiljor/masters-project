@@ -1,8 +1,20 @@
 import time
+import multiprocessing
 from dataclasses import dataclass
 from typing import Any, Dict, List
 from horse_algos.graph import Graph
 from horse_algos.algorithms.algorithm import Algorithm
+
+TIMEOUT_SECONDS = 60
+
+
+def _run_algorithm(algorithm: Algorithm, graph: Graph, s: int, t: int, k: int, result_queue: multiprocessing.Queue):
+    try:
+        result = algorithm.run(graph, s, t, k)
+        result_queue.put(("ok", result))
+    except Exception as exc:
+        result_queue.put(("exc", repr(exc)))
+
 
 @dataclass
 class TimerResult:
@@ -15,19 +27,33 @@ class TimerResult:
 class AlgorithmTimer:
     """A utility class to time the execution of algorithms on datasets."""
 
-    def __init__(self):
+    def __init__(self, csv_path: str = None):
+        """Initializes the timer and optionally prepares the CSV file for incremental recording.
+
+        Args:
+            csv_path: Optional file path where benchmark results are written
+                incrementally after each algorithm run. If provided, the header
+                is written immediately.
+        """
         self.results: List[TimerResult] = []
+        self.csv_path = csv_path
+        if self.csv_path:
+            import csv
+            with open(self.csv_path, "w", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow(["Algorithm", "Dataset", "k", "Time", "Result"])
 
     def time_algorithm(
-        self, 
-        algorithm: Algorithm, 
-        dataset_name: str, 
-        graph: Graph, 
-        s: int, 
-        t: int, 
-        k: int
+        self,
+        algorithm: Algorithm,
+        dataset_name: str,
+        graph: Graph,
+        s: int,
+        t: int,
+        k: int,
+        timeout_seconds: int = TIMEOUT_SECONDS,
     ) -> TimerResult:
-        """Times a single run of an algorithm and stores the result.
+        """Times a single run of an algorithm, stores the result, and optionally writes it to a CSV file.
 
         Args:
             algorithm: The algorithm instance to run.
@@ -36,25 +62,63 @@ class AlgorithmTimer:
             s: Start vertex.
             t: Target vertex.
             k: Parameter k for the algorithm.
+            timeout_seconds: Maximum seconds to allow the run.
 
         Returns:
             A TimerResult object containing the timing information.
         """
         start_time = time.perf_counter()
-        result = algorithm.run(graph, s, t, k)
+        ctx = multiprocessing.get_context("spawn")
+        result_queue = ctx.Queue()
+        process = ctx.Process(
+            target=_run_algorithm,
+            args=(algorithm, graph, s, t, k, result_queue),
+        )
+        process.start()
+        process.join(timeout_seconds)
         end_time = time.perf_counter()
-
         duration = end_time - start_time
         
+        if process.is_alive():
+            process.terminate()
+            process.join()
+            result = "DNF"
+        else:
+            if result_queue.empty():
+                if process.exitcode != 0:
+                    raise RuntimeError(
+                        f"Algorithm process failed with exit code {process.exitcode}"
+                    )
+                result = "DNF"
+            else:
+                status, payload = result_queue.get()
+                if status == "ok":
+                    result = payload
+                else:
+                    raise RuntimeError(f"Algorithm raised an exception: {payload}")
+
         timer_result = TimerResult(
             algorithm_name=algorithm.name,
             dataset_name=dataset_name,
             execution_time=duration,
             result=result,
-            parameters={"s": s, "t": t, "k": k}
+            parameters={"s": s, "t": t, "k": k},
         )
-        
+
         self.results.append(timer_result)
+
+        if self.csv_path:
+            import csv
+            with open(self.csv_path, "a", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow([
+                    timer_result.algorithm_name,
+                    timer_result.dataset_name,
+                    timer_result.parameters["k"],
+                    f"{timer_result.execution_time:.6f}",
+                    timer_result.result
+                ])
+
         return timer_result
 
     def get_summary(self) -> str:

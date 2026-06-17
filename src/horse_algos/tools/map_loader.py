@@ -2,6 +2,11 @@ from pathlib import Path
 
 from horse_algos.graph import Graph
 
+char_val_map = {
+    "c": 4,
+    "a": 10,
+}
+
 
 def load_graph_from_map(filename: str) -> tuple[Graph, int, int]:
     """Load a map from the repository's data directory and build a Graph.
@@ -13,6 +18,17 @@ def load_graph_from_map(filename: str) -> tuple[Graph, int, int]:
         A tuple of (graph, start_node, t_node).
     """
     graph, start_node, t_node, _ = load_map_with_metadata(filename)
+    return graph, start_node, t_node
+  
+def load_graph_from_lines(lines: list[str]) -> tuple[Graph, int, int]:
+    """Load a map from a list of strings and build a Graph.
+
+    Args:
+        lines: A list of strings representing the map, where each string is a row.
+    Returns:
+        A tuple of (graph, start_node, t_node).
+    """
+    graph, start_node, t_node, _ = _build_graph_from_lines(lines)
     return graph, start_node, t_node
 
 
@@ -67,10 +83,10 @@ def _build_graph_from_lines(lines: list[str]) -> tuple[Graph, int, int, dict[tup
 
     for y, line in enumerate(lines):
         for x, char in enumerate(line):
-            if char in {" ", "c", "H"} or char.isdigit():
+            if char in {" ", "c", "H", "a"} or char.isdigit():
                 node_id = len(node_values)
                 coords_to_id[(x, y)] = node_id
-                node_values.append(4 if char == "c" else 1)
+                node_values.append(char_val_map.get(char, 1))  # default value 1
                 if char == "H":
                     if start_node is not None:
                         raise ValueError("Map contains multiple 'H' start nodes.")

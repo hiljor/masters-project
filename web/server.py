@@ -2,7 +2,7 @@ import os
 import sys
 import uvicorn
 import time
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from pathlib import Path
@@ -122,6 +122,11 @@ async def solve(request: SolveRequest):
         import traceback
         print(traceback.format_exc())
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    """Handles favicon requests to avoid 404 errors by returning a 204 No Content response."""
+    return Response(status_code=204)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_index():

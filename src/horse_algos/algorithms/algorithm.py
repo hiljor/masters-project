@@ -18,7 +18,7 @@ class Algorithm(ABC):
   @abstractmethod
   def name(self):
     """ The display name of the algorithm """
-    pass
+    return "Unnamed Algorithm"
 
   @abstractmethod
   def run(self, graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:

@@ -1,4 +1,9 @@
-from ortools.linear_solver import pywraplp
+try:
+    from ortools.linear_solver import pywraplp
+    MILP_AVAILABLE = True
+except ImportError:
+    MILP_AVAILABLE = False
+
 from horse_algos.graph import Graph
 from horse_algos.algorithms.algorithm import Algorithm, is_cancelled
 
@@ -12,6 +17,9 @@ class MILP_OR(Algorithm):
     def run(self, graph: Graph, s: int, t: int, k: int) -> tuple[int | float, set[int]]:
         """ Runs the MILP algorithm on the given graph. """
         
+        if not MILP_AVAILABLE:
+            raise ImportError("Google OR-Tools not available. Please install it with 'pip install ortools'.")
+
         # Create the linear solver with the SCIP backend.
         solver = pywraplp.Solver.CreateSolver('SCIP')
         if not solver:
@@ -69,13 +77,48 @@ class MILP_OR(Algorithm):
         solver.Add(y[s] == 0)
         solver.Add(y[t] == 0)
 
+        # Flow variables for connectivity/reachability checks.
+        # Since the graph is directed, we define a directed flow variable for each unique directed edge.
+        in_neighbors = [set() for _ in range(n)]
+        unique_adj = [set() for _ in range(n)]
+        
+        for u in range(n):
+            if not graph.is_active[u]:
+                continue
+            for v in graph.adjList[u]:
+                if graph.is_active[v]:
+                    in_neighbors[v].add(u)
+                    unique_adj[u].add(v)
+
+        flow = {}
+        for u in range(n):
+            if not graph.is_active[u]:
+                continue
+            for v in unique_adj[u]:
+                flow[(u, v)] = solver.NumVar(0.0, inf, f'f_{u}_{v}')
+
+        # Flow conservation constraints
+        sum_x_except_s = solver.Sum(x[j] for j in range(n) if j != s)
+        for i in range(n):
+            if not graph.is_active[i]:
+                continue
+            
+            incoming_flow = solver.Sum(flow[(u, i)] for u in in_neighbors[i])
+            outgoing_flow = solver.Sum(flow[(i, w)] for w in unique_adj[i])
+
+            if i == s:
+                solver.Add(outgoing_flow - incoming_flow == sum_x_except_s)
+            else:
+                solver.Add(incoming_flow - outgoing_flow == x[i])
+                solver.Add(incoming_flow <= n * x[i])
+
         # Solve the problem.
         status = solver.Solve()
 
         if status == pywraplp.Solver.OPTIMAL:
-            max_val = objective.Value()
             cutset = {i for i in range(n) if y[i].solution_value() > 0.5}
-            return max_val, cutset
+            exact_val = graph.includedValue(s, t, cutset)
+            return exact_val, cutset
         else:
             # If no optimal solution found (should not happen for this problem), return -inf.
             return float("-inf"), set()
