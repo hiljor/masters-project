@@ -81,7 +81,7 @@ def case_horse_cherry():
 @pytest.fixture
 def case_horse_cherry2():
     graph, s, t = load_graph_from_map("horse_diamonds.txt")
-    return TestData(graph=graph, s=s, t=t, k=8, expected=58)
+    return TestData(graph=graph, s=s, t=t, k=7, expected=39)
 
 @pytest.fixture
 def case_horse_dots():

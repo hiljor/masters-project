@@ -15,7 +15,7 @@ def test_load_graph_from_map_returns_graph_and_special_nodes():
     assert start_node in graph.infSet
     assert graph.adjList[t_node]
 
-    data_path = Path(__file__).resolve().parents[1] / "data" / "horse_126.txt"
+    data_path = Path(__file__).resolve().parents[1] / "data" / "horse_diamonds.txt"
     lines = data_path.read_text(encoding="utf-8").splitlines()
     width = max(len(line) for line in lines)
     height = len(lines)
