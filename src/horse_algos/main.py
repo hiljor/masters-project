@@ -4,6 +4,8 @@ from pathlib import Path
 from horse_algos.tools.map_loader import load_graph_from_map
 from horse_algos.algorithms.naive import Naive
 from horse_algos.algorithms.important_separator import ImportantSeparators
+from horse_algos.algorithms.milp_ortools import MILP_OR
+from horse_algos.algorithms.cpp_algorithms import CppNaive, CppImportantSeparators, CPP_AVAILABLE
 from horse_algos.timer.timer import AlgorithmTimer
 
 def run_benchmarks():
@@ -22,8 +24,17 @@ def run_benchmarks():
     # Algorithms to test
     algorithms = [
         Naive(),
-        ImportantSeparators()
+        ImportantSeparators(),
     ]
+
+    # Add C++ implementations when available
+    if CPP_AVAILABLE:
+        algorithms.extend([CppNaive(), CppImportantSeparators()])
+    else:
+        print("C++ implementations not available; skipping C++ benchmarks.")
+
+    # Always include MILP last
+    algorithms.append(MILP_OR())
     
     # Parameters for testing
     k_values = [1, 2, 3]
