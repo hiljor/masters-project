@@ -2,13 +2,41 @@
 #include <algorithm>
 #include <cmath>
 
-// Helper for combinations (naive)
-void getCombinations(int n, int k, std::vector<int>& current, int start, std::vector<std::vector<int>>& result) {
-    result.push_back(current);
-    if (current.size() == (size_t)k) return;
-    for (int i = start; i < n; ++i) {
+void evaluate_combinations(
+    const std::vector<int>& removable_nodes,
+    int k,
+    int start,
+    std::vector<int>& current,
+    Graph& graph,
+    int s,
+    int t,
+    int& optimal,
+    std::set<int>& best_cut
+) {
+    std::set<int> comb_set;
+    for (int idx : current) {
+        comb_set.insert(removable_nodes[idx]);
+    }
+
+    if (!graph.hasPath(s, t, comb_set)) {
+        int marker = graph.history.size();
+        for (int node : comb_set) graph.deactivate(node);
+        int val = graph.includedValue(s);
+        graph.undo(marker);
+
+        if (val > optimal) {
+            optimal = val;
+            best_cut = comb_set;
+        }
+    }
+
+    if ((int)current.size() == k) {
+        return;
+    }
+
+    for (int i = start; i < (int)removable_nodes.size(); ++i) {
         current.push_back(i);
-        getCombinations(n, k, current, i + 1, result);
+        evaluate_combinations(removable_nodes, k, i + 1, current, graph, s, t, optimal, best_cut);
         current.pop_back();
     }
 }
@@ -25,31 +53,8 @@ std::pair<int, std::set<int>> solve_naive(const std::vector<std::vector<int>>& a
 
     int optimal = -1000000000; // Large negative
     std::set<int> best_cut;
-
-    std::vector<std::vector<int>> all_combs;
     std::vector<int> current;
-    getCombinations(removable_nodes.size(), k, current, 0, all_combs);
-
-    for (const auto& comb : all_combs) {
-        std::set<int> comb_set;
-        for (int idx : comb) comb_set.insert(removable_nodes[idx]);
-
-        if (graph.hasPath(s, t, comb_set)) continue;
-        
-        int value = graph.includedValue(s); // Note: C++ version doesn't subtract cutset from value, it uses is_active
-        // Wait, the Python version uses includedValue(s, t, comb_set) which DOES take the cutset.
-        // My C++ Graph::includedValue(s) uses is_active. I should temporarily deactivate the cutset.
-        
-        int marker = graph.history.size();
-        for (int node : comb_set) graph.deactivate(node);
-        int val = graph.includedValue(s);
-        graph.undo(marker);
-
-        if (val > optimal) {
-            optimal = val;
-            best_cut = comb_set;
-        }
-    }
+    evaluate_combinations(removable_nodes, k, 0, current, graph, s, t, optimal, best_cut);
     return {optimal, best_cut};
 }
 

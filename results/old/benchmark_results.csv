@@ -1,0 +1,1520 @@
+Algorithm,Dataset,k,Time (CPU s),Result
+Brute Force,horse_arcs_170.txt,0,0.000000,"(-inf, set())"
+Brute Force (C++),horse_arcs_170.txt,0,0.000000,"(-inf, set())"
+Important Separators,horse_arcs_170.txt,0,0.015625,"(-inf, set())"
+Important Separators (C++),horse_arcs_170.txt,0,0.015625,"(-inf, set())"
+Brute Force,horse_arcs_170.txt,1,0.015625,"(1, {201})"
+Brute Force (C++),horse_arcs_170.txt,1,0.015625,"(1, {201})"
+MILP (OR-Tools),horse_arcs_170.txt,0,0.031250,"(-inf, set())"
+Important Separators (C++),horse_arcs_170.txt,1,0.031250,"(1, {201})"
+Important Separators,horse_arcs_170.txt,1,0.046875,"(1, {201})"
+Important Separators (C++),horse_arcs_170.txt,2,0.062500,"(12, {144, 148})"
+MILP (OR-Tools),horse_arcs_170.txt,1,0.093750,"(1, {201})"
+Important Separators,horse_arcs_170.txt,2,0.140625,"(12, {144, 148})"
+MILP (OR-Tools),horse_arcs_170.txt,2,0.109375,"(12, {144, 148})"
+Brute Force (C++),horse_arcs_170.txt,4,0.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,4) = 137,085,620 > 10,000,000."
+Important Separators (C++),horse_arcs_170.txt,3,0.140625,"(19, {144, 123, 150})"
+Important Separators (C++),horse_arcs_170.txt,4,0.203125,"(21, {143, 123, 150, 119})"
+MILP (OR-Tools),horse_arcs_170.txt,3,0.296875,"(19, {144, 123, 150})"
+Brute Force (C++),horse_arcs_170.txt,5,0.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,5) = 6,497,858,388 > 10,000,000."
+Brute Force,horse_arcs_170.txt,2,0.546875,"(12, {144, 148})"
+Important Separators,horse_arcs_170.txt,4,0.453125,"(21, {143, 123, 150, 119})"
+Important Separators (C++),horse_arcs_170.txt,5,0.343750,"(38, {144, 125, 150, 120, 61})"
+Important Separators,horse_arcs_170.txt,5,0.859375,"(38, {144, 125, 150, 120, 61})"
+Brute Force (C++),horse_arcs_170.txt,6,0.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,6) = 255,582,429,928 > 10,000,000."
+Brute Force (C++),horse_arcs_170.txt,2,1.359375,"(12, {144, 148})"
+MILP (OR-Tools),horse_arcs_170.txt,4,1.468750,"(21, {143, 123, 150, 119})"
+MILP (OR-Tools),horse_arcs_170.txt,5,1.468750,"(38, {144, 61, 150, 120, 125})"
+Important Separators (C++),horse_arcs_170.txt,6,0.937500,"(50, {144, 129, 150, 120, 125, 47})"
+Brute Force (C++),horse_arcs_170.txt,7,0.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,7) = 8,580,267,290,440 > 10,000,000."
+Important Separators,horse_arcs_170.txt,6,2.390625,"(50, {144, 129, 150, 120, 125, 47})"
+MILP (OR-Tools),horse_arcs_170.txt,6,1.906250,"(50, {129, 47, 144, 150, 120, 125})"
+MILP (OR-Tools),horse_arcs_170.txt,7,1.921875,"(62, {129, 78, 144, 20, 150, 120, 125})"
+Important Separators (C++),horse_arcs_170.txt,7,3.078125,"(62, {144, 129, 20, 150, 120, 125, 78})"
+Brute Force (C++),horse_arcs_170.txt,8,0.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,8) = 250,972,818,245,370 > 10,000,000."
+Important Separators,horse_arcs_170.txt,7,7.375000,"(62, {144, 129, 20, 150, 120, 125, 78})"
+MILP (OR-Tools),horse_arcs_170.txt,8,1.000000,"(77, {166, 47, 144, 179, 120, 154, 190, 191})"
+Important Separators (C++),horse_arcs_170.txt,8,8.312500,"(77, {166, 47, 144, 179, 120, 154, 190, 191})"
+Important Separators,horse_arcs_170.txt,8,21.234375,"(77, {166, 47, 144, 179, 120, 154, 190, 191})"
+Brute Force (C++),horse_arcs_170.txt,9,0.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,9) = 6,497,407,405,685,690 > 10,000,000."
+Brute Force,horse_arcs_170.txt,3,43.046875,"(19, {144, 123, 150})"
+MILP (OR-Tools),horse_arcs_170.txt,9,0.937500,"(89, {166, 78, 144, 179, 20, 120, 154, 190, 191})"
+Important Separators (C++),horse_arcs_170.txt,9,25.406250,"(89, {166, 78, 144, 179, 20, 120, 154, 190, 191})"
+Important Separators,horse_arcs_170.txt,9,63.890625,"(89, {166, 78, 144, 179, 20, 120, 154, 190, 191})"
+Brute Force (C++),horse_arcs_170.txt,10,0.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,10) = 150,739,851,811,908,008 > 10,000,000."
+Brute Force (C++),horse_arcs_170.txt,3,101.578125,"(19, {144, 123, 150})"
+MILP (OR-Tools),horse_arcs_170.txt,10,2.843750,"(97, {129, 172, 80, 144, 211, 20, 150, 120, 156, 125})"
+Important Separators (C++),horse_arcs_170.txt,10,77.265625,"(97, {129, 172, 80, 144, 211, 20, 150, 120, 156, 125})"
+Brute Force,horse_arcs_170.txt,4,170.921875,ERROR: TIMEOUT
+Brute Force (C++),horse_arcs_170.txt,11,0.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,11) = 3,165,536,888,050,068,168 > 10,000,000."
+Brute Force,horse_arcs_170.txt,5,169.437500,ERROR: TIMEOUT
+Brute Force,horse_arcs_170.txt,6,171.140625,ERROR: TIMEOUT
+Brute Force,horse_arcs_170.txt,7,171.171875,ERROR: TIMEOUT
+Brute Force,horse_arcs_170.txt,8,169.406250,ERROR: TIMEOUT
+Brute Force (C++),horse_arcs_170.txt,12,0.031250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,12) = 60,672,790,354,292,973,220 > 10,000,000."
+MILP (OR-Tools),horse_arcs_170.txt,11,6.578125,"(101, {191, 166, 141, 80, 144, 179, 20, 120, 154, 190, 159})"
+MILP (OR-Tools),horse_arcs_170.txt,12,8.406250,"(124, {166, 172, 80, 144, 179, 20, 211, 120, 154, 156, 190, 191})"
+Brute Force,horse_arcs_170.txt,9,170.000000,ERROR: TIMEOUT
+Brute Force,horse_arcs_170.txt,10,170.250000,ERROR: TIMEOUT
+Brute Force (C++),horse_arcs_170.txt,13,0.031250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,13) = 1,068,774,537,779,468,528,260 > 10,000,000."
+Important Separators,horse_arcs_170.txt,10,171.406250,ERROR: TIMEOUT
+MILP (OR-Tools),horse_arcs_170.txt,13,0.250000,"(153, {235, 172, 205, 236, 237, 80, 144, 238, 239, 20, 120, 221, 190})"
+Brute Force,horse_arcs_170.txt,11,169.718750,ERROR: TIMEOUT
+Important Separators,horse_arcs_170.txt,11,171.703125,ERROR: TIMEOUT
+Brute Force (C++),horse_arcs_170.txt,14,0.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,14) = 17,405,756,758,122,773,174,520 > 10,000,000."
+Brute Force,horse_arcs_170.txt,12,172.875000,ERROR: TIMEOUT
+MILP (OR-Tools),horse_arcs_170.txt,14,0.343750,"(161, {232, 233, 234, 235, 172, 236, 237, 238, 80, 144, 239, 20, 120, 218})"
+Important Separators,horse_arcs_170.txt,12,172.734375,ERROR: TIMEOUT
+Brute Force,horse_arcs_170.txt,13,171.234375,ERROR: TIMEOUT
+Brute Force (C++),horse_arcs_170.txt,15,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(241,15) = 263,407,118,939,591,300,707,736 > 10,000,000."
+Important Separators,horse_arcs_170.txt,13,171.187500,ERROR: TIMEOUT
+MILP (OR-Tools),horse_arcs_170.txt,15,2.359375,"(164, {5, 232, 233, 234, 235, 172, 236, 237, 238, 80, 17, 144, 239, 120, 218})"
+Brute Force,horse_diamonds_126.txt,0,0.187500,"(-inf, set())"
+Important Separators,horse_diamonds_126.txt,0,0.531250,"(-inf, set())"
+Brute Force (C++),horse_diamonds_126.txt,0,0.125000,"(-inf, set())"
+Important Separators (C++),horse_diamonds_126.txt,0,0.140625,"(-inf, set())"
+MILP (OR-Tools),horse_diamonds_126.txt,0,0.390625,"(-inf, set())"
+Brute Force,horse_diamonds_126.txt,1,0.250000,"(-inf, set())"
+Important Separators,horse_diamonds_126.txt,1,0.171875,"(-inf, set())"
+Brute Force (C++),horse_diamonds_126.txt,1,0.156250,"(-inf, set())"
+Important Separators (C++),horse_diamonds_126.txt,1,0.296875,"(-inf, set())"
+MILP (OR-Tools),horse_diamonds_126.txt,1,1.109375,"(-inf, set())"
+Brute Force,horse_diamonds_126.txt,2,0.218750,"(1, {58, 46})"
+Important Separators,horse_diamonds_126.txt,2,0.125000,"(1, {58, 46})"
+Brute Force (C++),horse_diamonds_126.txt,2,0.328125,"(1, {58, 46})"
+Important Separators (C++),horse_diamonds_126.txt,2,0.140625,"(1, {58, 46})"
+MILP (OR-Tools),horse_diamonds_126.txt,2,0.156250,"(1, {58, 46})"
+Brute Force,horse_diamonds_126.txt,3,2.296875,"(1, {58, 46})"
+Important Separators,horse_diamonds_126.txt,3,0.421875,"(1, {58, 46})"
+Brute Force (C++),horse_diamonds_126.txt,3,1.781250,"(1, {0, 58, 46})"
+Important Separators (C++),horse_diamonds_126.txt,3,0.078125,"(1, {58, 46})"
+MILP (OR-Tools),horse_diamonds_126.txt,3,0.187500,"(1, {58, 46})"
+Brute Force,horse_arcs_170.txt,14,169.468750,ERROR: TIMEOUT
+Important Separators,horse_diamonds_126.txt,4,0.171875,"(16, {48, 13, 86, 55})"
+Important Separators (C++),horse_arcs_170.txt,11,236.406250,"(101, {191, 166, 141, 80, 144, 179, 20, 120, 154, 190, 159})"
+Important Separators (C++),horse_diamonds_126.txt,4,0.078125,"(16, {48, 13, 86, 55})"
+MILP (OR-Tools),horse_diamonds_126.txt,4,0.140625,"(16, {48, 13, 86, 55})"
+Brute Force (C++),horse_diamonds_126.txt,4,34.500000,"(16, {48, 13, 86, 55})"
+Important Separators,horse_diamonds_126.txt,5,0.562500,"(27, {96, 48, 55, 107, 13})"
+Brute Force (C++),horse_diamonds_126.txt,5,0.031250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,5) = 106,308,566 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,5,0.156250,"(27, {96, 48, 55, 107, 13})"
+MILP (OR-Tools),horse_diamonds_126.txt,5,0.109375,"(27, {96, 107, 13, 48, 55})"
+Brute Force,horse_diamonds_126.txt,4,56.281250,"(16, {48, 13, 86, 55})"
+Important Separators,horse_diamonds_126.txt,6,2.656250,"(34, {96, 50, 35, 55, 107, 13})"
+Brute Force (C++),horse_diamonds_126.txt,6,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,6) = 1,807,245,622 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,6,0.312500,"(34, {96, 50, 35, 55, 107, 13})"
+Important Separators,horse_arcs_170.txt,14,169.062500,ERROR: TIMEOUT
+MILP (OR-Tools),horse_diamonds_126.txt,6,0.468750,"(34, {96, 35, 107, 13, 50, 55})"
+Important Separators,horse_diamonds_126.txt,7,10.609375,"(39, {96, 52, 37, 55, 26, 107, 13})"
+Brute Force (C++),horse_diamonds_126.txt,7,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,7) = 26,075,972,546 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,7,0.656250,"(39, {96, 52, 37, 55, 26, 107, 13})"
+MILP (OR-Tools),horse_diamonds_126.txt,7,0.359375,"(39, {96, 37, 107, 13, 52, 55, 26})"
+Brute Force,horse_arcs_170.txt,15,172.812500,ERROR: TIMEOUT
+Important Separators,horse_arcs_170.txt,15,173.046875,ERROR: TIMEOUT
+Brute Force (C++),horse_diamonds_126.txt,8,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,8) = 325,949,656,825 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,8,1.437500,"(48, {64, 96, 39, 8, 9, 107, 13, 55})"
+MILP (OR-Tools),horse_diamonds_126.txt,8,0.281250,"(48, {64, 96, 39, 8, 9, 107, 13, 55})"
+Important Separators,horse_diamonds_126.txt,8,16.078125,"(48, {64, 96, 39, 8, 9, 107, 13, 55})"
+Important Separators,horse_diamonds_126.txt,9,33.531250,"(50, {96, 102, 40, 107, 11, 13, 48, 81, 29})"
+Brute Force (C++),horse_diamonds_126.txt,9,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,9) = 3,585,446,225,075 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,9,2.796875,"(50, {96, 102, 40, 11, 107, 13, 48, 81, 29})"
+MILP (OR-Tools),horse_diamonds_126.txt,9,0.281250,"(50, {96, 102, 40, 11, 107, 13, 48, 81, 29})"
+Brute Force,horse_diamonds_126.txt,5,174.890625,ERROR: TIMEOUT
+Brute Force,horse_diamonds_126.txt,6,171.906250,ERROR: TIMEOUT
+Brute Force (C++),horse_diamonds_126.txt,10,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,10) = 35,137,373,005,735 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,10,4.578125,"(57, {96, 35, 102, 40, 11, 107, 13, 81, 50, 29})"
+MILP (OR-Tools),horse_diamonds_126.txt,10,0.203125,"(57, {96, 35, 102, 40, 11, 107, 13, 81, 50, 29})"
+Brute Force,horse_diamonds_126.txt,7,173.250000,ERROR: TIMEOUT
+Brute Force,horse_diamonds_126.txt,8,174.171875,ERROR: TIMEOUT
+Brute Force (C++),horse_diamonds_126.txt,11,0.625000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,11) = 309,847,743,777,845 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,11,7.453125,"(64, {64, 96, 39, 8, 9, 40, 11, 72, 13, 107, 29})"
+MILP (OR-Tools),horse_diamonds_126.txt,11,0.375000,"(64, {64, 96, 39, 8, 9, 40, 11, 72, 13, 107, 29})"
+Important Separators,horse_diamonds_126.txt,10,104.968750,"(57, {96, 35, 102, 40, 11, 107, 13, 81, 50, 29})"
+Brute Force,horse_diamonds_126.txt,9,175.578125,ERROR: TIMEOUT
+Brute Force (C++),horse_diamonds_126.txt,12,0.437500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,12) = 2,478,781,950,222,760 > 10,000,000."
+Important Separators (C++),horse_diamonds_126.txt,12,10.796875,"(71, {64, 96, 102, 39, 8, 9, 40, 11, 107, 13, 81, 29})"
+MILP (OR-Tools),horse_diamonds_126.txt,12,0.062500,"(71, {64, 96, 102, 39, 8, 9, 40, 11, 107, 13, 81, 29})"
+Brute Force,horse_diamonds_126.txt,10,174.218750,ERROR: TIMEOUT
+Brute Force,horse_diamonds_126.txt,11,171.546875,ERROR: TIMEOUT
+Brute Force (C++),horse_diamonds_126.txt,13,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,13) = 18,114,175,790,089,400 > 10,000,000."
+Important Separators,horse_diamonds_126.txt,11,173.390625,ERROR: TIMEOUT
+MILP (OR-Tools),horse_diamonds_126.txt,13,0.656250,"(74, {64, 96, 2, 3, 4, 102, 39, 8, 9, 40, 107, 81, 29})"
+Important Separators (C++),horse_diamonds_126.txt,13,13.843750,"(74, {64, 96, 2, 3, 4, 102, 39, 8, 9, 40, 107, 81, 29})"
+Brute Force,horse_diamonds_126.txt,12,172.359375,ERROR: TIMEOUT
+Brute Force (C++),horse_diamonds_126.txt,14,0.703125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,14) = 121,623,751,733,457,400 > 10,000,000."
+Important Separators,horse_diamonds_126.txt,12,149.968750,"(71, {64, 96, 102, 39, 8, 9, 40, 11, 107, 13, 81, 29})"
+MILP (OR-Tools),horse_diamonds_126.txt,14,0.125000,"(76, {64, 2, 3, 4, 102, 39, 8, 9, 40, 105, 106, 107, 81, 29})"
+Important Separators (C++),horse_diamonds_126.txt,14,17.046875,"(76, {64, 2, 3, 4, 102, 39, 8, 9, 40, 105, 106, 107, 81, 29})"
+Brute Force,horse_diamonds_126.txt,13,173.343750,ERROR: TIMEOUT
+Brute Force (C++),horse_diamonds_126.txt,15,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(107,15) = 754,067,260,747,435,880 > 10,000,000."
+Important Separators (C++),horse_arcs_170.txt,12,723.859375,"(124, {166, 172, 80, 144, 179, 20, 211, 120, 154, 156, 190, 191})"
+MILP (OR-Tools),horse_diamonds_126.txt,15,0.093750,"(76, {64, 2, 3, 4, 102, 39, 8, 9, 40, 105, 106, 107, 81, 29})"
+Brute Force,horse_dots.txt,0,0.046875,"(-inf, set())"
+Important Separators,horse_dots.txt,0,0.093750,"(-inf, set())"
+Brute Force (C++),horse_dots.txt,0,0.031250,"(-inf, set())"
+Important Separators (C++),horse_dots.txt,0,0.046875,"(-inf, set())"
+MILP (OR-Tools),horse_dots.txt,0,0.062500,"(-inf, set())"
+Brute Force,horse_dots.txt,1,0.046875,"(-inf, set())"
+Important Separators,horse_dots.txt,1,0.062500,"(-inf, set())"
+Brute Force (C++),horse_dots.txt,1,0.046875,"(-inf, set())"
+Important Separators (C++),horse_dots.txt,1,0.046875,"(-inf, set())"
+MILP (OR-Tools),horse_dots.txt,1,0.187500,"(-inf, set())"
+Brute Force,horse_dots.txt,2,0.156250,"(-inf, set())"
+Important Separators,horse_dots.txt,2,0.078125,"(-inf, set())"
+Important Separators (C++),horse_diamonds_126.txt,15,19.625000,"(76, {64, 2, 3, 4, 102, 39, 8, 9, 40, 105, 106, 107, 81, 29})"
+Brute Force (C++),horse_dots.txt,2,0.171875,"(-inf, set())"
+MILP (OR-Tools),horse_dots.txt,2,0.250000,"(-inf, set())"
+Important Separators (C++),horse_dots.txt,2,0.187500,"(-inf, set())"
+Important Separators,horse_dots.txt,3,0.765625,"(1, {104, 89, 102})"
+Brute Force,horse_dots.txt,3,12.421875,"(1, {104, 89, 102})"
+Important Separators (C++),horse_dots.txt,3,0.125000,"(1, {104, 89, 102})"
+MILP (OR-Tools),horse_dots.txt,3,0.203125,"(1, {104, 89, 102})"
+Important Separators,horse_diamonds_126.txt,13,173.093750,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,3,11.140625,"(1, {104, 89, 102})"
+Brute Force (C++),horse_dots.txt,4,0.078125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,4) = 98,491,965 > 10,000,000."
+Important Separators,horse_dots.txt,4,0.796875,"(1, {104, 89, 102})"
+Important Separators (C++),horse_dots.txt,4,0.281250,"(1, {104, 89, 102})"
+MILP (OR-Tools),horse_dots.txt,4,1.031250,"(1, {104, 89, 102})"
+Important Separators,horse_dots.txt,5,9.250000,"(2, {101, 117, 104, 89, 88})"
+Brute Force (C++),horse_dots.txt,5,0.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,5) = 4,294,249,674 > 10,000,000."
+Important Separators (C++),horse_dots.txt,5,0.500000,"(2, {89, 102, 118, 105, 90})"
+MILP (OR-Tools),horse_dots.txt,5,7.359375,"(2, {101, 104, 117, 88, 89})"
+Important Separators,horse_diamonds_126.txt,14,170.484375,ERROR: TIMEOUT
+Brute Force,horse_diamonds_126.txt,14,171.953125,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,6,0.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,6) = 155,308,696,543 > 10,000,000."
+Important Separators (C++),horse_dots.txt,6,1.406250,"(4, {89, 102, 118, 105, 75, 92})"
+MILP (OR-Tools),horse_dots.txt,6,5.531250,"(4, {102, 104, 74, 87, 90, 60})"
+Important Separators,horse_dots.txt,6,6.921875,"(4, {129, 130, 101, 104, 89, 88})"
+Important Separators,horse_dots.txt,7,20.859375,"(8, {89, 129, 130, 99, 86, 104, 73})"
+Brute Force (C++),horse_dots.txt,7,0.140625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,7) = 4,792,382,636,184 > 10,000,000."
+Important Separators (C++),horse_dots.txt,7,2.546875,"(8, {89, 129, 130, 99, 86, 104, 73})"
+MILP (OR-Tools),horse_dots.txt,7,4.562500,"(8, {102, 104, 46, 87, 91, 60, 62})"
+Brute Force,horse_diamonds_126.txt,15,173.984375,ERROR: TIMEOUT
+Important Separators,horse_diamonds_126.txt,15,173.109375,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,8,0.515625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,8) = 128,795,283,347,445 > 10,000,000."
+Important Separators (C++),horse_dots.txt,8,6.531250,"(11, {64, 102, 104, 46, 48, 87, 91, 60})"
+MILP (OR-Tools),horse_dots.txt,8,4.406250,"(11, {64, 102, 104, 46, 48, 87, 91, 60})"
+Important Separators,horse_dots.txt,8,55.078125,"(11, {64, 102, 104, 46, 48, 87, 91, 60})"
+Brute Force,horse_dots.txt,4,171.765625,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,9,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,9) = 3,062,465,626,261,470 > 10,000,000."
+Brute Force,horse_dots.txt,5,173.890625,ERROR: TIMEOUT
+MILP (OR-Tools),horse_dots.txt,9,13.218750,"(14, {64, 35, 102, 104, 46, 22, 87, 91, 60})"
+Important Separators (C++),horse_dots.txt,9,18.937500,"(14, {129, 130, 99, 104, 46, 86, 91, 60, 62})"
+Brute Force,horse_dots.txt,6,173.937500,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,10,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,10) = 65,230,517,839,369,311 > 10,000,000."
+Brute Force,horse_dots.txt,7,173.203125,ERROR: TIMEOUT
+MILP (OR-Tools),horse_dots.txt,10,14.937500,"(19, {64, 102, 104, 43, 48, 18, 20, 87, 58, 91})"
+Important Separators (C++),horse_dots.txt,10,58.296875,"(19, {64, 102, 104, 43, 48, 18, 20, 87, 58, 91})"
+Brute Force,horse_dots.txt,8,172.921875,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,11,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,11) = 1,257,169,980,176,935,812 > 10,000,000."
+Brute Force,horse_dots.txt,9,174.546875,ERROR: TIMEOUT
+MILP (OR-Tools),horse_dots.txt,11,14.250000,"(22, {64, 35, 102, 104, 43, 18, 20, 22, 87, 58, 91})"
+Important Separators,horse_dots.txt,9,173.750000,"(14, {64, 35, 102, 104, 46, 22, 87, 91, 60})"
+Brute Force,horse_dots.txt,10,173.859375,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,12,0.375000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,12) = 22,105,238,818,111,121,361 > 10,000,000."
+Important Separators,horse_dots.txt,10,173.156250,ERROR: TIMEOUT
+MILP (OR-Tools),horse_dots.txt,12,11.593750,"(31, {66, 35, 132, 102, 134, 108, 46, 79, 148, 22, 87, 60})"
+Brute Force,horse_dots.txt,11,172.500000,ERROR: TIMEOUT
+Important Separators,horse_dots.txt,11,172.046875,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,13,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,13) = 357,084,627,061,795,037,370 > 10,000,000."
+Important Separators (C++),horse_dots.txt,11,191.671875,"(22, {64, 132, 37, 102, 134, 75, 108, 80, 51, 148, 89})"
+MILP (OR-Tools),horse_dots.txt,13,14.328125,"(35, {32, 129, 130, 104, 46, 17, 82, 114, 55, 62, 91, 30, 127})"
+Brute Force,horse_dots.txt,12,170.468750,ERROR: TIMEOUT
+Important Separators,horse_dots.txt,12,171.125000,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,14,0.265625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,14) = 5,330,763,361,136,797,343,595 > 10,000,000."
+Brute Force,horse_dots.txt,13,168.484375,ERROR: TIMEOUT
+MILP (OR-Tools),horse_dots.txt,14,11.796875,"(45, {132, 102, 134, 9, 10, 108, 46, 80, 148, 53, 22, 87, 26, 60})"
+Important Separators,horse_dots.txt,13,168.375000,ERROR: TIMEOUT
+Brute Force,horse_dots.txt,14,167.750000,ERROR: TIMEOUT
+Brute Force (C++),horse_dots.txt,15,0.421875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(222,15) = 73,919,918,607,763,589,831,184 > 10,000,000."
+Important Separators,horse_dots.txt,14,167.796875,ERROR: TIMEOUT
+MILP (OR-Tools),horse_dots.txt,15,10.593750,"(47, {64, 129, 130, 3, 4, 5, 104, 48, 82, 114, 20, 55, 91, 28, 127})"
+Brute Force,horse_portals_cherries.txt,0,0.062500,"(-inf, set())"
+Important Separators,horse_portals_cherries.txt,0,0.390625,"(-inf, set())"
+Brute Force (C++),horse_portals_cherries.txt,0,0.359375,"(-inf, set())"
+Important Separators (C++),horse_portals_cherries.txt,0,0.156250,"(-inf, set())"
+MILP (OR-Tools),horse_portals_cherries.txt,0,0.375000,"(-inf, set())"
+Brute Force,horse_portals_cherries.txt,1,0.109375,"(-inf, set())"
+Important Separators,horse_portals_cherries.txt,1,0.093750,"(-inf, set())"
+Brute Force (C++),horse_portals_cherries.txt,1,0.203125,"(-inf, set())"
+Important Separators (C++),horse_portals_cherries.txt,1,0.265625,"(-inf, set())"
+MILP (OR-Tools),horse_portals_cherries.txt,1,0.843750,"(-inf, set())"
+Brute Force,horse_portals_cherries.txt,2,0.515625,"(-inf, set())"
+Important Separators,horse_portals_cherries.txt,2,0.593750,"(-inf, set())"
+Brute Force (C++),horse_portals_cherries.txt,2,0.453125,"(-inf, set())"
+Important Separators (C++),horse_portals_cherries.txt,2,0.218750,"(-inf, set())"
+MILP (OR-Tools),horse_portals_cherries.txt,2,0.187500,"(-inf, set())"
+Brute Force,horse_portals_cherries.txt,3,3.953125,"(7, {64, 35, 44})"
+Important Separators,horse_portals_cherries.txt,3,0.859375,"(7, {64, 35, 44})"
+Brute Force (C++),horse_portals_cherries.txt,3,0.593750,"(7, {64, 35, 44})"
+Important Separators (C++),horse_portals_cherries.txt,3,0.156250,"(7, {64, 35, 44})"
+MILP (OR-Tools),horse_portals_cherries.txt,3,0.281250,"(7, {64, 35, 44})"
+Brute Force,horse_dots.txt,15,167.859375,ERROR: TIMEOUT
+Important Separators,horse_portals_cherries.txt,4,0.328125,"(10, {64, 34, 18, 44})"
+Brute Force,horse_portals_cherries.txt,4,33.421875,"(10, {64, 18, 34, 44})"
+Important Separators (C++),horse_portals_cherries.txt,4,0.265625,"(10, {64, 18, 34, 44})"
+MILP (OR-Tools),horse_portals_cherries.txt,4,0.515625,"(10, {64, 18, 34, 44})"
+Brute Force (C++),horse_portals_cherries.txt,4,8.265625,"(10, {64, 18, 34, 44})"
+Important Separators,horse_portals_cherries.txt,5,1.609375,"(11, {64, 33, 18, 41, 44})"
+Brute Force (C++),horse_portals_cherries.txt,5,0.140625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,5) = 13,019,909 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,5,0.078125,"(11, {64, 33, 18, 41, 44})"
+MILP (OR-Tools),horse_portals_cherries.txt,5,1.000000,"(11, {64, 33, 41, 44, 18})"
+Important Separators,horse_dots.txt,15,170.093750,ERROR: TIMEOUT
+Important Separators,horse_portals_cherries.txt,6,3.468750,"(20, {64, 35, 22, 9, 12, 45})"
+Brute Force (C++),horse_portals_cherries.txt,6,0.312500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,6) = 143,218,999 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,6,0.453125,"(20, {64, 35, 22, 9, 12, 45})"
+MILP (OR-Tools),horse_portals_cherries.txt,6,0.343750,"(20, {64, 35, 9, 12, 45, 22})"
+Brute Force,horse_portals_cherries.txt,5,173.296875,ERROR: TIMEOUT
+Brute Force,horse_portals_cherries.txt,6,173.296875,ERROR: TIMEOUT
+Important Separators,horse_portals_cherries.txt,7,6.328125,"(26, {64, 35, 5, 6, 9, 12, 45})"
+Brute Force (C++),horse_portals_cherries.txt,7,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,7) = 1,329,890,705 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,7,0.500000,"(26, {66, 35, 54, 60, 44, 78, 79})"
+MILP (OR-Tools),horse_portals_cherries.txt,7,0.359375,"(26, {32, 64, 74, 44, 18, 52, 31})"
+Important Separators,horse_portals_cherries.txt,8,8.109375,"(32, {64, 32, 44, 77, 80, 18, 52, 31})"
+Brute Force (C++),horse_portals_cherries.txt,8,0.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,8) = 10,639,125,640 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,8,0.984375,"(32, {32, 64, 44, 77, 80, 18, 52, 31})"
+MILP (OR-Tools),horse_portals_cherries.txt,8,0.671875,"(32, {32, 64, 44, 77, 80, 18, 52, 31})"
+Brute Force,horse_portals_cherries.txt,7,172.968750,ERROR: TIMEOUT
+Important Separators,horse_portals_cherries.txt,9,33.921875,"(39, {64, 32, 9, 74, 12, 18, 52, 22, 31})"
+Brute Force (C++),horse_portals_cherries.txt,9,0.671875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,9) = 74,473,879,480 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,9,1.984375,"(39, {32, 64, 9, 74, 12, 18, 52, 22, 31})"
+MILP (OR-Tools),horse_portals_cherries.txt,9,1.734375,"(39, {32, 64, 9, 74, 12, 18, 52, 22, 31})"
+Important Separators (C++),horse_dots.txt,12,627.734375,"(31, {66, 35, 132, 102, 134, 108, 46, 79, 148, 22, 87, 60})"
+Important Separators,horse_portals_cherries.txt,10,49.515625,"(46, {64, 32, 2, 1, 74, 12, 16, 52, 22, 31})"
+Brute Force (C++),horse_portals_cherries.txt,10,0.296875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,10) = 461,738,052,776 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,10,3.390625,"(46, {32, 1, 2, 64, 74, 12, 16, 52, 22, 31})"
+MILP (OR-Tools),horse_portals_cherries.txt,10,0.578125,"(46, {32, 1, 2, 64, 74, 12, 16, 52, 22, 31})"
+Brute Force,horse_portals_cherries.txt,8,170.609375,ERROR: TIMEOUT
+Brute Force,horse_portals_cherries.txt,9,169.515625,ERROR: TIMEOUT
+Brute Force (C++),horse_portals_cherries.txt,11,0.140625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,11) = 2,560,547,383,576 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,11,6.015625,"(52, {32, 1, 2, 64, 12, 77, 16, 80, 52, 22, 31})"
+MILP (OR-Tools),horse_portals_cherries.txt,11,0.390625,"(52, {32, 1, 2, 64, 5, 6, 74, 12, 16, 52, 31})"
+Brute Force,horse_portals_cherries.txt,10,169.500000,ERROR: TIMEOUT
+Brute Force,horse_portals_cherries.txt,11,172.484375,ERROR: TIMEOUT
+Important Separators,horse_portals_cherries.txt,11,149.000000,"(52, {64, 1, 2, 32, 5, 6, 74, 12, 16, 52, 31})"
+Brute Force (C++),horse_portals_cherries.txt,12,0.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,12) = 12,802,736,917,880 > 10,000,000."
+MILP (OR-Tools),horse_portals_cherries.txt,12,0.359375,"(58, {32, 1, 2, 64, 5, 6, 12, 77, 16, 80, 52, 31})"
+Important Separators (C++),horse_portals_cherries.txt,12,11.890625,"(58, {32, 1, 2, 64, 5, 6, 12, 77, 16, 80, 52, 31})"
+Brute Force,horse_portals_cherries.txt,12,172.562500,ERROR: TIMEOUT
+Brute Force (C++),horse_portals_cherries.txt,13,0.171875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,13) = 58,104,729,088,840 > 10,000,000."
+Important Separators (C++),horse_portals_cherries.txt,13,21.328125,"(64, {32, 1, 2, 74, 12, 78, 79, 16, 52, 22, 54, 60, 31})"
+MILP (OR-Tools),horse_portals_cherries.txt,13,0.281250,"(64, {32, 1, 2, 74, 12, 78, 79, 16, 52, 22, 54, 60, 31})"
+Important Separators,horse_portals_cherries.txt,12,172.453125,ERROR: TIMEOUT
+Brute Force,horse_portals_cherries.txt,13,172.468750,ERROR: TIMEOUT
+Brute Force (C++),horse_portals_cherries.txt,14,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,14) = 240,719,591,939,480 > 10,000,000."
+Important Separators,horse_portals_cherries.txt,13,172.968750,ERROR: TIMEOUT
+MILP (OR-Tools),horse_portals_cherries.txt,14,0.328125,"(70, {32, 1, 2, 5, 6, 74, 12, 78, 79, 16, 52, 54, 60, 31})"
+Important Separators (C++),horse_portals_cherries.txt,14,35.546875,"(70, {32, 1, 2, 12, 77, 78, 79, 16, 80, 52, 22, 54, 60, 31})"
+Brute Force,horse_portals_cherries.txt,14,172.312500,ERROR: TIMEOUT
+Brute Force (C++),horse_portals_cherries.txt,15,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(71,15) = 914,734,449,370,024 > 10,000,000."
+Important Separators,horse_portals_cherries.txt,14,172.593750,ERROR: TIMEOUT
+MILP (OR-Tools),horse_portals_cherries.txt,15,0.390625,"(76, {32, 1, 2, 5, 6, 12, 77, 78, 79, 16, 80, 52, 54, 60, 31})"
+Brute Force,horse_u-turn_128.txt,0,0.187500,"(-inf, set())"
+Important Separators,horse_u-turn_128.txt,0,0.484375,"(-inf, set())"
+Brute Force (C++),horse_u-turn_128.txt,0,0.453125,"(-inf, set())"
+Important Separators (C++),horse_u-turn_128.txt,0,0.343750,"(-inf, set())"
+MILP (OR-Tools),horse_u-turn_128.txt,0,0.671875,"(-inf, set())"
+Brute Force,horse_u-turn_128.txt,1,0.234375,"(-inf, set())"
+Important Separators,horse_u-turn_128.txt,1,0.359375,"(-inf, set())"
+Important Separators (C++),horse_portals_cherries.txt,15,51.640625,"(76, {32, 1, 2, 5, 6, 12, 77, 78, 79, 16, 80, 52, 54, 60, 31})"
+Important Separators (C++),horse_u-turn_128.txt,1,0.234375,"(-inf, set())"
+Brute Force (C++),horse_u-turn_128.txt,1,0.453125,"(-inf, set())"
+MILP (OR-Tools),horse_u-turn_128.txt,1,0.328125,"(-inf, set())"
+Brute Force,horse_u-turn_128.txt,2,0.312500,"(-inf, set())"
+Important Separators,horse_u-turn_128.txt,2,0.375000,"(-inf, set())"
+Important Separators (C++),horse_u-turn_128.txt,2,0.171875,"(-inf, set())"
+Brute Force (C++),horse_u-turn_128.txt,2,0.390625,"(-inf, set())"
+MILP (OR-Tools),horse_u-turn_128.txt,2,0.203125,"(-inf, set())"
+Important Separators,horse_u-turn_128.txt,3,0.546875,"(1, {50, 52, 62})"
+Brute Force (C++),horse_u-turn_128.txt,3,1.281250,"(1, {50, 52, 62})"
+Important Separators (C++),horse_u-turn_128.txt,3,0.125000,"(1, {50, 52, 62})"
+Brute Force,horse_u-turn_128.txt,3,5.875000,"(1, {50, 52, 62})"
+MILP (OR-Tools),horse_u-turn_128.txt,3,0.250000,"(1, {50, 52, 62})"
+Important Separators,horse_u-turn_128.txt,4,0.828125,"(12, {64, 50, 60, 54})"
+Brute Force (C++),horse_u-turn_128.txt,4,24.484375,"(12, {64, 50, 60, 54})"
+Important Separators (C++),horse_u-turn_128.txt,4,0.156250,"(12, {64, 50, 60, 54})"
+MILP (OR-Tools),horse_u-turn_128.txt,4,0.234375,"(12, {64, 50, 60, 54})"
+Brute Force,horse_portals_cherries.txt,15,175.406250,ERROR: TIMEOUT
+Important Separators,horse_u-turn_128.txt,5,1.500000,"(24, {50, 54, 72, 91, 60})"
+Brute Force (C++),horse_u-turn_128.txt,5,0.406250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,5) = 36,949,857 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,5,0.406250,"(24, {50, 54, 72, 91, 60})"
+MILP (OR-Tools),horse_u-turn_128.txt,5,0.390625,"(24, {72, 50, 54, 91, 60})"
+Important Separators (C++),horse_arcs_170.txt,13,2301.375000,"(153, {235, 172, 205, 236, 237, 80, 144, 238, 239, 20, 120, 221, 190})"
+Important Separators,horse_u-turn_128.txt,6,0.875000,"(26, {64, 35, 26, 54, 42, 76})"
+Brute Force (C++),horse_u-turn_128.txt,6,0.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,6) = 504,981,379 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,6,0.250000,"(26, {49, 54, 72, 59, 91, 44})"
+MILP (OR-Tools),horse_u-turn_128.txt,6,0.171875,"(26, {64, 35, 42, 76, 54, 26})"
+Important Separators,horse_portals_cherries.txt,15,173.359375,ERROR: TIMEOUT
+Important Separators,horse_u-turn_128.txt,7,13.625000,"(38, {35, 42, 54, 72, 26, 91, 76})"
+Brute Force (C++),horse_u-turn_128.txt,7,0.375000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,7) = 5,843,355,957 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,7,0.890625,"(38, {35, 26, 54, 72, 42, 91, 76})"
+MILP (OR-Tools),horse_u-turn_128.txt,7,0.296875,"(38, {35, 72, 42, 76, 54, 26, 91})"
+Brute Force,horse_u-turn_128.txt,4,150.078125,"(12, {64, 50, 60, 54})"
+Important Separators,horse_u-turn_128.txt,8,39.093750,"(41, {34, 72, 41, 76, 16, 54, 25, 91})"
+Brute Force (C++),horse_u-turn_128.txt,8,0.140625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,8) = 58,433,559,570 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,8,1.515625,"(41, {34, 72, 41, 76, 16, 54, 25, 91})"
+MILP (OR-Tools),horse_u-turn_128.txt,8,0.968750,"(41, {34, 72, 41, 76, 16, 54, 25, 91})"
+Brute Force,horse_u-turn_128.txt,5,172.937500,ERROR: TIMEOUT
+Brute Force,horse_u-turn_128.txt,6,173.937500,ERROR: TIMEOUT
+Brute Force (C++),horse_u-turn_128.txt,9,0.265625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,9) = 512,916,800,670 > 10,000,000."
+Brute Force,horse_u-turn_128.txt,7,173.265625,ERROR: TIMEOUT
+MILP (OR-Tools),horse_u-turn_128.txt,9,0.203125,"(51, {39, 72, 9, 76, 16, 21, 54, 91, 31})"
+Important Separators (C++),horse_u-turn_128.txt,9,3.343750,"(51, {39, 72, 9, 76, 16, 21, 54, 91, 31})"
+Brute Force,horse_u-turn_128.txt,8,173.015625,ERROR: TIMEOUT
+Brute Force (C++),horse_u-turn_128.txt,10,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,10) = 4,000,751,045,226 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,10,6.640625,"(53, {34, 72, 41, 76, 47, 16, 56, 25, 91, 30})"
+MILP (OR-Tools),horse_u-turn_128.txt,10,1.062500,"(53, {2, 39, 72, 10, 76, 17, 21, 54, 91, 31})"
+Important Separators,horse_u-turn_128.txt,9,78.421875,"(51, {39, 72, 9, 76, 16, 21, 54, 91, 31})"
+Brute Force,horse_u-turn_128.txt,9,171.171875,ERROR: TIMEOUT
+Brute Force (C++),horse_u-turn_128.txt,11,0.437500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,11) = 28,005,257,316,582 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,11,14.312500,"(63, {39, 72, 9, 76, 47, 16, 21, 56, 91, 30, 31})"
+MILP (OR-Tools),horse_u-turn_128.txt,11,0.531250,"(63, {39, 72, 9, 76, 47, 16, 21, 56, 91, 30, 31})"
+Brute Force,horse_u-turn_128.txt,10,170.078125,ERROR: TIMEOUT
+Important Separators,horse_u-turn_128.txt,10,170.750000,ERROR: TIMEOUT
+Brute Force (C++),horse_u-turn_128.txt,12,0.781250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,12) = 177,366,629,671,686 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,12,27.734375,"(65, {2, 39, 72, 10, 76, 47, 17, 21, 56, 91, 30, 31})"
+MILP (OR-Tools),horse_u-turn_128.txt,12,0.765625,"(65, {2, 39, 72, 10, 76, 47, 17, 21, 56, 91, 30, 31})"
+Brute Force,horse_u-turn_128.txt,11,171.015625,ERROR: TIMEOUT
+Important Separators,horse_u-turn_128.txt,11,170.234375,ERROR: TIMEOUT
+Brute Force (C++),horse_u-turn_128.txt,13,0.468750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,13) = 1,023,269,017,336,650 > 10,000,000."
+Important Separators (C++),horse_u-turn_128.txt,13,50.093750,"(67, {2, 3, 39, 72, 11, 76, 47, 18, 21, 56, 91, 30, 31})"
+MILP (OR-Tools),horse_u-turn_128.txt,13,1.171875,"(67, {2, 3, 39, 72, 11, 76, 47, 18, 21, 56, 91, 30, 31})"
+Brute Force,horse_u-turn_128.txt,12,166.828125,ERROR: TIMEOUT
+Important Separators,horse_u-turn_128.txt,12,166.312500,ERROR: TIMEOUT
+Brute Force (C++),horse_u-turn_128.txt,14,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,14) = 5,408,707,663,065,150 > 10,000,000."
+Brute Force,horse_u-turn_128.txt,13,166.218750,ERROR: TIMEOUT
+MILP (OR-Tools),horse_u-turn_128.txt,14,0.593750,"(77, {2, 3, 4, 5, 6, 39, 72, 76, 47, 21, 56, 91, 30, 31})"
+Important Separators,horse_u-turn_128.txt,13,165.703125,ERROR: TIMEOUT
+Important Separators (C++),horse_u-turn_128.txt,14,83.859375,"(77, {2, 3, 4, 5, 6, 39, 72, 76, 47, 21, 56, 91, 30, 31})"
+Brute Force (C++),horse_u-turn_128.txt,15,0.171875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(87,15) = 26,322,377,293,583,730 > 10,000,000."
+Brute Force,horse_u-turn_128.txt,14,165.812500,ERROR: TIMEOUT
+MILP (OR-Tools),horse_u-turn_128.txt,15,0.406250,"(78, {2, 3, 4, 5, 6, 39, 72, 75, 47, 83, 21, 56, 91, 30, 31})"
+Brute Force,Generated_10x10,0,0.671875,"(-inf, set())"
+Important Separators,Generated_10x10,0,0.421875,"(-inf, set())"
+Brute Force (C++),Generated_10x10,0,0.250000,"(-inf, set())"
+Important Separators (C++),Generated_10x10,0,0.546875,"(-inf, set())"
+MILP (OR-Tools),Generated_10x10,0,0.656250,"(-inf, set())"
+Brute Force,Generated_10x10,1,0.890625,"(-inf, set())"
+Important Separators,Generated_10x10,1,0.343750,"(-inf, set())"
+Brute Force (C++),Generated_10x10,1,0.187500,"(-inf, set())"
+Important Separators (C++),Generated_10x10,1,0.546875,"(-inf, set())"
+MILP (OR-Tools),Generated_10x10,1,0.265625,"(-inf, set())"
+Brute Force,Generated_10x10,2,0.250000,"(-inf, set())"
+Important Separators,Generated_10x10,2,0.359375,"(-inf, set())"
+Brute Force (C++),Generated_10x10,2,0.296875,"(-inf, set())"
+Important Separators (C++),Generated_10x10,2,0.187500,"(-inf, set())"
+MILP (OR-Tools),Generated_10x10,2,0.343750,"(-inf, set())"
+Brute Force,Generated_10x10,3,0.234375,"(-inf, set())"
+Important Separators,Generated_10x10,3,0.453125,"(-inf, set())"
+Brute Force (C++),Generated_10x10,3,0.203125,"(-inf, set())"
+Important Separators (C++),Generated_10x10,3,0.468750,"(-inf, set())"
+MILP (OR-Tools),Generated_10x10,3,0.484375,"(-inf, set())"
+Brute Force,Generated_10x10,4,2.781250,"(10, {1, 18, 35, 22})"
+Important Separators,Generated_10x10,4,0.281250,"(10, {1, 18, 35, 22})"
+Important Separators,horse_u-turn_128.txt,14,170.265625,ERROR: TIMEOUT
+Brute Force (C++),Generated_10x10,4,1.156250,"(10, {1, 18, 35, 22})"
+Important Separators (C++),Generated_10x10,4,0.765625,"(10, {1, 18, 35, 22})"
+MILP (OR-Tools),Generated_10x10,4,0.406250,"(10, {1, 18, 35, 22})"
+Important Separators,Generated_10x10,5,0.093750,"(10, {1, 18, 35, 22})"
+Brute Force (C++),Generated_10x10,5,2.921875,"(10, {0, 1, 18, 35, 22})"
+Important Separators (C++),Generated_10x10,5,0.359375,"(10, {1, 18, 35, 22})"
+MILP (OR-Tools),Generated_10x10,5,0.234375,"(10, {1, 18, 35, 22})"
+Brute Force,Generated_10x10,5,20.921875,"(10, {1, 18, 35, 22})"
+Important Separators,Generated_10x10,6,1.140625,"(20, {0, 1, 34, 35, 22, 15})"
+Important Separators (C++),horse_u-turn_128.txt,15,122.937500,"(78, {2, 3, 4, 5, 6, 39, 72, 75, 47, 83, 21, 56, 91, 30, 31})"
+Important Separators (C++),Generated_10x10,6,0.187500,"(20, {0, 1, 34, 35, 22, 15})"
+MILP (OR-Tools),Generated_10x10,6,0.156250,"(20, {0, 1, 34, 35, 15, 22})"
+Brute Force,horse_u-turn_128.txt,15,172.578125,ERROR: TIMEOUT
+Important Separators,Generated_10x10,7,0.140625,"(20, {0, 1, 34, 35, 22, 15})"
+Brute Force (C++),Generated_10x10,6,17.234375,"(20, {0, 1, 34, 35, 22, 15})"
+Important Separators (C++),Generated_10x10,7,0.296875,"(20, {0, 1, 34, 35, 22, 15})"
+Important Separators,horse_u-turn_128.txt,15,171.609375,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_10x10,7,1.000000,"(20, {0, 1, 33, 34, 35, 15, 22})"
+Important Separators,Generated_10x10,8,1.562500,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,8,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,8) = 30,260,340 > 10,000,000."
+Important Separators (C++),Generated_10x10,8,0.421875,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+MILP (OR-Tools),Generated_10x10,8,0.671875,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Brute Force,Generated_10x10,6,95.359375,"(20, {0, 1, 34, 35, 15, 22})"
+Important Separators,Generated_10x10,9,0.343750,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,9,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,9) = 94,143,280 > 10,000,000."
+Important Separators (C++),Generated_10x10,9,0.140625,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+MILP (OR-Tools),Generated_10x10,9,0.531250,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,7,86.078125,"(20, {0, 1, 2, 34, 35, 22, 15})"
+Important Separators,Generated_10x10,10,0.578125,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,10,0.390625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,10) = 254,186,856 > 10,000,000."
+Important Separators (C++),Generated_10x10,10,0.671875,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+MILP (OR-Tools),Generated_10x10,10,0.453125,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Important Separators (C++),horse_dots.txt,13,2024.343750,"(35, {35, 132, 37, 102, 134, 108, 46, 80, 51, 148, 22, 87, 60})"
+Important Separators,Generated_10x10,11,0.625000,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,11,0.156250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,11) = 600,805,296 > 10,000,000."
+Important Separators (C++),Generated_10x10,11,0.140625,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+MILP (OR-Tools),Generated_10x10,11,0.531250,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Brute Force,Generated_10x10,7,171.953125,ERROR: TIMEOUT
+Important Separators,Generated_10x10,12,0.703125,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,12,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,12) = 1,251,677,700 > 10,000,000."
+Important Separators (C++),Generated_10x10,12,0.265625,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+MILP (OR-Tools),Generated_10x10,12,0.468750,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Brute Force,Generated_10x10,8,173.406250,ERROR: TIMEOUT
+Important Separators,Generated_10x10,13,0.843750,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,13,0.875000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,13) = 2,310,789,600 > 10,000,000."
+Important Separators (C++),Generated_10x10,13,0.328125,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Brute Force,Generated_10x10,9,172.031250,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_10x10,13,0.609375,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Important Separators,Generated_10x10,14,0.500000,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,14,1.218750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,14) = 3,796,297,200 > 10,000,000."
+Important Separators (C++),Generated_10x10,14,0.296875,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+MILP (OR-Tools),Generated_10x10,14,0.515625,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Brute Force,Generated_10x10,10,170.437500,ERROR: TIMEOUT
+Important Separators,Generated_10x10,15,0.421875,"(29, {0, 1, 2, 35, 34, 36, 15, 24})"
+Brute Force (C++),Generated_10x10,15,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(36,15) = 5,567,902,560 > 10,000,000."
+Important Separators (C++),Generated_10x10,15,0.484375,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+MILP (OR-Tools),Generated_10x10,15,0.312500,"(29, {0, 1, 2, 34, 35, 36, 15, 24})"
+Brute Force,Generated_14x14,0,0.171875,"(-inf, set())"
+Important Separators,Generated_14x14,0,0.359375,"(-inf, set())"
+Brute Force (C++),Generated_14x14,0,0.937500,"(-inf, set())"
+Brute Force,Generated_10x10,11,170.281250,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_14x14,0,0.296875,"(-inf, set())"
+Important Separators (C++),Generated_14x14,0,0.343750,"(-inf, set())"
+Brute Force,Generated_14x14,1,0.359375,"(-inf, set())"
+Important Separators,Generated_14x14,1,0.484375,"(-inf, set())"
+Brute Force (C++),Generated_14x14,1,0.468750,"(-inf, set())"
+Important Separators (C++),Generated_14x14,1,0.234375,"(-inf, set())"
+MILP (OR-Tools),Generated_14x14,1,0.609375,"(-inf, set())"
+Brute Force,Generated_14x14,2,0.703125,"(-inf, set())"
+Important Separators,Generated_14x14,2,0.812500,"(-inf, set())"
+Brute Force (C++),Generated_14x14,2,0.453125,"(-inf, set())"
+Important Separators (C++),Generated_14x14,2,0.171875,"(-inf, set())"
+MILP (OR-Tools),Generated_14x14,2,0.281250,"(-inf, set())"
+Important Separators,Generated_14x14,3,1.109375,"(-inf, set())"
+Brute Force,Generated_14x14,3,1.859375,"(-inf, set())"
+Brute Force (C++),Generated_14x14,3,0.359375,"(-inf, set())"
+Brute Force,Generated_10x10,12,169.671875,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_14x14,3,0.562500,"(-inf, set())"
+Important Separators (C++),Generated_14x14,3,0.671875,"(-inf, set())"
+Important Separators,Generated_14x14,4,0.656250,"(14, {1, 26, 51, 30})"
+Important Separators (C++),Generated_14x14,4,0.125000,"(14, {1, 26, 51, 30})"
+Brute Force (C++),Generated_14x14,4,2.328125,"(14, {1, 26, 51, 30})"
+MILP (OR-Tools),Generated_14x14,4,0.296875,"(14, {1, 26, 51, 30})"
+Brute Force,Generated_14x14,4,9.093750,"(14, {1, 26, 51, 30})"
+Important Separators,Generated_14x14,5,0.343750,"(14, {1, 26, 51, 30})"
+Important Separators (C++),Generated_14x14,5,0.218750,"(14, {1, 26, 51, 30})"
+MILP (OR-Tools),Generated_14x14,5,0.218750,"(14, {1, 26, 51, 30})"
+Brute Force (C++),Generated_14x14,5,23.812500,"(14, {0, 1, 51, 26, 30})"
+Brute Force,Generated_10x10,13,166.109375,ERROR: TIMEOUT
+Brute Force (C++),Generated_14x14,6,0.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,6) = 20,358,520 > 10,000,000."
+Important Separators,Generated_14x14,6,0.453125,"(30, {0, 1, 50, 51, 21, 30})"
+Important Separators (C++),Generated_14x14,6,0.093750,"(30, {0, 1, 50, 51, 21, 30})"
+MILP (OR-Tools),Generated_14x14,6,0.546875,"(30, {0, 1, 50, 51, 21, 30})"
+Important Separators,Generated_14x14,7,0.875000,"(30, {0, 1, 50, 51, 21, 30})"
+Brute Force (C++),Generated_14x14,7,0.437500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,7) = 133,784,560 > 10,000,000."
+Important Separators (C++),Generated_14x14,7,0.250000,"(30, {0, 1, 50, 51, 21, 30})"
+MILP (OR-Tools),Generated_14x14,7,1.359375,"(30, {0, 1, 50, 51, 21, 30})"
+Brute Force,Generated_10x10,14,166.750000,ERROR: TIMEOUT
+Important Separators,Generated_14x14,8,1.781250,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,8,1.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,8) = 752,538,150 > 10,000,000."
+Important Separators (C++),Generated_14x14,8,0.453125,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,8,0.281250,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_10x10,15,166.000000,ERROR: TIMEOUT
+Important Separators,Generated_14x14,9,1.312500,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,9,0.265625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,9) = 3,679,075,400 > 10,000,000."
+Important Separators (C++),Generated_14x14,9,1.000000,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,9,1.640625,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_14x14,5,139.609375,"(14, {1, 26, 51, 30})"
+Important Separators,Generated_14x14,10,0.546875,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,10,0.484375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,10) = 15,820,024,220 > 10,000,000."
+Important Separators (C++),Generated_14x14,10,0.250000,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,10,0.375000,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_14x14,6,166.921875,ERROR: TIMEOUT
+Important Separators,Generated_14x14,11,0.765625,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,11,0.500000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,11) = 60,403,728,840 > 10,000,000."
+Important Separators (C++),Generated_14x14,11,0.375000,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,11,0.656250,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_14x14,7,166.312500,ERROR: TIMEOUT
+Important Separators,Generated_14x14,12,0.328125,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,12,0.234375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,12) = 206,379,406,870 > 10,000,000."
+Important Separators (C++),Generated_14x14,12,0.328125,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,12,0.546875,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_14x14,8,167.343750,ERROR: TIMEOUT
+Important Separators,Generated_14x14,13,0.703125,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,13,0.484375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,13) = 635,013,559,600 > 10,000,000."
+Important Separators (C++),Generated_14x14,13,1.062500,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,13,0.328125,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_14x14,9,168.203125,ERROR: TIMEOUT
+Important Separators,Generated_14x14,14,0.484375,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,14,0.609375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,14) = 1,768,966,344,600 > 10,000,000."
+Important Separators (C++),Generated_14x14,14,0.562500,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,14,0.421875,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_14x14,10,168.234375,ERROR: TIMEOUT
+Important Separators,Generated_14x14,15,1.546875,"(45, {0, 1, 34, 2, 50, 51, 52, 21})"
+Brute Force (C++),Generated_14x14,15,1.531250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(52,15) = 4,481,381,406,320 > 10,000,000."
+Important Separators (C++),Generated_14x14,15,0.390625,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+MILP (OR-Tools),Generated_14x14,15,0.531250,"(45, {0, 1, 2, 34, 50, 51, 52, 21})"
+Brute Force,Generated_22x22,0,1.156250,"(-inf, set())"
+Important Separators,Generated_22x22,0,0.281250,"(-inf, set())"
+Brute Force (C++),Generated_22x22,0,0.328125,"(-inf, set())"
+Important Separators (C++),Generated_22x22,0,0.093750,"(-inf, set())"
+MILP (OR-Tools),Generated_22x22,0,0.296875,"(-inf, set())"
+Brute Force,Generated_22x22,1,0.937500,"(-inf, set())"
+Important Separators,Generated_22x22,1,0.953125,"(-inf, set())"
+Brute Force,Generated_14x14,11,166.093750,ERROR: TIMEOUT
+Brute Force (C++),Generated_22x22,1,1.390625,"(-inf, set())"
+Important Separators (C++),Generated_22x22,1,0.687500,"(-inf, set())"
+Brute Force,Generated_22x22,2,0.531250,"(-inf, set())"
+MILP (OR-Tools),Generated_22x22,1,0.718750,"(-inf, set())"
+Important Separators,Generated_22x22,2,0.453125,"(-inf, set())"
+Brute Force (C++),Generated_22x22,2,1.062500,"(-inf, set())"
+Important Separators (C++),Generated_22x22,2,0.750000,"(-inf, set())"
+MILP (OR-Tools),Generated_22x22,2,1.375000,"(-inf, set())"
+Brute Force,Generated_22x22,3,4.437500,"(-inf, set())"
+Important Separators,Generated_22x22,3,0.453125,"(-inf, set())"
+Brute Force (C++),Generated_22x22,3,1.375000,"(-inf, set())"
+MILP (OR-Tools),Generated_22x22,3,0.843750,"(-inf, set())"
+Important Separators (C++),Generated_22x22,3,1.046875,"(-inf, set())"
+Brute Force,Generated_14x14,12,166.343750,ERROR: TIMEOUT
+Important Separators,Generated_22x22,4,1.250000,"(22, {1, 42, 83, 46})"
+Important Separators (C++),Generated_22x22,4,0.312500,"(22, {1, 42, 83, 46})"
+MILP (OR-Tools),Generated_22x22,4,0.328125,"(22, {1, 42, 83, 46})"
+Brute Force,Generated_14x14,13,164.109375,ERROR: TIMEOUT
+Important Separators,Generated_22x22,5,0.750000,"(22, {1, 42, 83, 46})"
+Brute Force (C++),Generated_22x22,5,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,5) = 30,872,016 > 10,000,000."
+Important Separators (C++),Generated_22x22,5,0.171875,"(22, {1, 42, 83, 46})"
+Brute Force (C++),Generated_22x22,4,21.531250,"(22, {1, 42, 83, 46})"
+MILP (OR-Tools),Generated_22x22,5,0.484375,"(22, {1, 42, 83, 46})"
+Important Separators,Generated_22x22,6,0.531250,"(50, {0, 1, 33, 82, 83, 46})"
+Brute Force (C++),Generated_22x22,6,0.453125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,6) = 406,481,544 > 10,000,000."
+Important Separators (C++),Generated_22x22,6,0.781250,"(50, {0, 1, 33, 82, 83, 46})"
+MILP (OR-Tools),Generated_22x22,6,0.218750,"(50, {0, 1, 33, 46, 82, 83})"
+Brute Force,Generated_14x14,14,165.562500,ERROR: TIMEOUT
+Important Separators,Generated_22x22,7,1.578125,"(50, {0, 1, 33, 82, 83, 46})"
+Brute Force (C++),Generated_22x22,7,0.218750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,7) = 4,529,365,776 > 10,000,000."
+Important Separators (C++),Generated_22x22,7,0.703125,"(50, {0, 1, 33, 82, 83, 46})"
+MILP (OR-Tools),Generated_22x22,7,1.468750,"(50, {0, 1, 33, 46, 82, 83})"
+Brute Force,Generated_14x14,15,165.515625,ERROR: TIMEOUT
+Important Separators,Generated_22x22,8,1.437500,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Brute Force (C++),Generated_22x22,8,0.453125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,8) = 43,595,145,594 > 10,000,000."
+Important Separators (C++),Generated_22x22,8,1.109375,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,8,1.750000,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,4,166.843750,ERROR: TIMEOUT
+Important Separators,Generated_22x22,9,1.312500,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Brute Force (C++),Generated_22x22,9,0.203125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,9) = 368,136,785,016 > 10,000,000."
+Important Separators (C++),Generated_22x22,9,0.437500,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,9,0.468750,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,5,169.406250,ERROR: TIMEOUT
+Important Separators,Generated_22x22,10,1.625000,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,6,169.000000,ERROR: TIMEOUT
+Brute Force (C++),Generated_22x22,10,0.078125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,10) = 2,761,025,887,620 > 10,000,000."
+Important Separators (C++),Generated_22x22,10,0.296875,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,10,0.906250,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,7,167.859375,ERROR: TIMEOUT
+Brute Force (C++),Generated_22x22,11,0.140625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,11) = 18,574,174,153,080 > 10,000,000."
+Important Separators (C++),Generated_22x22,11,0.390625,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,11,0.203125,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Important Separators,Generated_22x22,11,4.531250,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Important Separators,Generated_22x22,12,1.656250,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Brute Force (C++),Generated_22x22,12,0.531250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,12) = 112,992,892,764,570 > 10,000,000."
+Important Separators (C++),Generated_22x22,12,0.656250,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,12,1.843750,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,8,170.515625,ERROR: TIMEOUT
+Important Separators,Generated_22x22,13,2.031250,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Brute Force (C++),Generated_22x22,13,1.453125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,13) = 625,806,790,696,080 > 10,000,000."
+Important Separators (C++),Generated_22x22,13,0.296875,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,13,1.000000,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,9,171.515625,ERROR: TIMEOUT
+Important Separators,Generated_22x22,14,6.468750,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Brute Force (C++),Generated_22x22,14,0.671875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,14) = 3,173,734,438,530,120 > 10,000,000."
+Important Separators (C++),Generated_22x22,14,0.578125,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,14,1.000000,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,10,171.968750,ERROR: TIMEOUT
+Important Separators,Generated_22x22,15,1.625000,"(77, {0, 1, 33, 2, 82, 83, 84, 54})"
+Brute Force (C++),Generated_22x22,15,0.406250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(84,15) = 14,810,760,713,140,560 > 10,000,000."
+Important Separators (C++),Generated_22x22,15,0.703125,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+MILP (OR-Tools),Generated_22x22,15,0.531250,"(77, {0, 1, 2, 33, 82, 83, 84, 54})"
+Brute Force,Generated_22x22,11,171.703125,ERROR: TIMEOUT
+Brute Force,Generated_32x32,0,0.359375,"(-inf, set())"
+Important Separators,Generated_32x32,0,0.171875,"(-inf, set())"
+Brute Force (C++),Generated_32x32,0,0.828125,"(-inf, set())"
+Important Separators (C++),Generated_32x32,0,0.343750,"(-inf, set())"
+MILP (OR-Tools),Generated_32x32,0,0.718750,"(-inf, set())"
+Brute Force,Generated_32x32,1,0.187500,"(-inf, set())"
+Brute Force,Generated_22x22,12,171.296875,ERROR: TIMEOUT
+Brute Force (C++),Generated_32x32,1,0.625000,"(-inf, set())"
+Important Separators,Generated_32x32,1,0.703125,"(-inf, set())"
+Important Separators (C++),Generated_32x32,1,0.453125,"(-inf, set())"
+MILP (OR-Tools),Generated_32x32,1,0.546875,"(-inf, set())"
+Important Separators,Generated_32x32,2,0.328125,"(-inf, set())"
+Brute Force,Generated_32x32,2,1.843750,"(-inf, set())"
+Brute Force (C++),Generated_32x32,2,0.281250,"(-inf, set())"
+Important Separators (C++),Generated_32x32,2,0.203125,"(-inf, set())"
+Important Separators,Generated_32x32,3,0.078125,"(-inf, set())"
+MILP (OR-Tools),Generated_32x32,2,1.968750,"(-inf, set())"
+Important Separators (C++),Generated_32x32,3,0.515625,"(-inf, set())"
+Brute Force (C++),Generated_32x32,3,4.234375,"(-inf, set())"
+MILP (OR-Tools),Generated_32x32,3,0.625000,"(-inf, set())"
+Important Separators,Generated_32x32,4,1.296875,"(32, {1, 66, 123, 62})"
+Brute Force,Generated_22x22,13,173.156250,ERROR: TIMEOUT
+Important Separators (C++),Generated_32x32,4,0.578125,"(32, {1, 66, 123, 62})"
+MILP (OR-Tools),Generated_32x32,4,0.796875,"(32, {1, 66, 123, 62})"
+Brute Force,Generated_32x32,3,25.796875,"(-inf, set())"
+Important Separators,Generated_32x32,5,1.109375,"(32, {1, 66, 123, 62})"
+Brute Force (C++),Generated_32x32,5,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,5) = 225,150,024 > 10,000,000."
+Important Separators (C++),Generated_32x32,5,1.031250,"(32, {1, 66, 123, 62})"
+MILP (OR-Tools),Generated_32x32,5,0.890625,"(32, {1, 66, 3, 123, 62})"
+Brute Force,Generated_22x22,14,173.015625,ERROR: TIMEOUT
+Important Separators,Generated_32x32,6,5.265625,"(75, {0, 1, 66, 48, 122, 123})"
+Brute Force (C++),Generated_32x32,6,1.421875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,6) = 4,465,475,476 > 10,000,000."
+Important Separators (C++),Generated_32x32,6,0.593750,"(75, {0, 1, 66, 48, 122, 123})"
+MILP (OR-Tools),Generated_32x32,6,0.359375,"(75, {0, 1, 66, 48, 122, 123})"
+Brute Force,Generated_22x22,15,170.625000,ERROR: TIMEOUT
+Important Separators,Generated_32x32,7,3.687500,"(75, {0, 1, 66, 48, 122, 123})"
+Brute Force (C++),Generated_32x32,7,0.296875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,7) = 75,275,158,024 > 10,000,000."
+Important Separators (C++),Generated_32x32,7,0.531250,"(75, {0, 1, 66, 48, 122, 123})"
+MILP (OR-Tools),Generated_32x32,7,2.734375,"(75, {0, 1, 66, 48, 122, 123})"
+Brute Force (C++),Generated_32x32,4,135.484375,"(32, {1, 66, 123, 62})"
+Important Separators,Generated_32x32,8,2.031250,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force (C++),Generated_32x32,8,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,8) = 1,100,899,186,101 > 10,000,000."
+Important Separators (C++),Generated_32x32,8,0.703125,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+MILP (OR-Tools),Generated_32x32,8,1.640625,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force,Generated_32x32,4,173.093750,ERROR: TIMEOUT
+Important Separators,Generated_32x32,9,1.890625,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force (C++),Generated_32x32,9,0.656250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,9) = 14,189,367,287,524 > 10,000,000."
+Important Separators (C++),Generated_32x32,9,1.281250,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+MILP (OR-Tools),Generated_32x32,9,0.703125,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force,Generated_32x32,5,172.921875,ERROR: TIMEOUT
+Brute Force,Generated_32x32,6,172.984375,ERROR: TIMEOUT
+Important Separators,Generated_32x32,10,6.281250,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force (C++),Generated_32x32,10,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,10) = 163,177,723,806,526 > 10,000,000."
+MILP (OR-Tools),Generated_32x32,10,0.421875,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Important Separators (C++),Generated_32x32,10,1.468750,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Important Separators,Generated_32x32,11,5.078125,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force,Generated_32x32,7,173.546875,ERROR: TIMEOUT
+Brute Force (C++),Generated_32x32,11,0.718750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,11) = 1,691,114,592,176,724 > 10,000,000."
+Important Separators (C++),Generated_32x32,11,0.468750,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+MILP (OR-Tools),Generated_32x32,11,1.281250,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Important Separators,Generated_32x32,12,3.718750,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force (C++),Generated_32x32,12,0.843750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,12) = 15,924,662,409,664,151 > 10,000,000."
+Important Separators (C++),Generated_32x32,12,1.890625,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+MILP (OR-Tools),Generated_32x32,12,2.109375,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force,Generated_32x32,8,174.703125,ERROR: TIMEOUT
+Important Separators,Generated_32x32,13,3.984375,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force (C++),Generated_32x32,13,1.015625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,13) = 137,197,091,529,414,224 > 10,000,000."
+Important Separators (C++),Generated_32x32,13,1.328125,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+MILP (OR-Tools),Generated_32x32,13,0.671875,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force,Generated_32x32,9,173.781250,ERROR: TIMEOUT
+Important Separators,Generated_32x32,14,2.750000,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force (C++),Generated_32x32,14,0.828125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,14) = 1,087,776,939,983,212,776 > 10,000,000."
+Important Separators (C++),Generated_32x32,14,0.406250,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+MILP (OR-Tools),Generated_32x32,14,0.671875,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force,Generated_32x32,10,173.453125,ERROR: TIMEOUT
+Important Separators,Generated_32x32,15,1.312500,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force (C++),Generated_32x32,15,0.203125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(124,15) = 7,977,030,893,210,227,024 > 10,000,000."
+Important Separators (C++),Generated_32x32,15,0.765625,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+MILP (OR-Tools),Generated_32x32,15,0.781250,"(117, {0, 1, 2, 79, 48, 122, 123, 124})"
+Brute Force,Generated_45x45,0,0.421875,"(-inf, set())"
+Important Separators,Generated_45x45,0,0.921875,"(-inf, set())"
+Brute Force (C++),Generated_45x45,0,0.296875,"(-inf, set())"
+Important Separators (C++),Generated_45x45,0,0.390625,"(-inf, set())"
+Brute Force,Generated_32x32,11,173.937500,ERROR: TIMEOUT
+Brute Force,Generated_45x45,1,0.281250,"(-inf, set())"
+MILP (OR-Tools),Generated_45x45,0,0.609375,"(-inf, set())"
+Important Separators,Generated_45x45,1,1.109375,"(-inf, set())"
+Brute Force (C++),Generated_45x45,1,0.234375,"(-inf, set())"
+Important Separators (C++),Generated_45x45,1,0.187500,"(-inf, set())"
+MILP (OR-Tools),Generated_45x45,1,0.937500,"(-inf, set())"
+Brute Force,Generated_45x45,2,1.265625,"(-inf, set())"
+Important Separators,Generated_45x45,2,0.312500,"(-inf, set())"
+Important Separators (C++),Generated_45x45,2,0.390625,"(-inf, set())"
+Brute Force (C++),Generated_45x45,2,2.000000,"(-inf, set())"
+MILP (OR-Tools),Generated_45x45,2,0.562500,"(-inf, set())"
+Brute Force,Generated_32x32,12,175.656250,ERROR: TIMEOUT
+Important Separators,Generated_45x45,3,0.671875,"(-inf, set())"
+Important Separators (C++),Generated_45x45,3,0.765625,"(-inf, set())"
+MILP (OR-Tools),Generated_45x45,3,0.484375,"(-inf, set())"
+Brute Force (C++),Generated_45x45,3,16.531250,"(-inf, set())"
+Important Separators,Generated_45x45,4,2.062500,"(45, {1, 90, 86, 175})"
+Brute Force,Generated_32x32,13,173.640625,ERROR: TIMEOUT
+Brute Force (C++),Generated_45x45,4,1.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,4) = 38,630,900 > 10,000,000."
+Important Separators (C++),Generated_45x45,4,0.625000,"(45, {1, 90, 86, 175})"
+MILP (OR-Tools),Generated_45x45,4,1.156250,"(45, {1, 90, 86, 175})"
+Important Separators,Generated_45x45,5,3.281250,"(45, {1, 90, 86, 175})"
+Brute Force (C++),Generated_45x45,5,1.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,5) = 1,328,902,960 > 10,000,000."
+Important Separators (C++),Generated_45x45,5,0.812500,"(45, {1, 90, 86, 175})"
+MILP (OR-Tools),Generated_45x45,5,0.906250,"(45, {1, 90, 86, 175})"
+Brute Force,Generated_32x32,14,174.984375,ERROR: TIMEOUT
+Important Separators,Generated_45x45,6,9.671875,"(107, {0, 1, 66, 90, 174, 175})"
+Brute Force (C++),Generated_45x45,6,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,6) = 37,873,734,360 > 10,000,000."
+Important Separators (C++),Generated_45x45,6,1.953125,"(107, {176, 1, 2, 86, 110, 175})"
+Brute Force,Generated_45x45,3,110.906250,"(-inf, set())"
+MILP (OR-Tools),Generated_45x45,6,1.203125,"(107, {1, 2, 110, 175, 176, 86})"
+Brute Force,Generated_32x32,15,174.062500,ERROR: TIMEOUT
+Brute Force (C++),Generated_45x45,7,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,7) = 919,790,691,600 > 10,000,000."
+Important Separators,Generated_45x45,7,9.609375,"(107, {0, 1, 66, 90, 174, 175})"
+Important Separators (C++),Generated_45x45,7,1.031250,"(107, {176, 1, 2, 86, 110, 175})"
+MILP (OR-Tools),Generated_45x45,7,1.296875,"(107, {1, 2, 110, 111, 175, 176, 86})"
+Important Separators,Generated_45x45,8,7.562500,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force (C++),Generated_45x45,8,0.750000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,8) = 19,430,578,360,050 > 10,000,000."
+Important Separators (C++),Generated_45x45,8,2.437500,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+MILP (OR-Tools),Generated_45x45,8,1.093750,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Brute Force,Generated_45x45,4,174.281250,ERROR: TIMEOUT
+Important Separators,Generated_45x45,9,7.765625,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force (C++),Generated_45x45,9,0.218750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,9) = 362,704,129,387,600 > 10,000,000."
+Important Separators (C++),Generated_45x45,9,1.281250,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+MILP (OR-Tools),Generated_45x45,9,0.484375,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Brute Force,Generated_45x45,5,174.921875,ERROR: TIMEOUT
+Important Separators,Generated_45x45,10,8.890625,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force (C++),Generated_45x45,10,0.343750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,10) = 6,057,158,960,772,920 > 10,000,000."
+Brute Force,Generated_45x45,6,175.843750,ERROR: TIMEOUT
+Important Separators (C++),Generated_45x45,10,1.937500,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+MILP (OR-Tools),Generated_45x45,10,3.187500,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Important Separators,Generated_45x45,11,15.328125,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force (C++),Generated_45x45,11,0.640625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,11) = 91,408,035,226,209,520 > 10,000,000."
+Important Separators (C++),Generated_45x45,11,1.500000,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Brute Force,Generated_45x45,7,172.812500,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_45x45,11,0.671875,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Important Separators,Generated_45x45,12,7.953125,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force,Generated_45x45,8,175.203125,ERROR: TIMEOUT
+Brute Force (C++),Generated_45x45,12,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,12) = 1,256,860,484,360,380,900 > 10,000,000."
+Important Separators (C++),Generated_45x45,12,0.687500,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+MILP (OR-Tools),Generated_45x45,12,1.828125,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Important Separators,Generated_45x45,13,11.000000,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force (C++),Generated_45x45,13,2.906250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,13) = 15,855,778,418,084,805,200 > 10,000,000."
+Important Separators (C++),Generated_45x45,13,0.890625,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Brute Force,Generated_45x45,9,175.921875,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_45x45,13,0.593750,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Important Separators,Generated_45x45,14,7.000000,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force (C++),Generated_45x45,14,0.562500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,14) = 184,606,563,010,558,803,400 > 10,000,000."
+Important Separators (C++),Generated_45x45,14,0.578125,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+MILP (OR-Tools),Generated_45x45,14,0.703125,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Brute Force,Generated_45x45,10,174.312500,ERROR: TIMEOUT
+Important Separators,Generated_45x45,15,9.281250,"(169, {0, 1, 2, 66, 110, 174, 176, 175})"
+Brute Force (C++),Generated_45x45,15,0.296875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(176,15) = 1,993,750,880,514,035,076,720 > 10,000,000."
+Important Separators (C++),Generated_45x45,15,2.250000,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+MILP (OR-Tools),Generated_45x45,15,0.625000,"(169, {0, 1, 2, 66, 110, 174, 175, 176})"
+Brute Force,Generated_71x71,0,0.765625,"(-inf, set())"
+Important Separators,Generated_71x71,0,1.000000,"(-inf, set())"
+Brute Force (C++),Generated_71x71,0,1.031250,"(-inf, set())"
+Brute Force,Generated_45x45,11,174.015625,ERROR: TIMEOUT
+Important Separators (C++),Generated_71x71,0,0.312500,"(-inf, set())"
+MILP (OR-Tools),Generated_71x71,0,1.578125,"(-inf, set())"
+Brute Force,Generated_71x71,1,0.171875,"(-inf, set())"
+Important Separators,Generated_71x71,1,1.671875,"(-inf, set())"
+Brute Force (C++),Generated_71x71,1,0.812500,"(-inf, set())"
+MILP (OR-Tools),Generated_71x71,1,1.234375,"(-inf, set())"
+Important Separators (C++),Generated_71x71,1,0.375000,"(-inf, set())"
+Important Separators,Generated_71x71,2,1.796875,"(-inf, set())"
+Brute Force,Generated_71x71,2,7.046875,"(-inf, set())"
+Important Separators (C++),Generated_71x71,2,1.140625,"(-inf, set())"
+Brute Force (C++),Generated_71x71,2,2.375000,"(-inf, set())"
+MILP (OR-Tools),Generated_71x71,2,1.296875,"(-inf, set())"
+Brute Force,Generated_45x45,12,173.265625,ERROR: TIMEOUT
+Important Separators,Generated_71x71,3,0.734375,"(-inf, set())"
+Important Separators (C++),Generated_71x71,3,0.921875,"(-inf, set())"
+MILP (OR-Tools),Generated_71x71,3,2.265625,"(-inf, set())"
+Brute Force,Generated_45x45,13,172.984375,ERROR: TIMEOUT
+Important Separators,Generated_71x71,4,5.000000,"(71, {1, 138, 142, 279})"
+Brute Force (C++),Generated_71x71,4,0.328125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,4) = 250,654,530 > 10,000,000."
+Important Separators (C++),Generated_71x71,4,1.468750,"(71, {1, 138, 142, 279})"
+MILP (OR-Tools),Generated_71x71,4,0.937500,"(71, {1, 138, 142, 279})"
+Brute Force,Generated_45x45,14,172.031250,ERROR: TIMEOUT
+Important Separators,Generated_71x71,5,13.656250,"(71, {1, 138, 142, 279})"
+Brute Force (C++),Generated_71x71,5,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,5) = 13,836,130,056 > 10,000,000."
+Brute Force,Generated_45x45,15,173.562500,ERROR: TIMEOUT
+Important Separators (C++),Generated_71x71,5,1.562500,"(71, {1, 138, 142, 279})"
+MILP (OR-Tools),Generated_71x71,5,0.671875,"(71, {1, 138, 142, 279})"
+Brute Force (C++),Generated_71x71,3,100.296875,"(-inf, set())"
+Brute Force (C++),Generated_71x71,6,0.203125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,6) = 634,155,960,900 > 10,000,000."
+Important Separators (C++),Generated_71x71,6,0.687500,"(172, {1, 2, 279, 280, 138, 175})"
+MILP (OR-Tools),Generated_71x71,6,0.656250,"(172, {0, 1, 105, 142, 278, 279})"
+Important Separators,Generated_71x71,6,21.390625,"(172, {1, 2, 279, 280, 138, 175})"
+Important Separators,Generated_71x71,7,20.218750,"(172, {1, 2, 279, 280, 138, 175})"
+Brute Force (C++),Generated_71x71,7,0.218750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,7) = 24,822,676,183,800 > 10,000,000."
+Important Separators (C++),Generated_71x71,7,0.500000,"(172, {1, 2, 279, 280, 138, 175})"
+MILP (OR-Tools),Generated_71x71,7,3.625000,"(172, {0, 1, 105, 142, 278, 279})"
+Brute Force,Generated_71x71,3,171.828125,ERROR: TIMEOUT
+Brute Force,Generated_71x71,4,172.406250,ERROR: TIMEOUT
+Brute Force (C++),Generated_71x71,8,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,8) = 847,073,824,772,175 > 10,000,000."
+Important Separators (C++),Generated_71x71,8,1.140625,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+MILP (OR-Tools),Generated_71x71,8,0.984375,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators,Generated_71x71,8,38.828125,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_71x71,5,172.171875,ERROR: TIMEOUT
+Brute Force (C++),Generated_71x71,9,0.828125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,9) = 25,600,453,370,892,400 > 10,000,000."
+Important Separators (C++),Generated_71x71,9,2.062500,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+MILP (OR-Tools),Generated_71x71,9,1.234375,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators,Generated_71x71,9,22.671875,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_71x71,6,172.265625,ERROR: TIMEOUT
+Brute Force (C++),Generated_71x71,10,0.921875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,10) = 693,772,286,351,184,040 > 10,000,000."
+Important Separators,Generated_71x71,10,28.328125,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators (C++),Generated_71x71,10,0.625000,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+MILP (OR-Tools),Generated_71x71,10,1.390625,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_71x71,7,170.625000,ERROR: TIMEOUT
+Brute Force (C++),Generated_71x71,11,0.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,11) = 17,028,956,119,529,062,800 > 10,000,000."
+Important Separators (C++),Generated_71x71,11,0.515625,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+MILP (OR-Tools),Generated_71x71,11,0.453125,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators,Generated_71x71,11,22.468750,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_71x71,8,171.562500,ERROR: TIMEOUT
+Brute Force (C++),Generated_71x71,12,0.796875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,12) = 381,732,433,012,776,491,100 > 10,000,000."
+Important Separators (C++),Generated_71x71,12,0.906250,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators,Generated_71x71,12,24.906250,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+MILP (OR-Tools),Generated_71x71,12,1.484375,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_71x71,9,172.187500,ERROR: TIMEOUT
+Brute Force (C++),Generated_71x71,13,0.656250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,13) = 7,869,560,926,724,930,739,600 > 10,000,000."
+Important Separators (C++),Generated_71x71,13,1.265625,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators,Generated_71x71,13,28.453125,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+MILP (OR-Tools),Generated_71x71,13,1.109375,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_71x71,10,171.484375,ERROR: TIMEOUT
+Brute Force (C++),Generated_71x71,14,0.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,14) = 150,083,769,102,539,750,533,800 > 10,000,000."
+Important Separators,Generated_71x71,14,26.234375,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators (C++),Generated_71x71,14,1.437500,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+MILP (OR-Tools),Generated_71x71,14,1.984375,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Important Separators,Generated_71x71,15,18.515625,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force (C++),Generated_71x71,15,1.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(280,15) = 2,661,485,505,418,371,576,132,720 > 10,000,000."
+Important Separators (C++),Generated_71x71,15,1.546875,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_71x71,11,172.078125,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_71x71,15,0.843750,"(273, {0, 1, 2, 105, 175, 278, 279, 280})"
+Brute Force,Generated_100x100,0,1.921875,"(-inf, set())"
+Brute Force,Generated_71x71,12,170.515625,ERROR: TIMEOUT
+Important Separators,Generated_100x100,0,2.328125,"(-inf, set())"
+Brute Force (C++),Generated_100x100,0,0.281250,"(-inf, set())"
+Important Separators (C++),Generated_100x100,0,0.468750,"(-inf, set())"
+Brute Force,Generated_100x100,1,0.421875,"(-inf, set())"
+MILP (OR-Tools),Generated_100x100,0,3.218750,"(-inf, set())"
+Brute Force (C++),Generated_100x100,1,1.109375,"(-inf, set())"
+Important Separators (C++),Generated_100x100,1,0.656250,"(-inf, set())"
+Important Separators,Generated_100x100,1,2.250000,"(-inf, set())"
+MILP (OR-Tools),Generated_100x100,1,2.531250,"(-inf, set())"
+Important Separators,Generated_100x100,2,4.328125,"(-inf, set())"
+Brute Force (C++),Generated_100x100,2,3.390625,"(-inf, set())"
+Important Separators (C++),Generated_100x100,2,0.828125,"(-inf, set())"
+MILP (OR-Tools),Generated_100x100,2,1.671875,"(-inf, set())"
+Important Separators,Generated_100x100,3,0.859375,"(-inf, set())"
+Brute Force (C++),Generated_100x100,3,0.203125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,3) = 10,271,580 > 10,000,000."
+Important Separators (C++),Generated_100x100,3,0.218750,"(-inf, set())"
+MILP (OR-Tools),Generated_100x100,3,2.234375,"(-inf, set())"
+Brute Force,Generated_71x71,13,169.984375,ERROR: TIMEOUT
+Brute Force,Generated_100x100,2,38.828125,"(-inf, set())"
+Brute Force (C++),Generated_100x100,4,0.921875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,4) = 1,009,182,735 > 10,000,000."
+Important Separators (C++),Generated_100x100,4,1.359375,"(100, {1, 202, 395, 198})"
+MILP (OR-Tools),Generated_100x100,4,2.187500,"(100, {1, 202, 395, 198})"
+Important Separators,Generated_100x100,4,26.640625,"(100, {1, 202, 395, 198})"
+Brute Force,Generated_71x71,14,170.765625,ERROR: TIMEOUT
+Brute Force (C++),Generated_100x100,5,2.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,5) = 79,119,926,424 > 10,000,000."
+Important Separators (C++),Generated_100x100,5,1.875000,"(100, {1, 202, 395, 198})"
+MILP (OR-Tools),Generated_100x100,5,1.718750,"(100, {1, 202, 395, 198})"
+Brute Force,Generated_71x71,15,169.531250,ERROR: TIMEOUT
+Important Separators,Generated_100x100,5,28.296875,"(100, {1, 202, 395, 198})"
+Brute Force (C++),Generated_100x100,6,1.484375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,6) = 5,155,981,871,964 > 10,000,000."
+Important Separators (C++),Generated_100x100,6,1.156250,"(245, {0, 1, 150, 202, 395, 394})"
+MILP (OR-Tools),Generated_100x100,6,1.171875,"(245, {0, 1, 202, 394, 395, 150})"
+Important Separators,Generated_100x100,6,37.734375,"(245, {0, 1, 150, 202, 395, 394})"
+Brute Force,Generated_100x100,3,169.953125,ERROR: TIMEOUT
+Important Separators,Generated_100x100,7,35.937500,"(245, {0, 1, 150, 202, 395, 394})"
+Brute Force (C++),Generated_100x100,7,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,7) = 287,261,847,152,280 > 10,000,000."
+Important Separators (C++),Generated_100x100,7,1.203125,"(245, {0, 1, 150, 202, 395, 394})"
+MILP (OR-Tools),Generated_100x100,7,3.078125,"(245, {0, 1, 202, 394, 395, 150})"
+Brute Force,Generated_100x100,4,170.031250,ERROR: TIMEOUT
+Brute Force (C++),Generated_100x100,8,0.343750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,8) = 13,968,107,317,779,615 > 10,000,000."
+Important Separators (C++),Generated_100x100,8,1.234375,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,8,0.890625,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Important Separators,Generated_100x100,8,35.250000,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_100x100,5,168.953125,ERROR: TIMEOUT
+Brute Force (C++),Generated_100x100,9,0.750000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,9) = 602,180,626,588,721,180 > 10,000,000."
+Important Separators (C++),Generated_100x100,9,1.859375,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,9,2.656250,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_100x100,6,170.390625,ERROR: TIMEOUT
+Important Separators,Generated_100x100,9,37.718750,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force (C++),Generated_100x100,10,0.796875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,10) = 23,304,390,248,983,509,666 > 10,000,000."
+Important Separators (C++),Generated_100x100,10,1.406250,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,10,1.609375,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_100x100,7,169.312500,ERROR: TIMEOUT
+Important Separators,Generated_100x100,10,49.953125,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force (C++),Generated_100x100,11,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,11) = 817,772,239,646,148,611,916 > 10,000,000."
+Important Separators (C++),Generated_100x100,11,1.687500,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,11,1.515625,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Important Separators,Generated_100x100,11,49.375000,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_100x100,8,170.984375,ERROR: TIMEOUT
+Brute Force (C++),Generated_100x100,12,0.343750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,12) = 26,236,859,355,313,934,632,305 > 10,000,000."
+Important Separators (C++),Generated_100x100,12,1.328125,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,12,1.328125,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_100x100,9,168.375000,ERROR: TIMEOUT
+Important Separators,Generated_100x100,12,48.906250,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force (C++),Generated_100x100,13,0.687500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,13) = 774,996,460,956,965,453,754,240 > 10,000,000."
+Important Separators,Generated_100x100,13,27.140625,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,13,2.187500,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Important Separators (C++),Generated_100x100,13,3.140625,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_100x100,10,172.562500,ERROR: TIMEOUT
+Brute Force (C++),Generated_100x100,14,0.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,14) = 21,201,688,896,179,840,627,705,280 > 10,000,000."
+Important Separators (C++),Generated_100x100,14,2.953125,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,14,3.109375,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_100x100,11,170.296875,ERROR: TIMEOUT
+Important Separators,Generated_100x100,14,48.421875,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force (C++),Generated_100x100,15,0.953125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(396,15) = 539,936,343,889,379,941,318,894,464 > 10,000,000."
+Important Separators (C++),Generated_100x100,15,1.375000,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+MILP (OR-Tools),Generated_100x100,15,1.828125,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Brute Force,Generated_141x141,0,0.109375,"(-inf, set())"
+Brute Force,Generated_100x100,12,169.015625,ERROR: TIMEOUT
+Brute Force (C++),Generated_141x141,0,0.296875,"(-inf, set())"
+Important Separators,Generated_100x100,15,45.781250,"(389, {0, 1, 2, 394, 395, 396, 150, 249})"
+Important Separators,Generated_141x141,0,6.203125,"(-inf, set())"
+Important Separators (C++),Generated_141x141,0,1.843750,"(-inf, set())"
+MILP (OR-Tools),Generated_141x141,0,2.265625,"(-inf, set())"
+Brute Force,Generated_141x141,1,0.187500,"(-inf, set())"
+Brute Force (C++),Generated_141x141,1,0.171875,"(-inf, set())"
+Important Separators (C++),Generated_141x141,1,0.437500,"(-inf, set())"
+Important Separators,Generated_141x141,1,6.937500,"(-inf, set())"
+MILP (OR-Tools),Generated_141x141,1,3.828125,"(-inf, set())"
+Important Separators,Generated_141x141,2,6.625000,"(-inf, set())"
+Important Separators (C++),Generated_141x141,2,1.968750,"(-inf, set())"
+Brute Force (C++),Generated_141x141,2,9.953125,"(-inf, set())"
+MILP (OR-Tools),Generated_141x141,2,1.437500,"(-inf, set())"
+Brute Force,Generated_100x100,13,169.796875,ERROR: TIMEOUT
+Brute Force (C++),Generated_141x141,3,0.484375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,3) = 29,112,720 > 10,000,000."
+Important Separators,Generated_141x141,3,4.609375,"(-inf, set())"
+Important Separators (C++),Generated_141x141,3,1.234375,"(-inf, set())"
+MILP (OR-Tools),Generated_141x141,3,2.140625,"(-inf, set())"
+Brute Force,Generated_100x100,14,170.343750,ERROR: TIMEOUT
+Brute Force (C++),Generated_141x141,4,1.406250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,4) = 4,053,946,260 > 10,000,000."
+Important Separators (C++),Generated_141x141,4,0.671875,"(141, {1, 282, 278, 559})"
+MILP (OR-Tools),Generated_141x141,4,1.640625,"(141, {1, 282, 278, 559})"
+Brute Force,Generated_141x141,2,74.890625,"(-inf, set())"
+Important Separators,Generated_141x141,4,28.421875,"(141, {1, 282, 278, 559})"
+Brute Force (C++),Generated_141x141,5,1.000000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,5) = 450,798,824,112 > 10,000,000."
+Important Separators (C++),Generated_141x141,5,1.078125,"(141, {1, 282, 278, 559})"
+MILP (OR-Tools),Generated_141x141,5,2.046875,"(141, {1, 356, 559, 278, 282})"
+Brute Force,Generated_100x100,15,175.546875,ERROR: TIMEOUT
+Important Separators,Generated_141x141,5,40.812500,"(141, {1, 282, 278, 559})"
+Brute Force (C++),Generated_141x141,6,0.359375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,6) = 41,698,891,230,360 > 10,000,000."
+Important Separators (C++),Generated_141x141,6,1.796875,"(347, {560, 1, 2, 278, 350, 559})"
+MILP (OR-Tools),Generated_141x141,6,3.187500,"(347, {0, 1, 558, 559, 210, 282})"
+Brute Force,Generated_141x141,3,175.906250,ERROR: TIMEOUT
+Brute Force,Generated_141x141,4,176.203125,ERROR: TIMEOUT
+Brute Force (C++),Generated_141x141,7,1.218750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,7) = 3,300,169,391,659,920 > 10,000,000."
+Important Separators (C++),Generated_141x141,7,2.765625,"(347, {560, 1, 2, 278, 350, 559})"
+Important Separators,Generated_141x141,6,123.562500,"(347, {0, 1, 210, 282, 558, 559})"
+MILP (OR-Tools),Generated_141x141,7,8.531250,"(347, {1, 2, 559, 560, 278, 350})"
+Brute Force,Generated_141x141,5,176.500000,ERROR: TIMEOUT
+Brute Force (C++),Generated_141x141,8,0.468750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,8) = 228,124,209,198,491,970 > 10,000,000."
+Important Separators (C++),Generated_141x141,8,2.296875,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+MILP (OR-Tools),Generated_141x141,8,3.671875,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force,Generated_141x141,6,176.265625,ERROR: TIMEOUT
+Important Separators,Generated_141x141,7,74.796875,"(347, {0, 1, 210, 282, 558, 559})"
+Brute Force (C++),Generated_141x141,9,0.312500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,9) = 13,991,618,164,174,174,160 > 10,000,000."
+Important Separators (C++),Generated_141x141,9,2.921875,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+MILP (OR-Tools),Generated_141x141,9,0.812500,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force,Generated_141x141,7,177.687500,ERROR: TIMEOUT
+Important Separators,Generated_141x141,9,102.562500,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Important Separators,Generated_141x141,8,128.234375,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force (C++),Generated_141x141,10,0.500000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,10) = 770,938,160,845,996,996,216 > 10,000,000."
+MILP (OR-Tools),Generated_141x141,10,1.890625,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Important Separators (C++),Generated_141x141,10,3.328125,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force,Generated_141x141,8,175.921875,ERROR: TIMEOUT
+Brute Force (C++),Generated_141x141,11,0.781250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,11) = 38,546,908,042,299,849,810,800 > 10,000,000."
+Important Separators (C++),Generated_141x141,11,3.593750,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+MILP (OR-Tools),Generated_141x141,11,3.484375,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force,Generated_141x141,9,174.703125,ERROR: TIMEOUT
+Brute Force,Generated_141x141,10,174.484375,ERROR: TIMEOUT
+Important Separators,Generated_141x141,10,162.000000,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force (C++),Generated_141x141,12,0.484375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,12) = 1,763,521,042,935,218,128,844,100 > 10,000,000."
+Important Separators (C++),Generated_141x141,12,3.546875,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+MILP (OR-Tools),Generated_141x141,12,2.203125,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Important Separators,Generated_141x141,11,134.125000,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force (C++),Generated_141x141,13,0.015625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,13) = 74,339,194,732,961,502,662,043,600 > 10,000,000."
+Important Separators (C++),Generated_141x141,13,1.828125,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+MILP (OR-Tools),Generated_141x141,13,3.562500,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force,Generated_141x141,11,175.640625,ERROR: TIMEOUT
+Important Separators,Generated_141x141,13,95.281250,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force (C++),Generated_141x141,14,0.468750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,14) = 2,904,538,537,066,424,425,438,417,800 > 10,000,000."
+Important Separators (C++),Generated_141x141,14,2.828125,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Important Separators,Generated_141x141,12,153.765625,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+MILP (OR-Tools),Generated_141x141,14,2.000000,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force,Generated_141x141,12,174.046875,ERROR: TIMEOUT
+Brute Force (C++),Generated_141x141,15,0.328125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(560,15) = 105,725,202,749,217,849,085,958,407,920 > 10,000,000."
+Important Separators (C++),Generated_141x141,15,3.234375,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+MILP (OR-Tools),Generated_141x141,15,1.953125,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force,Generated_224x224,0,0.484375,"(-inf, set())"
+Important Separators,Generated_141x141,14,94.890625,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Important Separators,Generated_224x224,0,17.046875,"(-inf, set())"
+Brute Force,Generated_141x141,13,175.906250,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,0,0.921875,"(-inf, set())"
+Important Separators (C++),Generated_224x224,0,1.421875,"(-inf, set())"
+Brute Force,Generated_224x224,1,1.421875,"(-inf, set())"
+Brute Force (C++),Generated_224x224,1,0.265625,"(-inf, set())"
+MILP (OR-Tools),Generated_224x224,0,2.640625,"(-inf, set())"
+Important Separators,Generated_224x224,1,10.140625,"(-inf, set())"
+Important Separators (C++),Generated_224x224,1,1.250000,"(-inf, set())"
+MILP (OR-Tools),Generated_224x224,1,13.937500,"(-inf, set())"
+Important Separators,Generated_224x224,2,14.625000,"(-inf, set())"
+Important Separators (C++),Generated_224x224,2,1.468750,"(-inf, set())"
+MILP (OR-Tools),Generated_224x224,2,2.812500,"(-inf, set())"
+Brute Force,Generated_141x141,14,174.406250,ERROR: TIMEOUT
+Important Separators,Generated_141x141,15,116.734375,"(553, {0, 1, 2, 558, 559, 560, 210, 350})"
+Brute Force (C++),Generated_224x224,3,0.468750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,3) = 117,891,180 > 10,000,000."
+Brute Force (C++),Generated_224x224,2,34.515625,"(-inf, set())"
+Important Separators (C++),Generated_224x224,3,0.500000,"(-inf, set())"
+MILP (OR-Tools),Generated_224x224,3,5.593750,"(-inf, set())"
+Important Separators,Generated_224x224,3,21.328125,"(-inf, set())"
+Brute Force (C++),Generated_224x224,4,1.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,4) = 26,201,314,755 > 10,000,000."
+Important Separators (C++),Generated_224x224,4,2.406250,"(224, {1, 450, 891, 446})"
+Brute Force,Generated_141x141,15,172.531250,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_224x224,4,3.328125,"(224, {1, 450, 891, 446})"
+Brute Force,Generated_224x224,2,169.625000,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,5,0.218750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,5) = 4,653,353,500,488 > 10,000,000."
+Important Separators (C++),Generated_224x224,5,3.046875,"(224, {1, 450, 891, 446})"
+MILP (OR-Tools),Generated_224x224,5,6.187500,"(224, {384, 1, 450, 891, 446})"
+Important Separators,Generated_224x224,5,95.468750,"(224, {1, 450, 891, 446})"
+Brute Force,Generated_224x224,3,170.250000,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,6,0.968750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,6) = 687,920,759,155,476 > 10,000,000."
+Important Separators (C++),Generated_224x224,6,4.562500,"(555, {0, 1, 450, 336, 890, 891})"
+Important Separators,Generated_224x224,4,163.859375,"(224, {1, 450, 891, 446})"
+Brute Force,Generated_224x224,4,170.765625,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_224x224,6,6.156250,"(555, {0, 1, 450, 336, 890, 891})"
+Brute Force (C++),Generated_224x224,7,0.890625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,7) = 87,071,113,230,250,248 > 10,000,000."
+Important Separators (C++),Generated_224x224,7,4.578125,"(555, {0, 1, 450, 336, 890, 891})"
+MILP (OR-Tools),Generated_224x224,7,13.906250,"(555, {0, 1, 450, 336, 890, 891})"
+Brute Force,Generated_224x224,5,170.984375,ERROR: TIMEOUT
+Brute Force,Generated_224x224,6,169.484375,ERROR: TIMEOUT
+Important Separators,Generated_224x224,6,171.265625,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,8,2.921875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,8) = 9,632,241,901,096,433,685 > 10,000,000."
+MILP (OR-Tools),Generated_224x224,8,4.171875,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Important Separators (C++),Generated_224x224,8,8.296875,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Brute Force,Generated_224x224,7,172.296875,ERROR: TIMEOUT
+Important Separators,Generated_224x224,7,170.265625,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,9,0.531250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,9) = 946,100,204,507,694,153,060 > 10,000,000."
+Important Separators (C++),Generated_224x224,9,5.218750,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+MILP (OR-Tools),Generated_224x224,9,3.687500,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Brute Force,Generated_224x224,8,170.125000,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,10,2.578125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,10) = 83,540,648,058,029,393,715,198 > 10,000,000."
+Important Separators (C++),Generated_224x224,10,5.312500,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Important Separators,Generated_224x224,8,171.187500,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_224x224,10,2.093750,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Brute Force,Generated_224x224,9,170.906250,ERROR: TIMEOUT
+Important Separators,Generated_224x224,9,170.593750,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,11,0.578125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,11) = 6,698,441,053,380,175,023,345,876 > 10,000,000."
+MILP (OR-Tools),Generated_224x224,11,2.718750,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Important Separators (C++),Generated_224x224,11,5.546875,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Important Separators (C++),horse_arcs_170.txt,14,7126.843750,"(161, {232, 233, 234, 235, 172, 236, 237, 238, 80, 144, 239, 20, 120, 218})"
+Brute Force (C++),Generated_224x224,12,0.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,12) = 491,777,214,002,327,849,630,643,063 > 10,000,000."
+Important Separators (C++),Generated_224x224,12,4.750000,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+MILP (OR-Tools),Generated_224x224,12,0.750000,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Brute Force,Generated_224x224,10,170.187500,ERROR: TIMEOUT
+Important Separators,Generated_224x224,10,174.593750,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,13,0.906250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,13) = 33,289,534,486,311,423,667,305,068,880 > 10,000,000."
+Important Separators (C++),Generated_224x224,13,5.562500,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+MILP (OR-Tools),Generated_224x224,13,3.500000,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Brute Force,Generated_224x224,11,172.968750,ERROR: TIMEOUT
+Important Separators,Generated_224x224,11,173.140625,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,14,0.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,14) = 2,090,107,200,961,981,528,825,796,824,680 > 10,000,000."
+Important Separators (C++),Generated_224x224,14,5.687500,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+MILP (OR-Tools),Generated_224x224,14,2.359375,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Important Separators,Generated_224x224,12,172.531250,ERROR: TIMEOUT
+Brute Force,Generated_224x224,12,172.718750,ERROR: TIMEOUT
+Brute Force (C++),Generated_224x224,15,0.640625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(892,15) = 122,340,941,496,307,985,487,269,974,137,936 > 10,000,000."
+Brute Force,Generated_224x224,13,172.859375,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_224x224,15,1.046875,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Brute Force,Generated_316x316,0,0.062500,"(-inf, set())"
+Important Separators,Generated_316x316,0,3.515625,"(-inf, set())"
+Brute Force (C++),Generated_316x316,0,0.140625,"(-inf, set())"
+Important Separators,Generated_224x224,13,171.218750,ERROR: TIMEOUT
+Important Separators (C++),Generated_224x224,15,5.093750,"(885, {0, 1, 2, 559, 336, 890, 891, 892})"
+Important Separators (C++),Generated_316x316,0,0.468750,"(-inf, set())"
+MILP (OR-Tools),Generated_316x316,0,0.468750,"(-inf, set())"
+Brute Force (C++),Generated_316x316,1,0.312500,"(-inf, set())"
+Important Separators (C++),Generated_316x316,1,0.562500,"(-inf, set())"
+Brute Force,Generated_316x316,1,2.171875,"(-inf, set())"
+Brute Force,Generated_224x224,14,172.953125,ERROR: TIMEOUT
+Important Separators,Generated_224x224,14,172.171875,ERROR: TIMEOUT
+Important Separators,Generated_316x316,1,43.562500,"(-inf, set())"
+Important Separators (C++),Generated_316x316,2,1.703125,"(-inf, set())"
+Important Separators,Generated_316x316,2,23.859375,"(-inf, set())"
+MILP (OR-Tools),Generated_316x316,2,4.781250,"(-inf, set())"
+Brute Force,Generated_224x224,15,174.125000,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,3,1.890625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,3) = 332,602,620 > 10,000,000."
+Important Separators (C++),Generated_316x316,3,1.546875,"(-inf, set())"
+MILP (OR-Tools),Generated_316x316,3,4.312500,"(-inf, set())"
+Important Separators,Generated_316x316,3,30.968750,"(-inf, set())"
+Important Separators,Generated_224x224,15,167.890625,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,2,101.796875,"(-inf, set())"
+Brute Force (C++),Generated_316x316,4,0.937500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,4) = 104,520,373,335 > 10,000,000."
+Important Separators (C++),Generated_316x316,4,3.515625,"(316, {1, 634, 1259, 630})"
+MILP (OR-Tools),Generated_316x316,4,4.734375,"(316, {1, 634, 1259, 630})"
+MILP (OR-Tools),Generated_316x316,1,335.171875,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,5,0.078125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,5) = 26,255,517,781,752 > 10,000,000."
+Important Separators (C++),Generated_316x316,5,5.984375,"(316, {1, 634, 1259, 630})"
+MILP (OR-Tools),Generated_316x316,5,11.937500,"(316, {1, 634, 1259, 630})"
+Brute Force,Generated_316x316,2,168.531250,ERROR: TIMEOUT
+Brute Force,Generated_316x316,3,170.593750,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,6,2.062500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,6) = 5,491,779,136,016,460 > 10,000,000."
+Important Separators (C++),Generated_316x316,6,10.656250,"(785, {0, 1, 474, 634, 1258, 1259})"
+MILP (OR-Tools),Generated_316x316,6,3.375000,"(785, {0, 1, 1258, 1259, 634, 474})"
+Brute Force,Generated_316x316,4,169.734375,ERROR: TIMEOUT
+Important Separators,Generated_316x316,4,172.234375,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,7,0.390625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,7) = 983,813,005,223,520,120 > 10,000,000."
+Important Separators (C++),Generated_316x316,7,8.859375,"(785, {0, 1, 474, 634, 1258, 1259})"
+Important Separators,Generated_316x316,5,165.218750,"(316, {1, 634, 1259, 630})"
+Brute Force,Generated_316x316,5,171.250000,ERROR: TIMEOUT
+Brute Force,Generated_316x316,6,337.187500,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,8,0.140625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,8) = 154,089,711,943,133,838,795 > 10,000,000."
+Important Separators,Generated_316x316,6,171.062500,ERROR: TIMEOUT
+Important Separators (C++),Generated_316x316,8,20.187500,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+MILP (OR-Tools),Generated_316x316,7,91.718750,"(785, {0, 1, 1258, 1259, 634, 474})"
+Important Separators (C++),horse_dots.txt,14,6600.562500,"(45, {132, 102, 134, 9, 10, 108, 46, 80, 148, 53, 22, 87, 26, 60})"
+Brute Force (C++),Generated_316x316,9,0.109375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,9) = 21,435,591,039,200,396,241,260 > 10,000,000."
+MILP (OR-Tools),Generated_316x316,8,3.281250,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Important Separators (C++),Generated_316x316,9,10.421875,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+MILP (OR-Tools),Generated_316x316,9,5.734375,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force,Generated_316x316,7,170.265625,ERROR: TIMEOUT
+Important Separators,Generated_316x316,7,170.406250,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,10,1.906250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,10) = 2,681,592,439,003,969,569,781,626 > 10,000,000."
+MILP (OR-Tools),Generated_316x316,10,4.609375,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Important Separators (C++),Generated_316x316,10,11.078125,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force,Generated_316x316,8,170.609375,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,11,0.703125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,11) = 304,726,413,523,178,360,202,457,500 > 10,000,000."
+Important Separators,Generated_316x316,8,173.140625,ERROR: TIMEOUT
+Brute Force,Generated_316x316,9,336.953125,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_316x316,11,5.312500,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Important Separators (C++),Generated_316x316,11,11.250000,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Important Separators,Generated_316x316,9,170.265625,ERROR: TIMEOUT
+Brute Force,Generated_316x316,10,169.390625,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_316x316,12,2.093750,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force (C++),Generated_316x316,12,3.937500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,12) = 31,716,940,874,204,147,657,739,118,125 > 10,000,000."
+Important Separators,Generated_316x316,10,169.437500,ERROR: TIMEOUT
+Important Separators (C++),Generated_316x316,12,12.765625,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force (C++),Generated_316x316,13,3.468750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,13) = 3,044,826,323,923,598,175,142,955,340,000 > 10,000,000."
+Important Separators (C++),Generated_316x316,13,10.015625,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+MILP (OR-Tools),Generated_316x316,13,8.343750,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force,Generated_316x316,11,172.046875,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,14,0.312500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,14) = 271,207,030,423,766,208,885,947,522,070,000 > 10,000,000."
+Important Separators,Generated_316x316,11,172.812500,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_316x316,14,2.812500,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Important Separators (C++),Generated_316x316,14,11.953125,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force,Generated_316x316,12,336.140625,ERROR: TIMEOUT
+Brute Force (C++),Generated_316x316,15,0.531250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1260,15) = 22,528,263,993,867,513,084,792,707,499,948,000 > 10,000,000."
+Important Separators,Generated_316x316,12,170.718750,ERROR: TIMEOUT
+Important Separators (C++),Generated_316x316,15,19.906250,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force,Generated_447x447,0,0.218750,"(-inf, set())"
+MILP (OR-Tools),Generated_316x316,15,4.484375,"(1253, {0, 1, 2, 1258, 1259, 1260, 789, 474})"
+Brute Force,Generated_316x316,13,170.031250,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,0,1.125000,"(-inf, set())"
+Important Separators (C++),Generated_447x447,0,1.156250,"(-inf, set())"
+Brute Force,Generated_447x447,1,0.765625,"(-inf, set())"
+Important Separators,Generated_447x447,0,28.375000,"(-inf, set())"
+Important Separators,Generated_316x316,13,170.734375,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_447x447,0,4.390625,"(-inf, set())"
+Brute Force (C++),Generated_447x447,1,0.812500,"(-inf, set())"
+Important Separators (C++),Generated_447x447,1,3.046875,"(-inf, set())"
+Important Separators,Generated_447x447,1,21.031250,"(-inf, set())"
+Important Separators,Generated_447x447,2,34.218750,"(-inf, set())"
+Brute Force,Generated_316x316,14,170.218750,ERROR: TIMEOUT
+Important Separators (C++),Generated_447x447,2,2.328125,"(-inf, set())"
+Important Separators,Generated_316x316,14,168.281250,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_447x447,2,10.328125,"(-inf, set())"
+Brute Force (C++),Generated_447x447,3,1.171875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,3) = 944,718,984 > 10,000,000."
+Important Separators (C++),Generated_447x447,3,2.156250,"(-inf, set())"
+MILP (OR-Tools),Generated_447x447,3,10.125000,"(-inf, set())"
+Brute Force,Generated_316x316,15,167.953125,ERROR: TIMEOUT
+Important Separators,Generated_447x447,3,68.312500,"(-inf, set())"
+Important Separators,Generated_316x316,15,167.171875,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,4,0.546875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,4) = 420,636,127,626 > 10,000,000."
+Important Separators (C++),Generated_447x447,4,10.687500,"(447, {1, 890, 894, 1783})"
+MILP (OR-Tools),Generated_447x447,4,7.265625,"(447, {1, 890, 894, 1783})"
+Brute Force,Generated_447x447,2,164.375000,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_447x447,1,325.843750,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,5,1.609375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,5) = 149,746,461,434,856 > 10,000,000."
+Important Separators (C++),Generated_447x447,5,16.828125,"(447, {1, 890, 894, 1783})"
+Brute Force,Generated_447x447,3,326.328125,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_447x447,5,13.609375,"(447, {1, 890, 894, 1783})"
+Brute Force (C++),Generated_447x447,6,0.546875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,6) = 44,399,825,815,434,804 > 10,000,000."
+Important Separators (C++),Generated_447x447,6,18.562500,"(1112, {1, 2, 1783, 1784, 890, 1115})"
+MILP (OR-Tools),Generated_447x447,6,8.359375,"(1112, {1, 2, 1783, 1784, 890, 1115})"
+Brute Force,Generated_447x447,4,165.375000,ERROR: TIMEOUT
+Important Separators,Generated_447x447,4,165.890625,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,7,0.718750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,7) = 11,277,555,757,120,440,216 > 10,000,000."
+Brute Force,Generated_447x447,5,165.359375,ERROR: TIMEOUT
+Important Separators,Generated_447x447,5,166.171875,ERROR: TIMEOUT
+Important Separators (C++),Generated_447x447,7,17.687500,"(1112, {1, 2, 1783, 1784, 890, 1115})"
+Brute Force (C++),Generated_447x447,2,286.906250,"(-inf, set())"
+Brute Force (C++),Generated_447x447,8,0.515625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,8) = 2,505,027,072,550,377,782,979 > 10,000,000."
+Important Separators (C++),Generated_447x447,8,22.875000,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+MILP (OR-Tools),Generated_447x447,8,3.609375,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Important Separators,Generated_447x447,6,325.890625,ERROR: TIMEOUT
+Brute Force,Generated_447x447,6,327.390625,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,9,0.406250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,9) = 494,325,342,316,607,882,507,856 > 10,000,000."
+MILP (OR-Tools),Generated_447x447,7,156.859375,"(1112, {0, 1, 1782, 1783, 669, 894})"
+Important Separators (C++),Generated_447x447,9,46.406250,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+MILP (OR-Tools),Generated_447x447,9,7.687500,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Brute Force,Generated_447x447,7,160.875000,ERROR: TIMEOUT
+Important Separators,Generated_447x447,7,162.578125,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,10,0.500000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,10) = 87,742,748,261,197,899,145,144,440 > 10,000,000."
+MILP (OR-Tools),Generated_447x447,10,5.781250,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Important Separators (C++),Generated_447x447,10,21.609375,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Brute Force,Generated_447x447,8,163.515625,ERROR: TIMEOUT
+Important Separators,Generated_447x447,8,162.187500,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,11,0.718750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,11) = 14,150,512,310,487,733,916,680,566,960 > 10,000,000."
+MILP (OR-Tools),Generated_447x447,11,5.406250,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Important Separators (C++),Generated_447x447,11,22.281250,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Brute Force,Generated_447x447,9,164.250000,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,12,0.218750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,12) = 2,090,738,193,874,562,686,189,553,768,340 > 10,000,000."
+Important Separators,Generated_447x447,9,326.781250,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_447x447,12,4.906250,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Important Separators (C++),Generated_447x447,12,22.375000,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Brute Force,Generated_447x447,10,339.640625,ERROR: TIMEOUT
+Important Separators,Generated_447x447,10,169.593750,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,13,0.875000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,13) = 284,983,698,426,594,236,917,529,944,422,960 > 10,000,000."
+Brute Force,Generated_447x447,11,167.390625,ERROR: TIMEOUT
+Important Separators (C++),Generated_447x447,13,21.640625,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+MILP (OR-Tools),Generated_447x447,13,21.921875,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Important Separators,Generated_447x447,11,171.140625,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,14,1.312500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,14) = 36,050,437,850,964,170,970,067,537,969,504,440 > 10,000,000."
+MILP (OR-Tools),Generated_447x447,14,9.453125,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Important Separators (C++),Generated_447x447,14,52.828125,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Brute Force,Generated_447x447,12,166.796875,ERROR: TIMEOUT
+Brute Force (C++),Generated_447x447,15,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(1784,15) = 4,253,951,666,413,772,174,467,969,480,401,523,920 > 10,000,000."
+Important Separators,Generated_447x447,12,167.921875,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_447x447,15,4.984375,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Brute Force,Generated_447x447,13,328.765625,ERROR: TIMEOUT
+Important Separators (C++),Generated_447x447,15,21.953125,"(1777, {0, 1, 2, 1782, 1783, 1784, 1115, 669})"
+Important Separators,Generated_447x447,13,166.453125,ERROR: TIMEOUT
+Brute Force,Generated_707x707,0,1.265625,"(-inf, set())"
+Brute Force (C++),Generated_707x707,0,0.125000,"(-inf, set())"
+Important Separators (C++),Generated_707x707,0,2.625000,"(-inf, set())"
+MILP (OR-Tools),Generated_707x707,0,9.921875,"(-inf, set())"
+Brute Force,Generated_707x707,1,10.046875,"(-inf, set())"
+Brute Force (C++),Generated_707x707,1,2.343750,"(-inf, set())"
+Important Separators (C++),Generated_707x707,1,5.453125,"(-inf, set())"
+Important Separators,Generated_707x707,0,101.093750,"(-inf, set())"
+Important Separators,Generated_707x707,1,49.765625,"(-inf, set())"
+Brute Force,Generated_447x447,14,167.453125,ERROR: TIMEOUT
+Important Separators,Generated_447x447,14,166.390625,ERROR: TIMEOUT
+Important Separators (C++),Generated_707x707,2,3.953125,"(-inf, set())"
+Important Separators,Generated_707x707,2,100.468750,"(-inf, set())"
+MILP (OR-Tools),Generated_707x707,2,14.468750,"(-inf, set())"
+Brute Force (C++),Generated_707x707,3,0.703125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,3) = 3,749,568,824 > 10,000,000."
+Brute Force,Generated_447x447,15,168.031250,ERROR: TIMEOUT
+Important Separators (C++),Generated_707x707,3,4.968750,"(-inf, set())"
+Important Separators,Generated_447x447,15,327.093750,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,3,15.875000,"(-inf, set())"
+Brute Force (C++),Generated_707x707,4,0.937500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,4) = 2,644,383,413,126 > 10,000,000."
+Important Separators,Generated_707x707,3,118.750000,"(-inf, set())"
+MILP (OR-Tools),Generated_707x707,4,9.906250,"(707, {1, 1410, 1414, 2823})"
+Important Separators (C++),Generated_707x707,4,18.656250,"(707, {1, 1410, 1414, 2823})"
+MILP (OR-Tools),Generated_707x707,1,317.734375,ERROR: TIMEOUT
+Brute Force,Generated_707x707,2,161.265625,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,5,1.281250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,5) = 1,491,432,245,003,064 > 10,000,000."
+Important Separators (C++),Generated_707x707,5,18.453125,"(707, {1, 1410, 1414, 2823})"
+Brute Force,Generated_707x707,3,160.781250,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,5,76.984375,"(707, {1, 1410, 1414, 2823})"
+Brute Force (C++),Generated_707x707,6,1.578125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,6) = 700,724,583,110,606,236 > 10,000,000."
+Brute Force,Generated_707x707,4,163.718750,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,6,12.000000,"(1762, {1, 2, 1410, 1765, 2823, 2824})"
+Important Separators,Generated_707x707,4,326.546875,ERROR: TIMEOUT
+Important Separators (C++),Generated_707x707,6,91.875000,"(1762, {1, 2, 1410, 1765, 2823, 2824})"
+Brute Force (C++),Generated_707x707,7,4.437500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,7) = 282,091,696,457,955,481,864 > 10,000,000."
+Brute Force,Generated_707x707,5,322.109375,ERROR: TIMEOUT
+Important Separators,Generated_707x707,5,163.796875,ERROR: TIMEOUT
+Important Separators (C++),Generated_707x707,7,93.609375,"(1762, {1, 2, 1410, 1765, 2823, 2824})"
+Brute Force,Generated_707x707,6,162.093750,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,8,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,8) = 99,331,538,615,257,574,051,361 > 10,000,000."
+Important Separators,Generated_707x707,6,158.812500,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,8,10.203125,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+MILP (OR-Tools),Generated_707x707,7,368.765625,"(1762, {0, 1, 1059, 1414, 2822, 2823})"
+Brute Force,Generated_707x707,7,157.531250,ERROR: TIMEOUT
+Important Separators,Generated_707x707,7,310.265625,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,9,1.046875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,9) = 31,079,734,748,951,703,169,848,064 > 10,000,000."
+Important Separators (C++),Generated_707x707,8,57.437500,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+MILP (OR-Tools),Generated_707x707,9,11.515625,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force,Generated_707x707,8,159.953125,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,10,1.578125,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,10) = 8,748,945,331,829,904,442,312,230,016 > 10,000,000."
+Important Separators (C++),Generated_707x707,9,113.312500,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Important Separators,Generated_707x707,8,313.875000,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,10,23.828125,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Important Separators (C++),Generated_707x707,10,58.578125,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force (C++),Generated_707x707,11,1.187500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,11) = 2,238,139,287,615,395,554,606,055,933,184 > 10,000,000."
+Brute Force,Generated_707x707,9,160.718750,ERROR: TIMEOUT
+Important Separators,Generated_707x707,9,316.109375,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,11,12.375000,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force,Generated_707x707,10,162.984375,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,12,3.515625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,12) = 524,657,151,338,508,974,592,236,278,337,216 > 10,000,000."
+Important Separators,Generated_707x707,10,164.312500,ERROR: TIMEOUT
+Important Separators (C++),Generated_707x707,11,55.656250,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+MILP (OR-Tools),Generated_707x707,12,12.171875,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force,Generated_707x707,11,327.796875,ERROR: TIMEOUT
+Important Separators (C++),Generated_707x707,12,58.312500,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force (C++),Generated_707x707,13,2.765625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,13) = 113,487,377,658,760,556,657,951,416,514,173,184 > 10,000,000."
+Important Separators,Generated_707x707,11,328.437500,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,13,17.750000,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force,Generated_707x707,12,310.468750,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,14,0.343750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,14) = 22,786,644,185,626,851,768,964,387,987,238,630,016 > 10,000,000."
+Important Separators (C++),Generated_707x707,13,57.875000,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Important Separators,Generated_707x707,12,162.203125,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_707x707,14,10.421875,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force,Generated_707x707,13,158.000000,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,15,0.437500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(2824,15) = 4,268,698,010,774,096,898,052,662,016,276,036,689,664 > 10,000,000."
+Important Separators,Generated_707x707,13,158.968750,ERROR: TIMEOUT
+Important Separators (C++),Generated_707x707,14,110.203125,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force,Generated_1000x1000,0,0.359375,"(-inf, set())"
+MILP (OR-Tools),Generated_707x707,15,11.250000,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force (C++),Generated_1000x1000,0,0.468750,"(-inf, set())"
+Important Separators (C++),Generated_1000x1000,0,6.703125,"(-inf, set())"
+MILP (OR-Tools),Generated_1000x1000,0,10.093750,"(-inf, set())"
+Important Separators (C++),Generated_707x707,15,57.515625,"(2817, {0, 1, 2, 1059, 1765, 2822, 2823, 2824})"
+Brute Force,Generated_707x707,14,315.265625,ERROR: TIMEOUT
+Brute Force,Generated_1000x1000,1,13.312500,"(-inf, set())"
+Brute Force (C++),Generated_1000x1000,1,3.796875,"(-inf, set())"
+Important Separators,Generated_707x707,14,314.859375,ERROR: TIMEOUT
+Important Separators (C++),Generated_1000x1000,1,6.890625,"(-inf, set())"
+Brute Force,Generated_707x707,15,159.312500,ERROR: TIMEOUT
+Important Separators,Generated_1000x1000,0,225.781250,"(-inf, set())"
+Important Separators (C++),Generated_1000x1000,2,12.187500,"(-inf, set())"
+Important Separators,Generated_707x707,15,157.125000,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_1000x1000,2,22.171875,"(-inf, set())"
+Important Separators,Generated_1000x1000,1,156.875000,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,3,1.750000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,3) = 10,626,715,980 > 10,000,000."
+MILP (OR-Tools),Generated_1000x1000,1,451.531250,ERROR: TIMEOUT
+Brute Force,Generated_1000x1000,2,305.625000,ERROR: TIMEOUT
+Important Separators (C++),Generated_1000x1000,3,7.265625,"(-inf, set())"
+Important Separators,Generated_1000x1000,2,157.046875,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,4,0.781250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,4) = 10,608,119,227,035 > 10,000,000."
+Important Separators,Generated_1000x1000,3,254.531250,"(-inf, set())"
+MILP (OR-Tools),Generated_1000x1000,3,92.343750,"(-inf, set())"
+MILP (OR-Tools),Generated_1000x1000,4,16.484375,"(1000, {1, 2002, 3995, 1998})"
+Brute Force,Generated_1000x1000,3,154.812500,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,5,0.250000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,5) = 8,469,522,390,864,744 > 10,000,000."
+Important Separators (C++),Generated_1000x1000,4,37.812500,"(1000, {1, 2002, 3995, 1998})"
+Important Separators (C++),Generated_1000x1000,5,42.968750,"(1000, {1, 2002, 3995, 1998})"
+MILP (OR-Tools),Generated_1000x1000,5,99.109375,"(1000, {1, 2002, 3995, 1998})"
+Brute Force,Generated_1000x1000,4,148.546875,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,6,2.875000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,6) = 5,633,643,976,990,198,884 > 10,000,000."
+Important Separators,Generated_1000x1000,4,291.703125,ERROR: TIMEOUT
+Brute Force (C++),Generated_707x707,2,1187.312500,"(-inf, set())"
+Important Separators,Generated_1000x1000,5,284.187500,ERROR: TIMEOUT
+Brute Force,Generated_1000x1000,5,436.046875,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_1000x1000,6,45.953125,"(2495, {0, 1, 2002, 3994, 3995, 1500})"
+Brute Force (C++),Generated_1000x1000,7,0.359375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,7) = 3,211,177,066,884,413,363,880 > 10,000,000."
+Brute Force,Generated_1000x1000,6,142.984375,ERROR: TIMEOUT
+Important Separators (C++),Generated_1000x1000,6,96.875000,"(2495, {0, 1, 2002, 3994, 3995, 1500})"
+Important Separators,Generated_1000x1000,6,143.406250,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,8,0.609375,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,8) = 1,601,173,164,975,240,613,564,665 > 10,000,000."
+Important Separators (C++),Generated_1000x1000,7,187.062500,"(2495, {0, 1, 2002, 3994, 3995, 1500})"
+Brute Force,Generated_1000x1000,7,140.984375,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_1000x1000,8,24.593750,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Important Separators,Generated_1000x1000,7,250.312500,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,9,0.312500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,9) = 709,497,620,213,473,285,210,653,780 > 10,000,000."
+MILP (OR-Tools),Generated_1000x1000,7,532.593750,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_1000x1000,9,86.796875,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Important Separators (C++),Generated_1000x1000,8,114.921875,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force,Generated_1000x1000,8,141.750000,ERROR: TIMEOUT
+Important Separators,Generated_1000x1000,8,141.046875,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,10,0.437500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,10) = 282,876,701,179,111,798,813,487,662,086 > 10,000,000."
+MILP (OR-Tools),Generated_1000x1000,10,14.828125,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Important Separators (C++),Generated_1000x1000,9,211.234375,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force,Generated_1000x1000,9,137.968750,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,11,0.125000,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,11) = 102,504,230,081,812,693,642,778,347,370,436 > 10,000,000."
+Important Separators,Generated_1000x1000,9,273.375000,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_1000x1000,11,46.687500,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force,Generated_1000x1000,10,537.000000,ERROR: TIMEOUT
+Important Separators (C++),Generated_1000x1000,10,114.453125,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force (C++),Generated_1000x1000,12,0.546875,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,12) = 34,039,946,406,335,298,680,539,309,522,598,955 > 10,000,000."
+Important Separators,Generated_1000x1000,10,143.953125,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_1000x1000,12,15.890625,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Important Separators (C++),Generated_1000x1000,11,113.656250,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force,Generated_1000x1000,11,146.656250,ERROR: TIMEOUT
+Important Separators,Generated_1000x1000,11,280.671875,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,13,0.765625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,13) = 10,431,934,344,833,833,072,559,123,779,848,787,440 > 10,000,000."
+MILP (OR-Tools),Generated_1000x1000,13,24.437500,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force,Generated_1000x1000,12,295.406250,ERROR: TIMEOUT
+Important Separators (C++),Generated_1000x1000,12,115.859375,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force (C++),Generated_1000x1000,14,1.140625,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,14) = 2,967,885,321,105,225,509,143,070,715,366,980,026,680 > 10,000,000."
+Important Separators,Generated_1000x1000,12,440.187500,ERROR: TIMEOUT
+Important Separators (C++),Generated_1000x1000,13,219.140625,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+MILP (OR-Tools),Generated_1000x1000,14,78.781250,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Important Separators,Generated_1000x1000,13,149.156250,ERROR: TIMEOUT
+Brute Force,Generated_1000x1000,13,146.656250,ERROR: TIMEOUT
+Brute Force (C++),Generated_1000x1000,15,0.093750,"ERROR: RuntimeError: Brute force C++ too expensive: choose(3996,15) = 787,874,623,242,733,865,160,513,839,239,420,964,415,984 > 10,000,000."
+MILP (OR-Tools),Generated_1000x1000,15,17.281250,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force,Generated_3162x3162,0,0.093750,"(-inf, set())"
+Brute Force,Generated_1000x1000,14,145.546875,ERROR: TIMEOUT
+Brute Force (C++),Generated_3162x3162,0,1.500000,"(-inf, set())"
+Important Separators (C++),Generated_1000x1000,14,113.000000,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Important Separators,Generated_1000x1000,14,251.859375,ERROR: TIMEOUT
+Important Separators (C++),Generated_1000x1000,15,115.734375,"(3989, {0, 1, 2, 2499, 3996, 3994, 3995, 1500})"
+Brute Force,Generated_1000x1000,15,221.562500,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_3162x3162,0,41.828125,"(-inf, set())"
+Important Separators (C++),Generated_3162x3162,0,55.250000,"(-inf, set())"
+Important Separators,Generated_1000x1000,15,350.500000,ERROR: TIMEOUT
+Brute Force (C++),Generated_3162x3162,1,29.890625,"(-inf, set())"
+Important Separators,Generated_3162x3162,0,110.046875,ERROR: TIMEOUT
+Brute Force (C++),Generated_3162x3162,2,1.656250,"ERROR: RuntimeError: Brute force C++ too expensive: choose(12644,2) = 79,929,046 > 10,000,000."
+MILP (OR-Tools),Generated_3162x3162,1,64.953125,"(-inf, set())"
+Important Separators (C++),Generated_3162x3162,1,58.796875,"(-inf, set())"
+Brute Force,Generated_3162x3162,1,229.328125,ERROR: TIMEOUT
+Important Separators (C++),Generated_3162x3162,2,53.343750,"(-inf, set())"
+Brute Force (C++),Generated_3162x3162,3,0.937500,"ERROR: RuntimeError: Brute force C++ too expensive: choose(12644,3) = 336,820,999,844 > 10,000,000."
+Brute Force,Generated_3162x3162,2,356.859375,ERROR: TIMEOUT
+Important Separators,Generated_3162x3162,2,211.390625,ERROR: TIMEOUT
+Important Separators,Generated_3162x3162,1,134.968750,ERROR: TIMEOUT
+MILP (OR-Tools),Generated_3162x3162,2,109.031250,"(-inf, set())"
+Brute Force (C++),Generated_3162x3162,4,0.000000,ERROR: MemoryError: 
+MILP (OR-Tools),Generated_3162x3162,4,0.000000,ERROR: MemoryError: 
+Brute Force,Generated_3162x3162,5,0.000000,ERROR: MemoryError: 
+Important Separators,Generated_3162x3162,5,0.000000,ERROR: MemoryError: 
+Brute Force (C++),Generated_3162x3162,5,0.000000,ERROR: MemoryError: 
+Important Separators (C++),Generated_3162x3162,5,0.000000,ERROR: MemoryError: 
+MILP (OR-Tools),Generated_3162x3162,5,0.000000,ERROR: MemoryError: 
+Brute Force,Generated_3162x3162,6,0.000000,ERROR: MemoryError: 
+Important Separators,Generated_3162x3162,6,0.000000,ERROR: MemoryError: 
+Brute Force (C++),Generated_3162x3162,6,0.000000,ERROR: MemoryError: 
+Important Separators,Generated_3162x3162,4,10.343750,ERROR: MemoryError: 
+Important Separators (C++),horse_arcs_170.txt,15,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),horse_dots.txt,15,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_1000x1000,2,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,3,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,3,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,3,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,3,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,4,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,4,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,6,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,6,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,7,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,7,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,7,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,7,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,7,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,8,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,8,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,8,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,8,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,8,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,9,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,9,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,9,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,9,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,9,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,10,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,10,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,10,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,10,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,10,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,11,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,11,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,11,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,11,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,11,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,12,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,12,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,12,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,12,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,12,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,13,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,13,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,13,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,13,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,13,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,14,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,14,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,14,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,14,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,14,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force,Generated_3162x3162,15,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators,Generated_3162x3162,15,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Brute Force (C++),Generated_3162x3162,15,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+Important Separators (C++),Generated_3162x3162,15,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+MILP (OR-Tools),Generated_3162x3162,15,0.000000,ERROR: BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.

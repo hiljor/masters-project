@@ -1,5 +1,11 @@
 import math as math
-TEST_SIZES = sizes = [round(math.sqrt(n)) for n in [100, 200, 500, 1000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000]]
+# Size test grid: dense coverage at the low end (10x10..20x20), then
+# coarser steps (25..50, 75..200), then increments of 100 up to 1000x1000.
+TEST_SIZES = sizes = (
+    list(range(10, 21))
+    + [25, 30, 35, 40, 45, 50]
+    + [75, 100, 125, 150, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+)
 
 """ 
 Listing of levels and their parameters. 

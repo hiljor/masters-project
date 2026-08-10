@@ -1,8 +1,21 @@
 import csv
+import time
 from pathlib import Path
+import pytest
 from horse_algos.timer.timer import AlgorithmTimer
+from horse_algos.algorithms.algorithm import Algorithm
 from horse_algos.algorithms.naive import Naive
 from horse_algos.graph import Graph
+
+
+class SleepAlgorithm(Algorithm):
+    @property
+    def name(self):
+        return "SleepAlgorithm"
+
+    def run(self, graph: Graph, s: int, t: int, k: int):
+        time.sleep(0.5)
+        return 42, set()
 
 def test_incremental_timer(tmp_path):
     """Tests that AlgorithmTimer writes results incrementally to a CSV file."""
@@ -15,7 +28,7 @@ def test_incremental_timer(tmp_path):
     with open(csv_file, "r", newline="") as f:
         reader = csv.reader(f)
         header = next(reader)
-        assert header == ["Algorithm", "Dataset", "k", "Time", "Result"]
+        assert header == ["Algorithm", "Dataset", "k", "Time (CPU s)", "Result"]
         # Ensure no other rows exist yet
         with pytest.raises(StopIteration):
             next(reader)
@@ -32,23 +45,29 @@ def test_incremental_timer(tmp_path):
     with open(csv_file, "r", newline="") as f:
         reader = csv.reader(f)
         header = next(reader)
-        assert header == ["Algorithm", "Dataset", "k", "Time", "Result"]
+        assert header == ["Algorithm", "Dataset", "k", "Time (CPU s)", "Result"]
         row = next(reader)
         assert row[0] == algo.name
         assert row[1] == "test_dataset"
         assert row[2] == "1"
         # The execution time should be a float
         assert float(row[3]) >= 0.0
-        # Result should be either float("-inf") or a numeric/correct result.
-        # For naive, a cut of size <= 1 between 0 and 1:
-        # Node 1 is t, Node 0 is s. Deleting node 1 is not allowed (it is target vertex t, wait, can we delete t?
-        # Actually node values are [1, 0]. The cut is {} or {1} or {0}.
-        # In Naive algorithm, the return is the max total combined value of the s-component after the cut.
-        # Let's just assert that there is a result value written in the row.
+        # Result should be written in the row
         assert len(row[4]) > 0
-        
+
         # Ensure no other rows exist
         with pytest.raises(StopIteration):
             next(reader)
 
-import pytest
+
+def test_timer_tracks_cpu_time(tmp_path):
+    csv_file = tmp_path / "cpu_time_results.csv"
+    timer = AlgorithmTimer(csv_path=str(csv_file))
+
+    algo = SleepAlgorithm()
+    adjMatrix = [[0, 1], [1, 0]]
+    graph = Graph(adjMatrix, [1, 0], infSet=set())
+
+    result = timer.time_algorithm(algo, "cpu_test", graph, s=0, t=1, k=1)
+    assert result.execution_time < 0.5
+    assert result.result == (42, set())

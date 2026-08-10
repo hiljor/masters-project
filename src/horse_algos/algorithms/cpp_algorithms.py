@@ -1,3 +1,4 @@
+import math
 import os
 import sys
 from horse_algos.algorithms.algorithm import Algorithm
@@ -26,7 +27,21 @@ class CppNaive(Algorithm):
         """Runs the C++ brute force solver on the given graph."""
         if not CPP_AVAILABLE:
             raise ImportError("C++ extension not available")
-        
+        removable_nodes = [i for i in range(len(graph.nodeValues))
+                           if i not in graph.infSet and i != s and i != t]
+        n_removable = len(removable_nodes)
+        if k > n_removable:
+            raise RuntimeError(
+                f"Brute force C++ cannot remove {k} nodes when only {n_removable} are removable."
+            )
+
+        max_combinations = 100_000_000
+        combinations = math.comb(n_removable, k)
+        if combinations > max_combinations:
+            raise RuntimeError(
+                f"Brute force C++ too expensive: choose({n_removable},{k}) = {combinations:,} > {max_combinations:,}."
+            )
+
         # Convert graph to format expected by C++
         # C++ solve_naive expects: adj_list (list of lists), node_values (list), inf_set (set), s, t, k
         adj_list = graph.adjList

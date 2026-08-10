@@ -3,14 +3,14 @@ from pathlib import Path
 
 print("Diagnostic script starting...")
 
-repo_root = Path(__file__).resolve().parents[1]
+repo_root = Path(__file__).resolve().parent
 src_dir = repo_root / "src"
 
 print(f"Repo root: {repo_root}")
 print(f"Src dir: {src_dir}")
 
-sys.path.append(str(repo_root))
-sys.path.append(str(src_dir))
+sys.path.insert(0, str(src_dir))
+sys.path.insert(0, str(repo_root))
 
 print("Attempting to import modules...")
 
