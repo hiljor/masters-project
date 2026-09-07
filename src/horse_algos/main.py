@@ -12,11 +12,9 @@ sys.path.insert(0, str(repo_root / "src"))
 sys.path.insert(0, str(repo_root))
 
 from horse_algos.tools.map_loader import load_graph_from_map, load_graph_from_lines
-from horse_algos.algorithms.naive import Naive
-from horse_algos.algorithms.important_separator import ImportantSeparators
 from horse_algos.algorithms.milp_ortools import MILP_OR, MILP_AVAILABLE
 from horse_algos.algorithms.cpp_algorithms import CppNaive, CppImportantSeparators, CPP_AVAILABLE
-from horse_algos.timer.timer import TIMEOUT_SECONDS, AlgorithmTimer, run_algorithm_timed, TimerResult
+from horse_algos.timer.timer import TIMEOUT_SECONDS, AlgorithmTimer, run_algorithm_timed, TimerResult, compute_stats
 from data.generate import TEST_SIZES, generate_size_test
 
 
@@ -154,7 +152,7 @@ def run_benchmarks():
               error_result = TimerResult(
                   algorithm_name=algo_name,
                   dataset_name=dataset,
-                  execution_time=0.0,
+                  stats=compute_stats([]),
                   result=f"ERROR: {type(exc).__name__}: {exc}",
                   parameters={"s": 0, "t": 0, "k": k},
               )
@@ -219,7 +217,7 @@ def run_size_test():
               error_result = TimerResult(
                   algorithm_name=algo_name,
                   dataset_name=dataset,
-                  execution_time=0.0,
+                  stats=compute_stats([]),
                   result=f"ERROR: {type(exc).__name__}: {exc}",
                   parameters={"s": 0, "t": 0, "k": k},
               )
