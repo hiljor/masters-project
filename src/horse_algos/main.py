@@ -118,18 +118,6 @@ def run_benchmarks():
           except Exception as e:
               print(f"An error occurred while loading {dataset}: {e}")
 
-      for size in TEST_SIZES:
-          try:
-              level_map = generate_size_test(size)
-              map_lines = ["".join(row) for row in level_map]
-              graph, s, t = load_graph_from_lines(map_lines)
-              print(f"Generated test of size {size}x{size}")
-              for k in k_values:
-                  for algo in algorithms:
-                      tasks.append((algo, f"Generated_{size}x{size}", graph, s, t, k))
-          except Exception as e:
-              print(f"An error occurred while generating size {size}: {e}")
-
       return tasks
 
   tasks = benchmark_tasks()
