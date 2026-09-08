@@ -45,31 +45,31 @@ recomputed/verified at any time by running this module directly:
 """
 MAP_METADATA = {
     "horse_arcs_170.txt": {
-        "title": "Arcs",
+        "title": "Day 170: Arcs",
         "n_nodes": 243,
         "m_edges": 394,
         "min_k": 1,
     },
     "horse_diamonds_126.txt": {
-        "title": "Diamonds",
+        "title": "Day 126: Diamonds",
         "n_nodes": 112,
         "m_edges": 161,
         "min_k": 2,
     },
     "horse_dots.txt": {
-        "title": "Dots",
+        "title": "Day 120: Dots",
         "n_nodes": 224,
         "m_edges": 408,
         "min_k": 3,
     },
     "horse_u-turn_128.txt": {
-        "title": "U-Turn",
+        "title": "Day 128: U-Turn",
         "n_nodes": 93,
         "m_edges": 147,
         "min_k": 3,
     },
     "dry-portals.txt": {
-        "title": "Dry Portals",
+        "title": "Day 247: Dry Portals",
         "n_nodes": 109,
         "m_edges": 236,
         "min_k": 4,
