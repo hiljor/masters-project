@@ -4,13 +4,12 @@ import multiprocessing
 from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-from horse_algos.visual.visualise import load_and_visualize_benchmarks
-
 # Add the project root and src directory to sys.path to allow running as a script
 repo_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(repo_root / "src"))
 sys.path.insert(0, str(repo_root))
 
+from horse_algos.visual.visualise import load_and_visualize_benchmarks
 from horse_algos.tools.map_loader import load_graph_from_map, load_graph_from_lines
 from horse_algos.algorithms.milp_ortools import MILP_OR, MILP_AVAILABLE
 from horse_algos.algorithms.cpp_algorithms import CppNaive, CppImportantSeparators, CPP_AVAILABLE
