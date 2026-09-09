@@ -31,8 +31,8 @@ class BenchmarkConfig:
         min_runs_for_early_stop: Minimum number of timed runs before early-stop
             is considered.
     """
-    warmup_runs: int = 5
-    iterations: int = 30
+    warmup_runs: int = 3
+    iterations: int = 20
     target_cv: Optional[float] = 0.03
     min_runs_for_early_stop: int = 10
 
