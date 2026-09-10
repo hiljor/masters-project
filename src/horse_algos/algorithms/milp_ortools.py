@@ -6,6 +6,7 @@ except ImportError:
 
 from horse_algos.graph import Graph
 from horse_algos.algorithms.algorithm import Algorithm, is_cancelled
+from horse_algos.algorithms.runtime_limits import TIME_LIMIT_SECONDS, get_max_k
 
 class MILP_OR(Algorithm):
     """ MILP implementation using Google OR-Tools. """
@@ -19,6 +20,22 @@ class MILP_OR(Algorithm):
         
         if not MILP_AVAILABLE:
             raise ImportError("Google OR-Tools not available. Please install it with 'pip install ortools'.")
+
+        # Reject k values that our empirical measurements (see
+        # scripts/find_max_k.py, which runs each map once at increasing k
+        # and stops as soon as a run exceeds the time budget) found to
+        # take too long to run on a map with this exact shape.
+        removable_nodes = [i for i in range(len(graph.nodeValues))
+                           if i not in graph.infSet and i != s and i != t]
+        edges = sum(len(adj) for adj in graph.adjList)
+        max_k = get_max_k(self.name, len(graph.nodeValues), edges, len(removable_nodes))
+        if max_k is not None and k > max_k:
+            raise RuntimeError(
+                f"MILP (OR-Tools) too expensive: k={k} exceeds the empirically "
+                f"measured max k={max_k} (nodes={len(graph.nodeValues)}, edges={edges}, "
+                f"removable={len(removable_nodes)}) that completes within "
+                f"{TIME_LIMIT_SECONDS:,.0f}s."
+            )
 
         # Create the linear solver with the SCIP backend.
         solver = pywraplp.Solver.CreateSolver('SCIP')
