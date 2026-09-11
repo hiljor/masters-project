@@ -73,6 +73,43 @@ class TestCppAlgorithms:
         assert get_max_k("Brute Force (C++)", nodes=3, edges=2, removable=1) is None
         assert get_max_k("Unknown Algorithm", nodes=1, edges=1, removable=1) is None
 
+    def test_naive_falls_back_to_combinatorial_cap_for_unmeasured_shape(self, monkeypatch):
+        """When a graph's (nodes, edges, removable) shape is not present
+        in runtime_limits.MAX_K_TABLE -- e.g. a custom map drawn in the
+        web UI that scripts/find_max_k.py never measured -- Brute Force
+        (C++) must still be protected from a runaway combinatorial
+        blowup, falling back to the static choose(n, k) > 100,000,000
+        cap instead of running unbounded."""
+        import horse_algos.algorithms.cpp_algorithms as cpp_algorithms
+        monkeypatch.setattr(
+            cpp_algorithms,
+            "get_max_k",
+            lambda algorithm_name, nodes, edges, removable: None,
+        )
+
+        graph, s, t = load_graph_from_map("horse_arcs_170.txt")
+        # choose(241, 4) = 137,085,620 > 100,000,000, so this should be
+        # rejected by the fallback cap even though get_max_k() is
+        # (simulated to be) unmeasured for this shape.
+        with pytest.raises(RuntimeError, match="too expensive"):
+            CppNaive().run(deepcopy(graph), s, t, 4)
+
+    def test_naive_runs_fine_under_fallback_cap_for_unmeasured_shape(self, monkeypatch):
+        """A k small enough to stay under the fallback combinatorial cap
+        should still run successfully even when the graph shape is
+        unmeasured."""
+        import horse_algos.algorithms.cpp_algorithms as cpp_algorithms
+        monkeypatch.setattr(
+            cpp_algorithms,
+            "get_max_k",
+            lambda algorithm_name, nodes, edges, removable: None,
+        )
+
+        graph, s, t = load_graph_from_map("horse_arcs_170.txt")
+        # choose(241, 1) = 241, comfortably under the 100,000,000 cap.
+        result_val, _ = CppNaive().run(deepcopy(graph), s, t, 1)
+        assert result_val != float("-inf")
+
 
 class TestGetMaxKLookup:
     """Hardware-independent unit tests for the MAX_K_TABLE lookup helper

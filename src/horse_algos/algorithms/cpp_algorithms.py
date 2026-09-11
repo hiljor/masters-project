@@ -36,27 +36,32 @@ class CppNaive(Algorithm):
                 f"Brute force C++ cannot remove {k} nodes when only {n_removable} are removable."
             )
 
-        max_combinations = 100_000_000
-        combinations = math.comb(n_removable, k)
-        if combinations > max_combinations:
-            raise RuntimeError(
-                f"Brute force C++ too expensive: choose({n_removable},{k}) = {combinations:,} > {max_combinations:,}."
-            )
-
-        # Reject k values that our empirical measurements (see
-        # scripts/find_max_k.py, which runs each map once at increasing k
-        # and stops as soon as a run exceeds the time budget) found to
-        # take too long to run on a map with this exact shape, even when
-        # the raw combination count is under the hard cap above.
+        # Primary guard: reject k values that our empirical measurements
+        # (see scripts/find_max_k.py, which runs each map once at
+        # increasing k and stops as soon as a run exceeds the time
+        # budget) found to take too long to run on a map with this exact
+        # shape.
         edges = sum(len(adj) for adj in graph.adjList)
         max_k = get_max_k(self.name, len(graph.nodeValues), edges, n_removable)
-        if max_k is not None and k > max_k:
-            raise RuntimeError(
-                f"Brute force C++ too expensive: k={k} exceeds the empirically "
-                f"measured max k={max_k} (nodes={len(graph.nodeValues)}, edges={edges}, "
-                f"removable={n_removable}) that completes within "
-                f"{TIME_LIMIT_SECONDS:,.0f}s."
-            )
+        if max_k is not None:
+            if k > max_k:
+                raise RuntimeError(
+                    f"Brute force C++ too expensive: k={k} exceeds the empirically "
+                    f"measured max k={max_k} (nodes={len(graph.nodeValues)}, edges={edges}, "
+                    f"removable={n_removable}) that completes within "
+                    f"{TIME_LIMIT_SECONDS:,.0f}s."
+                )
+        else:
+            # Fallback guard: this graph shape was never measured by
+            # scripts/find_max_k.py (e.g. a custom map drawn in the web
+            # UI), so fall back to a static combinatorial cap to protect
+            # against a runaway choose(n_removable, k) blowup.
+            max_combinations = 100_000_000
+            combinations = math.comb(n_removable, k)
+            if combinations > max_combinations:
+                raise RuntimeError(
+                    f"Brute force C++ too expensive: choose({n_removable},{k}) = {combinations:,} > {max_combinations:,}."
+                )
 
         # Convert graph to format expected by C++
         # C++ solve_naive expects: adj_list (list of lists), node_values (list), inf_set (set), s, t, k
