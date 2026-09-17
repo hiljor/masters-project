@@ -242,9 +242,9 @@ if __name__ == "__main__":
   upon completion, making the benchmark resilient to interruptions.
   """
   # Run comprehensive benchmarks on available datasets
-  run_benchmarks()
+  #run_benchmarks()
   
   # Run performance comparison tests at varying sizes
-  run_size_test()
+  #run_size_test()
   
   load_and_visualize_benchmarks()

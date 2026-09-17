@@ -14,9 +14,31 @@ _repo_root = Path(__file__).resolve().parents[3]
 if str(_repo_root) not in sys.path:
     sys.path.insert(0, str(_repo_root))
 
-from data.generate import map_display_title
+from data.generate import MAP_METADATA, map_display_title
 
-RANGE_LEGEND_LABEL = 'Min\u2013max range (across repeated runs)'
+RANGE_LEGEND_LABEL = 'Min\u2013max range'
+
+
+def _dataset_case_image_path(dataset_name: str, repo_root: Path) -> Path | None:
+    """Resolve the matching case image for a benchmark dataset.
+
+    The case images live under data/img/cases and are named with the numeric
+    day followed by the title, e.g. "247-Dry_Portals.png".
+    """
+    meta = MAP_METADATA.get(dataset_name)
+    if meta is None:
+        return None
+
+    match = re.search(r'Day\s+(\d+)\s*:\s*(.+)', meta['title'])
+    if not match:
+        return None
+
+    day_number = match.group(1)
+    title = match.group(2).strip().replace(' ', '_')
+    candidate = repo_root / 'data' / 'img' / 'cases' / f'{day_number}-{title}.png'
+    if candidate.exists():
+        return candidate
+    return None
 
 
 def _add_variation_band(ax, x, data, color, alpha=0.2):
@@ -81,60 +103,103 @@ def load_and_visualize_benchmarks():
     
     # Get unique datasets
     datasets = df['Dataset'].unique()
+    all_algorithms = list(dict.fromkeys(df['Algorithm'].tolist()))
+    prop_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
+    algo_colors = {algo: prop_cycle[i % len(prop_cycle)] for i, algo in enumerate(all_algorithms)}
+
+    # Save one legend for the individual performance plots instead of
+    # repeating it inside every dataset figure.
+    output_dir = repo_root / "data" / "img"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    legend_handles = [
+        Line2D([], [], color=algo_colors[algo], marker='o', label=algo,
+               linewidth=2.6, markersize=14)
+        for algo in all_algorithms
+    ]
+    legend_handles.append(_range_legend_handle())
+    legend_fig, legend_ax = plt.subplots(figsize=(12, 4))
+    legend_ax.set_axis_off()
+    legend_ax.legend(handles=legend_handles, loc='center', fontsize=42,
+                     frameon=True)
+    legend_fig.savefig(output_dir / "individual_performance_legend.png",
+                       dpi=150, bbox_inches='tight')
+    plt.close(legend_fig)
+    print("Saved: individual_performance_legend.png")
     
-    # Create a figure for each dataset
+    # Create a figure for each dataset with the plot on the left and the case
+    # image on the right.
     for dataset in datasets:
         dataset_data = df[df['Dataset'] == dataset]
-        
-        # Create figure and axis
-        fig, ax = plt.subplots(figsize=(12, 7))
-        
+        case_image_path = _dataset_case_image_path(dataset, repo_root)
+        image = plt.imread(case_image_path) if case_image_path is not None else None
+        image_aspect = image.shape[1] / image.shape[0] if image is not None else 1
+
+        fig, (ax, ax_image) = plt.subplots(
+            1, 2, figsize=(30, 14)
+        )
+        fig.subplots_adjust(left=0.06, right=0.98, bottom=0.12, top=0.94, wspace=0.12)
+
+        # Give the image its native aspect ratio while keeping it the same
+        # height as the plot. The plot receives the remaining figure width.
+        figure_width, figure_height = fig.get_size_inches()
+        panel_left, panel_right = 0.06, 0.98
+        panel_bottom, panel_top = 0.12, 0.94
+        panel_gap = 0.02
+        panel_height = panel_top - panel_bottom
+        image_width = panel_height * image_aspect * figure_height / figure_width
+        plot_width = panel_right - panel_left - panel_gap - image_width
+        ax.set_position([panel_left, panel_bottom, plot_width, panel_height])
+        ax_image.set_position([
+            panel_left + plot_width + panel_gap,
+            panel_bottom,
+            image_width,
+            panel_height,
+        ])
+
         # Get unique algorithms for this dataset
         algorithms = dataset_data['Algorithm'].unique()
-        
+
         # Plot each algorithm
         for algo in algorithms:
             algo_data = dataset_data[dataset_data['Algorithm'] == algo].sort_values('k')
-            
+
             # Only plot points that represent genuine completed timings:
             # exclude ERROR rows (e.g. "too expensive", MemoryError,
             # BrokenProcessPool) whose recorded time of 0 is not a real
             # measurement, and exclude timed-out (DNF) runs.
             error_mask = algo_data['Result'].str.startswith('ERROR:').fillna(False)
             valid_data = algo_data[~error_mask].sort_values('k')
-            
+
             if len(valid_data) > 0:
-                line, = ax.plot(valid_data['k'], valid_data['Time_numeric'], 
-                       marker='o', label=algo, linewidth=2, markersize=6)
+                line, = ax.plot(valid_data['k'], valid_data['Time_numeric'],
+                       marker='o', label=algo, linewidth=2, markersize=14,
+                       color=algo_colors[algo])
                 # Shade the min-max runtime range (from the many repeated
                 # timed iterations per k value) around the median line.
                 _add_variation_band(ax, valid_data['k'], valid_data, line.get_color())
-        
+
         # Customize plot
-        ax.set_xlabel('k Value', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Time (seconds)', fontsize=12, fontweight='bold')
-        ax.set_title(f'Algorithm Performance: {map_display_title(dataset)}', fontsize=14, fontweight='bold')
-        # Legend scaled up by 50% so the algorithm names are readable on A4.
-        handles, labels = ax.get_legend_handles_labels()
-        handles.append(_range_legend_handle())
-        labels.append(RANGE_LEGEND_LABEL)
-        ax.legend(handles=handles, labels=labels, loc='best', fontsize=15)
+        ax.set_xlabel('k', fontsize=42, fontweight='bold')
+        ax.set_ylabel('Time (seconds)', fontsize=42, fontweight='bold')
+        ax.tick_params(axis='both', labelsize=34)
         ax.grid(True, alpha=0.3)
         ax.set_xticks(sorted(df['k'].unique()))
-        
-        # Set y-axis limit to show DNF threshold
-        ax.set_ylim(bottom=0, top=65)
-        
-        plt.tight_layout()
-        
+
+        # Benchmark plots are intentionally capped to a compact 0-10s range.
+        ax.set_ylim(bottom=0, top=10)
+        ax.set_yticks(range(1, 11))
+
+        if image is not None:
+            ax_image.imshow(image)
+            ax_image.set_aspect('equal')
+        ax_image.axis('off')
+
         # Save figure
-        output_dir = repo_root / "data" / "img"
-        output_dir.mkdir(parents=True, exist_ok=True)
         safe_dataset_name = dataset.replace('.txt', '').replace(' ', '_')
         fig.savefig(output_dir / f"{safe_dataset_name}_performance.png", dpi=150)
-        print(f"Saved: {safe_dataset_name}_performance.png")
-        
-        plt.show()
+        print(f"{map_display_title(dataset)} - Saved: {safe_dataset_name}_performance.png")
+
+        plt.close(fig)
     
     # Create a combined comparison plot.
     # Use a 2-column grid: the top-left cell holds one common legend with the
@@ -145,15 +210,11 @@ def load_and_visualize_benchmarks():
     # Compress the subplot sizes so text renders larger on A4: per-subplot
     # height reduced 20% and per-subplot width reduced 30% vs. a single
     # column of 14 x 5 subplots.
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(14 * 0.7, 5 * 0.8 * n_rows))
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(14 * 1.4, 5 * 1.6 * n_rows))
     axes = axes.flatten()
     
     # Canonical algorithm order and matching colors so every subplot and the
     # shared legend use the same colors for the same algorithm.
-    all_algorithms = list(dict.fromkeys(df['Algorithm'].tolist()))
-    prop_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
-    algo_colors = {algo: prop_cycle[i % len(prop_cycle)] for i, algo in enumerate(all_algorithms)}
-    
     # Hide any unused subplot slots in the grid (cell 0 is the legend).
     for ax in axes[1 + len(datasets):]:
         ax.set_visible(False)
@@ -163,12 +224,12 @@ def load_and_visualize_benchmarks():
     legend_ax.set_axis_off()
     legend_handles = [
         Line2D([], [], color=algo_colors[algo], marker='o', label=algo,
-               linewidth=2.6, markersize=6.5)
+               linewidth=2.6, markersize=14)
         for algo in all_algorithms
     ]
     legend_handles.append(_range_legend_handle())
-    legend_ax.legend(handles=legend_handles, loc='center', fontsize=13,
-                     title_fontsize=13, frameon=True, title='Algorithms')
+    legend_ax.legend(handles=legend_handles, loc='center', fontsize=36,
+                     title_fontsize=36, frameon=True, title='Algorithms')
     
     for idx, dataset in enumerate(datasets):
         ax = axes[1 + idx]
@@ -183,24 +244,26 @@ def load_and_visualize_benchmarks():
             
             if len(valid_data) > 0:
                 ax.plot(valid_data['k'], valid_data['Time_numeric'],
-                        color=algo_colors[algo], marker='o', linewidth=2, markersize=5)
+                        color=algo_colors[algo], marker='o', linewidth=2, markersize=12)
                 # Shade the min-max runtime range around each algorithm's
                 # line using its designated color.
                 _add_variation_band(ax, valid_data['k'], valid_data, algo_colors[algo])
         
-        ax.set_xlabel('k Value', fontsize=11, fontweight='bold')
-        ax.set_ylabel('Time (seconds)', fontsize=11, fontweight='bold')
-        ax.set_title(f'{map_display_title(dataset)}', fontsize=12, fontweight='bold')
+        ax.set_xlabel('k', fontsize=31)
+        ax.set_ylabel('Time (seconds)', fontsize=31)
+        ax.set_title(f'{map_display_title(dataset)}', fontsize=34, fontweight='bold')
+        ax.tick_params(axis='both', labelsize=31)
         ax.grid(True, alpha=0.3)
         ax.set_xticks(sorted(df['k'].unique()))
-        ax.set_ylim(bottom=0, top=65)
+        ax.set_ylim(bottom=0, top=10)
+        ax.set_yticks(range(1, 11))
     
     # Cut subplot padding by 20% vertically and 30% horizontally
     # (matplotlib's default tight_layout pad is 1.08).
     plt.tight_layout(h_pad=1.08 * 0.8, w_pad=1.08 * 0.7)
     fig.savefig(repo_root / "data" / "img" / "all_datasets_comparison.png", dpi=150)
     print(f"Saved: all_datasets_comparison.png")
-    plt.show()
+    plt.close(fig)
 
 def load_and_visualize_size_test():
     """Load the size-test results and plot node count vs time (k=8).
@@ -231,11 +294,14 @@ def load_and_visualize_size_test():
     # Exclude failed runs, which do not represent genuine timings
     df = df[~df['Result'].astype(str).str.startswith('ERROR:')]
     
-    # Parse the node count from the dataset name: "SizeTest_22x22" -> 484
+    # Parse the actual generated graph size from the dataset name.
+    # For the synthetic size-test maps, a map labelled "SizeTest_sxs"
+    # actually contains 4*s - 3 vertices, not s*s.
     def extract_node_count(dataset_name: str) -> float:
         match = re.search(r'SizeTest_(\d+)x(\d+)', str(dataset_name))
         if match:
-            return int(match.group(1)) * int(match.group(2))
+            s = int(match.group(1))
+            return 4 * s - 3
         return float('nan')
     
     df['NodeCount'] = df['Dataset'].apply(extract_node_count)
@@ -244,26 +310,38 @@ def load_and_visualize_size_test():
     # Only plot the C++ Important Separators and OR-Tools algorithms
     algorithms = ['Important Separators (C++)', 'MILP (OR-Tools)']
     
-    fig, ax = plt.subplots(figsize=(12, 7))
+    fig, ax = plt.subplots(figsize=(24, 14))
     
     for algo in algorithms:
         algo_data = df[df['Algorithm'] == algo].sort_values('NodeCount')
         if len(algo_data) > 0:
             line, = ax.plot(algo_data['NodeCount'], algo_data['Time_numeric'],
-                    marker='o', label=algo, linewidth=2, markersize=6)
+                    marker='o', label=algo, linewidth=2, markersize=14)
             # Shade the min-max runtime range (from the many repeated
             # timed iterations per graph size) around the median line.
             _add_variation_band(ax, algo_data['NodeCount'], algo_data, line.get_color())
     
-    ax.set_xlabel('Number of Nodes', fontsize=12, fontweight='bold')
-    ax.set_ylabel('Time (CPU seconds)', fontsize=12, fontweight='bold')
-    ax.set_title('Size Test: Runtime vs Graph Size (k=8)', fontsize=14, fontweight='bold')
+    ax.set_xlabel('n vertices', fontsize=34, fontweight='bold')
+    ax.set_ylabel('Time (CPU seconds)', fontsize=34, fontweight='bold')
+    ax.tick_params(axis='both', labelsize=28)
     # Legend scaled up by 50% so the algorithm names are readable on A4.
     handles, labels = ax.get_legend_handles_labels()
     handles.append(_range_legend_handle())
     labels.append(RANGE_LEGEND_LABEL)
-    ax.legend(handles=handles, labels=labels, loc='best', fontsize=15)
+    ax.legend(handles=handles, labels=labels, loc='best', fontsize=42)
     ax.grid(True, alpha=0.3)
+
+    # The synthetic size-test graphs share the same x values and cross around the
+    # 6th plotted data point. Mark that location with a vertical guide line.
+    shared_x_values = sorted(df['NodeCount'].unique())
+    if len(shared_x_values) >= 6:
+        crossing_x = shared_x_values[5]
+        ax.axvline(crossing_x, color='black', linestyle='--', linewidth=1.5,
+                   alpha=0.7, zorder=0)
+        ax.text(crossing_x, 10 ** (np.log10(ax.get_ylim()[1]) * 0.97),
+                f'  n={int(crossing_x)}', rotation=0, va='bottom', ha='left',
+                color='black', fontsize=34)
+
     # Node counts span 100 to ~10 million and runtimes span ~0.1 ms to
     # ~740 s, so use log scales to keep the trend visible.
     ax.set_xscale('log')
@@ -274,7 +352,7 @@ def load_and_visualize_size_test():
     output_dir.mkdir(parents=True, exist_ok=True)
     fig.savefig(output_dir / "size_test_comparison.png", dpi=150)
     print("Saved: size_test_comparison.png")
-    plt.show()
+    plt.close(fig)
 
 
 if __name__ == "__main__":
