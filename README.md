@@ -1,6 +1,6 @@
-# horse_algos
+# masters-project
 
-`horse_algos` contains the Python and C++ implementations of graph-cut algorithms for a master thesis exploring the algorithmic problem behind enclose.horse, which we define as Component Order Separator. The package loads map files from `data/` and can generate timing output for the Naive, Important Separators, and OR-Tools MILP implementations of solvers for the problem.
+This repository contains the Python and C++ implementations of graph-cut algorithms for a master thesis exploring the algorithmic problem behind enclose.horse, which we define as Component Order Separator. The package loads map files from `data/` and can generate timing output for the Naive, Important Separators, and OR-Tools MILP implementations of solvers for the problem.
 
 ## Publication scope
 
