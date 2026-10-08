@@ -179,10 +179,12 @@ def load_and_visualize_benchmarks():
                 _add_variation_band(ax, valid_data['k'], valid_data, line.get_color())
 
         # Customize plot
-        ax.set_xlabel('k', fontsize=42, fontweight='bold')
-        ax.set_ylabel('Time (seconds)', fontsize=42, fontweight='bold')
+        ax.set_xlabel('k', fontsize=42)
+        ax.set_ylabel('Time (seconds)', fontsize=42)
         ax.tick_params(axis='both', labelsize=34)
-        ax.grid(True, alpha=0.3)
+        ax.minorticks_on()
+        ax.grid(True, which='major', alpha=0.5)
+        ax.grid(True, which='minor', linestyle=':', alpha=0.42)
         ax.set_xticks(sorted(df['k'].unique()))
 
         # Benchmark plots are intentionally capped to a compact 0-10s range.
@@ -253,7 +255,9 @@ def load_and_visualize_benchmarks():
         ax.set_ylabel('Time (seconds)', fontsize=31)
         ax.set_title(f'{map_display_title(dataset)}', fontsize=34, fontweight='bold')
         ax.tick_params(axis='both', labelsize=31)
-        ax.grid(True, alpha=0.3)
+        ax.minorticks_on()
+        ax.grid(True, which='major', alpha=0.5)
+        ax.grid(True, which='minor', linestyle=':', alpha=0.42)
         ax.set_xticks(sorted(df['k'].unique()))
         ax.set_ylim(bottom=0, top=10)
         ax.set_yticks(range(1, 11))
@@ -309,6 +313,10 @@ def load_and_visualize_size_test():
     
     # Only plot the C++ Important Separators and OR-Tools algorithms
     algorithms = ['Important Separators (C++)', 'MILP (OR-Tools)']
+    algorithm_colors = {
+        'Important Separators (C++)': 'orange',
+        'MILP (OR-Tools)': 'green',
+    }
     
     fig, ax = plt.subplots(figsize=(24, 14))
     
@@ -316,20 +324,23 @@ def load_and_visualize_size_test():
         algo_data = df[df['Algorithm'] == algo].sort_values('NodeCount')
         if len(algo_data) > 0:
             line, = ax.plot(algo_data['NodeCount'], algo_data['Time_numeric'],
-                    marker='o', label=algo, linewidth=2, markersize=14)
+                    marker='o', label=algo, linewidth=2, markersize=14,
+                    color=algorithm_colors[algo])
             # Shade the min-max runtime range (from the many repeated
             # timed iterations per graph size) around the median line.
             _add_variation_band(ax, algo_data['NodeCount'], algo_data, line.get_color())
     
-    ax.set_xlabel('n vertices', fontsize=34, fontweight='bold')
-    ax.set_ylabel('Time (CPU seconds)', fontsize=34, fontweight='bold')
+    ax.set_xlabel('n vertices', fontsize=34)
+    ax.set_ylabel('Time (CPU seconds)', fontsize=34)
     ax.tick_params(axis='both', labelsize=28)
     # Legend scaled up by 50% so the algorithm names are readable on A4.
     handles, labels = ax.get_legend_handles_labels()
     handles.append(_range_legend_handle())
     labels.append(RANGE_LEGEND_LABEL)
     ax.legend(handles=handles, labels=labels, loc='best', fontsize=42)
-    ax.grid(True, alpha=0.3)
+    ax.minorticks_on()
+    ax.grid(True, which='major', alpha=0.5)
+    ax.grid(True, which='minor', linestyle=':', alpha=0.42)
 
     # The synthetic size-test graphs share the same x values and cross around the
     # 6th plotted data point. Mark that location with a vertical guide line.
