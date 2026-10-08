@@ -1,10 +1,10 @@
 # horse_algos
 
-`horse_algos` contains the Python and C++ implementations of the graph-cut algorithms used in this thesis. The package loads map files in `data/`, evaluates candidate cut sets, and supports the Naive, Important Separators, C++-accelerated, and OR-Tools MILP implementations.
+`horse_algos` contains the Python and C++ implementations of graph-cut algorithms for a master thesis exploring the algorithmic problem behind enclose.horse, which we define as Component Order Separator. The package loads map files from `data/` and can generate timing output for the Naive, Important Separators, and OR-Tools MILP implementations of solvers for the problem.
 
 ## Publication scope
 
-This repository contains the reusable algorithm implementation, test data, source code, and automated tests used for the thesis work. Benchmark scripts, visualization output, temporary experiment files, and the development GUI are intentionally excluded from the publication copy.
+This repository contains the algorithm implementations, test data, source code, and automated tests used for the thesis work. Benchmark scripts, visualization output, temporary experiment files, and the development GUI are intentionally excluded from the publication copy.
 
 ## Installation
 
@@ -31,7 +31,3 @@ python -m pytest
 ```
 
 Tests that require optional functionality are skipped when the relevant dependency or compiled extension is unavailable. Install the optional dependencies above before running the complete solver suite.
-
-## DOI
-
-Add the DOI assigned by the thesis publisher or repository service to the final publication metadata before submission. The source package itself is versioned independently of the DOI.
