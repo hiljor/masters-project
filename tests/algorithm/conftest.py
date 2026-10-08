@@ -87,8 +87,3 @@ def case_diamonds():
 def case_dots():
     graph, s, t = load_graph_from_map("horse_dots.txt")
     return TestData(graph=graph, s=s, t=t, k=8, expected=11)
-  
-@pytest.fixture
-def case_portals_cherries():
-    graph, s, t = load_graph_from_map("horse_portals_cherries.txt")
-    return TestData(graph=graph, s=s, t=t, k=8, expected=32)

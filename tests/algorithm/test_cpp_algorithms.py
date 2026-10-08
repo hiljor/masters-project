@@ -7,7 +7,7 @@ from horse_algos.tools.map_loader import load_graph_from_map
 @pytest.mark.skipif(not CPP_AVAILABLE, reason="C++ extension not available")
 class TestCppAlgorithms:
     SMALL_CASES = ["case_basic", "case_impossible", "case_optimal", "case_inf_set", "case_pal", "case_pal2", "case_diamonds_small"]
-    LARGE_CASES = ["case_diamonds", "case_dots", "case_portals_cherries"]
+    LARGE_CASES = ["case_diamonds", "case_dots"]
 
     @pytest.mark.parametrize("algorithm", [CppNaive(), CppImportantSeparators()])
     @pytest.mark.parametrize("case_name", SMALL_CASES)

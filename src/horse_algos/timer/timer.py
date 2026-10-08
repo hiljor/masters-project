@@ -160,7 +160,7 @@ def benchmark_runner(
 
     # --- Measurement Phase ---
     raw_runtimes: List[float] = []
-    final_result = result
+    final_result = None
 
     for i in range(config.iterations):
         start_ns = time.perf_counter_ns()

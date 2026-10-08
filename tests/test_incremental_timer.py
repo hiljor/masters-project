@@ -2,7 +2,7 @@ import csv
 import time
 from pathlib import Path
 import pytest
-from horse_algos.timer.timer import AlgorithmTimer
+from horse_algos.timer.timer import AlgorithmTimer, BenchmarkConfig
 from horse_algos.algorithms.algorithm import Algorithm
 from horse_algos.algorithms.naive import Naive
 from horse_algos.graph import Graph
@@ -28,7 +28,11 @@ def test_incremental_timer(tmp_path):
     with open(csv_file, "r", newline="") as f:
         reader = csv.reader(f)
         header = next(reader)
-        assert header == ["Algorithm", "Dataset", "k", "Time (CPU s)", "Result"]
+        assert header == [
+            "Algorithm", "Dataset", "k", "Median (s)", "Mean (s)",
+            "Std Dev (s)", "Min (s)", "Max (s)", "P95 (s)", "CV (%)",
+            "Result", "Raw Runtimes"
+        ]
         # Ensure no other rows exist yet
         with pytest.raises(StopIteration):
             next(reader)
@@ -45,15 +49,18 @@ def test_incremental_timer(tmp_path):
     with open(csv_file, "r", newline="") as f:
         reader = csv.reader(f)
         header = next(reader)
-        assert header == ["Algorithm", "Dataset", "k", "Time (CPU s)", "Result"]
+        assert header == [
+            "Algorithm", "Dataset", "k", "Median (s)", "Mean (s)",
+            "Std Dev (s)", "Min (s)", "Max (s)", "P95 (s)", "CV (%)",
+            "Result", "Raw Runtimes"
+        ]
         row = next(reader)
         assert row[0] == algo.name
         assert row[1] == "test_dataset"
         assert row[2] == "1"
-        # The execution time should be a float
         assert float(row[3]) >= 0.0
-        # Result should be written in the row
-        assert len(row[4]) > 0
+        assert len(row[10]) > 0
+        assert len(row[11]) > 0
 
         # Ensure no other rows exist
         with pytest.raises(StopIteration):
@@ -62,12 +69,15 @@ def test_incremental_timer(tmp_path):
 
 def test_timer_tracks_cpu_time(tmp_path):
     csv_file = tmp_path / "cpu_time_results.csv"
-    timer = AlgorithmTimer(csv_path=str(csv_file))
+    timer = AlgorithmTimer(
+        csv_path=str(csv_file),
+        config=BenchmarkConfig(warmup_runs=0, iterations=1),
+    )
 
     algo = SleepAlgorithm()
     adjMatrix = [[0, 1], [1, 0]]
     graph = Graph(adjMatrix, [1, 0], infSet=set())
 
     result = timer.time_algorithm(algo, "cpu_test", graph, s=0, t=1, k=1)
-    assert result.execution_time < 0.5
-    assert result.result == (42, set())
+    assert 0.4 <= result.stats.median < 1.0
+    assert result.result == "(42, set())"

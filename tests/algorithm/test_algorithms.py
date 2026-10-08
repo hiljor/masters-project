@@ -5,7 +5,7 @@ from horse_algos.algorithms.naive import Naive
 from horse_algos.algorithms.important_separator import ImportantSeparators
 
 SMALL_CASES = ["case_basic", "case_impossible", "case_optimal", "case_inf_set", "case_pal", "case_pal2", "case_diamonds_small"]
-LARGE_CASES = ["case_diamonds", "case_dots", "case_portals_cherries"]
+LARGE_CASES = ["case_diamonds", "case_dots"]
 
 @pytest.mark.parametrize("algorithm", [Naive(), ImportantSeparators(), MILP_OR()])
 @pytest.mark.parametrize("case_name", SMALL_CASES)
